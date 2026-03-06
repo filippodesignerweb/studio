@@ -1,9 +1,9 @@
-
 'use client';
 
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,7 +57,7 @@ export function Timeline() {
     >
       <div className="container max-w-[1360px] mx-auto px-6 text-dark">
         <h2 className="text-center font-bold text-3xl md:text-5xl lg:text-[54px] mb-16 md:mb-24 uppercase tracking-tight font-headline">
-          COMO <span className="animate-gradient-text font-bold uppercase">DESENVOLVEMOS</span> SEU PROJETO
+          COMO <span className="text-gradient-animate font-bold uppercase">DESENVOLVEMOS</span> SEU PROJETO
         </h2>
         
         <div className="timeline-container relative max-w-[1200px] margin-0 auto pb-12 md:pb-24">
@@ -70,7 +70,10 @@ export function Timeline() {
           {steps.map((step, idx) => (
             <div 
               key={idx} 
-              className={`timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-16 md:mb-32 group ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+              className={cn(
+                "timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-16 md:mb-32 group",
+                idx % 2 !== 0 ? 'md:flex-row-reverse' : ''
+              )}
             >
               <div className={cn(
                 "flex flex-col justify-center",
@@ -89,8 +92,4 @@ export function Timeline() {
       </div>
     </section>
   );
-}
-
-function cn(...inputs: any[]) {
-  return inputs.filter(Boolean).join(' ');
 }

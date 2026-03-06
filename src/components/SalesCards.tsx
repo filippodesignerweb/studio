@@ -1,7 +1,7 @@
-
 'use client';
 
 import React from 'react';
+import { cn } from '@/lib/utils';
 
 export function SalesCards() {
   const whatsappUrl = "https://wa.me/55999999999";
@@ -44,7 +44,7 @@ export function SalesCards() {
       <div className="container max-w-[1360px] mx-auto px-6 mb-16 text-center text-white uppercase tracking-tight">
         <h2 className="font-bold text-3xl md:text-5xl lg:text-[54px] font-headline">
           TRABALHAMOS COM <br className="md:hidden" />
-          <span className="animate-gradient-text font-bold">VENDA OU LOCAÇÃO</span>
+          <span className="text-gradient-animate font-bold">VENDA OU LOCAÇÃO</span>
         </h2>
       </div>
       
@@ -114,8 +114,4 @@ export function SalesCards() {
       </div>
     </section>
   );
-}
-
-function cn(...inputs: any[]) {
-  return inputs.filter(Boolean).join(' ');
 }

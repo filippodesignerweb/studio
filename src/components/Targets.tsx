@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useRef } from 'react';
@@ -69,7 +68,7 @@ export function Targets() {
           ref={titleRef}
           className="text-center font-bold text-3xl md:text-5xl lg:text-[54px] drop-shadow-2xl uppercase font-headline tracking-tighter"
         >
-          PARA QUEM É A <span className="animate-gradient-text font-bold">LED 4U</span>?
+          PARA QUEM É A <span className="text-gradient-animate font-bold">LED 4U</span>?
         </h2>
       </div>
       

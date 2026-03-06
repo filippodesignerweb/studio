@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -10,7 +9,7 @@ export function Stats() {
         <h2 className="font-bold text-3xl md:text-5xl mb-10 uppercase tracking-tight font-headline">O que já entregamos?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20 font-medium text-lg md:text-xl">
           <div className="py-4 md:py-2">+400 clientes atendidos</div>
-          <div className="py-4 md:py-2">+ 2.000m² <span className="animate-gradient-text font-bold">LED instalados</span></div>
+          <div className="py-4 md:py-2">+ 2.000m² <span className="text-gradient-animate font-bold">LED instalados</span></div>
           <div className="py-4 md:py-2">+150 eventos entregues</div>
         </div>
       </div>

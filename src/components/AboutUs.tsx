@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -25,7 +24,7 @@ export function AboutUs() {
           </div>
           
           <h2 className="font-black text-2xl md:text-3xl lg:text-[34px] leading-[1.3] mb-8 md:mb-10 font-headline uppercase tracking-tight">
-            A <span className="animate-gradient-text font-black">LED 4U</span> é especializada em projetos completos de <span className="animate-gradient-text font-black">painéis de LED</span> para ambientes comerciais e residenciais de alto padrão.
+            A <span className="text-gradient-animate font-black">LED 4U</span> é especializada em projetos completos de <span className="text-gradient-animate font-black">painéis de LED</span> para ambientes comerciais e residenciais de alto padrão.
           </h2>
           
           <div className="space-y-4 md:space-y-6 mb-10 md:mb-12 text-gray-600 text-base md:text-lg font-medium font-body">

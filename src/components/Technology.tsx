@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useRef } from 'react';
@@ -49,7 +48,7 @@ export function Technology() {
     >
       <div className="container max-w-[1360px] mx-auto px-6 relative flex flex-col items-center">
         <h2 className="text-center font-bold text-3xl md:text-5xl lg:text-[54px] mb-12 md:mb-20 text-white uppercase tracking-tight z-[60] relative font-headline">
-          TECNOLOGIA PROFISSIONAL QUE <br className="hidden md:block" /> <span className="animate-gradient-text font-bold uppercase">GARANTE RESULTADO</span>
+          TECNOLOGIA PROFISSIONAL QUE <br className="hidden md:block" /> <span className="text-gradient-animate font-bold uppercase">GARANTE RESULTADO</span>
         </h2>
         
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center z-40">

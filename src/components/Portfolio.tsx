@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useRef } from 'react';
@@ -101,7 +100,7 @@ export function Portfolio() {
           className="absolute inset-0 z-40 opacity-0 flex items-end justify-center pb-[10vh] md:pb-[15vh] pointer-events-none px-6 text-dark"
         >
           <h2 className="font-black text-4xl md:text-7xl lg:text-[100px] uppercase tracking-tighter text-center leading-[1.1] font-headline">
-            PROJETOS <br /> <span className="animate-gradient-text italic">REALIZADOS</span>
+            PROJETOS <br /> <span className="text-gradient-animate italic">REALIZADOS</span>
           </h2>
         </div>
       </div>
