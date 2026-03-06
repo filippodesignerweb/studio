@@ -1,9 +1,13 @@
 
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
+import { Stats } from '@/components/Stats';
 import { Targets } from '@/components/Targets';
-import { SalesCards } from '@/components/SalesCards';
+import { Portfolio } from '@/components/Portfolio';
 import { LogoMarquee } from '@/components/LogoMarquee';
+import { Timeline } from '@/components/Timeline';
+import { SalesCards } from '@/components/SalesCards';
+import { Technology } from '@/components/Technology';
 import { AboutUs } from '@/components/AboutUs';
 import { AIProjectAssistant } from '@/components/AIProjectAssistant';
 import { FAQ } from '@/components/FAQ';
@@ -14,10 +18,14 @@ export default function Home() {
     <main className="relative">
       <Header />
       <Hero />
+      <Stats />
       <Targets />
-      <AboutUs />
+      <Portfolio />
       <LogoMarquee />
+      <Timeline />
       <SalesCards />
+      <Technology />
+      <AboutUs />
       <AIProjectAssistant />
       <FAQ />
       <Footer />

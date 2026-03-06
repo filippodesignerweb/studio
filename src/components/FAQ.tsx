@@ -1,13 +1,9 @@
 
 'use client';
 
-import React from 'react';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import React, { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const faqItems = [
   {
@@ -29,35 +25,52 @@ const faqItems = [
 ];
 
 export function FAQ() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
   return (
-    <section id="faq" className="bg-white py-24 border-t border-gray-100">
+    <section id="faq" className="bg-white py-20 md:py-24 border-t border-gray-100" data-theme="light">
       <div className="container max-w-[900px] mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-dark mb-4">FAQ</h2>
-          <p className="text-gray-500 font-medium italic">Encontre respostas para as principais dúvidas sobre nossos projetos</p>
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-dark uppercase mb-4 tracking-tighter font-headline">FAQ</h2>
+          <p className="text-gray-500 font-medium italic text-sm md:text-base">Encontre respostas para as principais dúvidas sobre nossos projetos</p>
+        </div>
+        
+        <div className="space-y-2">
+          {faqItems.map((item, index) => (
+            <div key={index} className="border-bottom border-gray-100 group">
+              <button 
+                onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+                className="flex justify-between items-center py-6 w-full text-left"
+              >
+                <span className="text-base md:text-lg font-bold text-dark group-hover:text-accent transition-colors font-headline uppercase tracking-tight pr-4">
+                  {item.question}
+                </span>
+                <ChevronDown className={cn(
+                  "w-6 h-6 text-dark/30 transition-transform duration-300",
+                  activeIndex === index && "rotate-180"
+                )} />
+              </button>
+              <div className={cn(
+                "overflow-hidden transition-all duration-400 ease-in-out",
+                activeIndex === index ? "max-h-[250px] pb-6" : "max-h-0"
+              )}>
+                <p className="text-gray-600 text-sm md:text-base font-body">
+                  {item.answer}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <Accordion type="single" collapsible className="w-full space-y-4">
-          {faqItems.map((item, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="border-b-dark/10">
-              <AccordionTrigger className="text-left text-lg md:text-xl font-bold text-dark hover:text-primary transition-all font-headline lowercase tracking-tighter">
-                {item.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600 text-base md:text-lg leading-relaxed pt-2 pb-6">
-                {item.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-
-        <div className="mt-20 flex flex-col items-center gap-6">
-          <p className="text-dark font-bold text-lg">Ainda tem dúvidas?</p>
-          <a
-            href="https://wa.me/55999999999"
+        <div className="mt-16 md:mt-20 flex flex-col items-center gap-6">
+          <p className="text-dark font-bold text-base md:text-lg">Ainda tem dúvidas?</p>
+          <a 
+            href="https://wa.me/55999999999" 
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-glow !bg-[#25D366] !border-[#25D366] !text-white flex gap-3 items-center hover:!bg-[#1ebc59] hover:!border-[#1ebc59] hover:shadow-[0_0_20px_rgba(37,211,102,0.6)]"
+            className="btn-glow-green !bg-[#25D366] !border-[#25D366] !text-white flex gap-3 items-center hover:!bg-[#1ebc59] hover:!border-[#1ebc59] hover:shadow-[0_0_20px_rgba(37,211,102,0.6)]"
           >
+            <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/message-circle.svg" className="w-5 h-5 md:w-6 md:h-6 invert" alt="WhatsApp" />
             Chamar no WhatsApp
           </a>
         </div>
