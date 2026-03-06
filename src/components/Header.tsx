@@ -33,10 +33,10 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { name: 'Início', href: '#' },
-    { name: 'Quem Somos', href: '#sobre-nos' },
-    { name: 'Produtos', href: '#venda-locacao' },
-    { name: 'Case', href: '#section-4' },
+    { name: 'Início', href: '/' },
+    { name: 'Quem Somos', href: '/quem-somos' },
+    { name: 'Produtos', href: '/#venda-locacao' },
+    { name: 'Case', href: '/#section-4' },
     { name: 'Blog', href: '#' },
   ];
 
