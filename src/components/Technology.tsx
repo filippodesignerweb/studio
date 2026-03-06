@@ -55,20 +55,20 @@ export function Technology() {
 
       <section 
         id="tecnologia-profissional" 
-        className="bg-black py-24 md:py-32 relative overflow-hidden flex items-center justify-center min-h-[800px]"
+        className="bg-black py-16 md:py-20 relative overflow-hidden flex items-center justify-center min-h-[700px]"
       >
         <div className="container max-w-[1360px] mx-auto px-6 relative flex flex-col items-center z-10">
-          <div className="text-center mb-12 md:mb-20">
+          <div className="text-center mb-6 md:mb-8">
             <h2 className="font-bold text-3xl md:text-5xl lg:text-[54px] text-white uppercase tracking-tight font-headline">
               Painéis <br className="hidden md:block" /> 
               <span className="text-gradient-animate font-bold uppercase">P5 OUTDOOR</span>
             </h2>
-            <p className="text-white/60 max-w-3xl mx-auto mt-6 font-body text-base md:text-lg leading-relaxed">
+            <p className="text-white/60 max-w-3xl mx-auto mt-4 font-body text-base md:text-lg leading-relaxed">
               Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch e altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista com clareza e cores vibrantes, mesmo sob a luz do sol.
             </p>
           </div>
           
-          <div className="w-full relative min-h-[500px] md:min-h-[600px] flex items-center justify-center">
+          <div className="w-full relative min-h-[450px] md:min-h-[550px] flex items-center justify-center">
             {/* Spline Viewer Container */}
             <div className="absolute inset-0 z-10 cursor-grab active:cursor-grabbing">
               {/* @ts-ignore */}
@@ -140,7 +140,7 @@ export function Technology() {
           </div>
 
           {/* Bottom Indicators for Desktop */}
-          <div className="hidden lg:flex justify-center gap-10 w-full mt-16 z-30">
+          <div className="hidden lg:flex justify-center gap-10 w-full mt-10 z-30">
              {features.map((f) => (
                 <button 
                   key={f.id}
