@@ -9,7 +9,6 @@ import { Timeline } from '@/components/Timeline';
 import { SalesCards } from '@/components/SalesCards';
 import { Technology } from '@/components/Technology';
 import { AboutUs } from '@/components/AboutUs';
-import { AIProjectAssistant } from '@/components/AIProjectAssistant';
 import { FAQ } from '@/components/FAQ';
 import { Footer } from '@/components/Footer';
 
@@ -26,7 +25,6 @@ export default function Home() {
       <SalesCards />
       <Technology />
       <AboutUs />
-      <AIProjectAssistant />
       <FAQ />
       <Footer />
     </main>

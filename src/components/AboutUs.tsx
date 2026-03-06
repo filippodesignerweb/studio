@@ -4,6 +4,8 @@
 import React from 'react';
 
 export function AboutUs() {
+  const whatsappUrl = "https://wa.me/55999999999";
+
   return (
     <section id="sobre-nos" className="bg-white py-24 md:py-32 relative overflow-hidden" data-theme="light">
       <div className="container max-w-[1360px] mx-auto px-6 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -31,7 +33,14 @@ export function AboutUs() {
             <p>Atendemos clientes que buscam qualidade, segurança e impacto real — não soluções improvisadas.</p>
           </div>
 
-          <a href="#assistant" className="btn-glow-green !text-dark border-dark/20 hover:!text-white hover:border-transparent">Saiba mais</a>
+          <a 
+            href={whatsappUrl} 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-glow-green !text-dark border-dark/20 hover:!text-white hover:border-transparent"
+          >
+            Saiba mais
+          </a>
         </div>
       </div>
     </section>

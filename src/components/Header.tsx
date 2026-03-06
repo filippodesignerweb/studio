@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,7 +19,6 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Monitora se o scroll está em uma seção de tema claro
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -41,6 +39,8 @@ export function Header() {
     { name: 'Case', href: '#section-4' },
     { name: 'Blog', href: '#' },
   ];
+
+  const whatsappUrl = "https://wa.me/55999999999";
 
   return (
     <>
@@ -73,9 +73,14 @@ export function Header() {
           </nav>
 
           <div className="hidden md:block">
-            <Link href="#assistant" className="btn-glow-green">
+            <a 
+              href={whatsappUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn-glow-green"
+            >
               Fazer Orçamento
-            </Link>
+            </a>
           </div>
 
           <button
@@ -88,7 +93,6 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
       <div
         className={cn(
           'fixed inset-0 z-[2100] bg-dark/98 flex flex-col items-center justify-center p-8 transition-transform duration-500 lg:hidden',
@@ -113,13 +117,15 @@ export function Header() {
               {link.name}
             </Link>
           ))}
-          <Link
-            href="#assistant"
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMobileMenuOpen(false)}
             className="btn-glow-green mt-8 w-full"
           >
             Fazer Orçamento
-          </Link>
+          </a>
         </nav>
       </div>
     </>

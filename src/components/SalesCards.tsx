@@ -4,6 +4,8 @@
 import React from 'react';
 
 export function SalesCards() {
+  const whatsappUrl = "https://wa.me/55999999999";
+
   const services = [
     {
       title: 'Venda',
@@ -85,7 +87,9 @@ export function SalesCards() {
                   {service.desc}
                 </p>
                 <a 
-                  href="#assistant" 
+                  href={whatsappUrl} 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-glow-green w-full !text-white transition-all duration-300"
                   style={{ 
                     borderColor: `${service.accentColor}66`,

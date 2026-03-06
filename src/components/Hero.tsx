@@ -15,6 +15,8 @@ export function Hero() {
   const trackRef = useRef<HTMLDivElement>(null);
   const placeholderRef = useRef<HTMLDivElement>(null);
 
+  const whatsappUrl = "https://wa.me/55999999999";
+
   useEffect(() => {
     if (!wrapperRef.current) return;
 
@@ -24,7 +26,6 @@ export function Hero() {
     const getOffsetLeft = () => isMobile ? 24 : (window.innerWidth - Math.min(1360, window.innerWidth - 48)) / 2;
 
     const ctx = gsap.context(() => {
-      // Timeline do Pin
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: wrapperRef.current,
@@ -35,7 +36,6 @@ export function Hero() {
           onLeave: () => {
             gsap.set(bgRef.current, { visibility: 'hidden' });
             gsap.set(placeholderRef.current, { opacity: 1 });
-            // Inicia marquee quando sai do pin
             if (trackRef.current && !trackRef.current.dataset.duplicated) {
               const track = trackRef.current;
               track.innerHTML += track.innerHTML;
@@ -106,7 +106,14 @@ export function Hero() {
         <p className="text-white/90 font-body leading-relaxed mb-10 text-[16px] md:text-[18px] max-w-2xl">
           Projetos sob medida, instalação completa e suporte técnico especializado.
         </p>
-        <a href="#assistant" className="btn-glow-green">Solicitar Avaliação Técnica</a>
+        <a 
+          href={whatsappUrl} 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-glow-green"
+        >
+          Solicitar Avaliação Técnica
+        </a>
       </div>
 
       <div 
