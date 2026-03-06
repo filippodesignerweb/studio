@@ -76,7 +76,7 @@ export function Timeline() {
               key={idx} 
               className={cn(
                 "timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-16 md:mb-32 group opacity-20 transition-all duration-700 scale-95",
-                "active:opacity-100 active:scale-100",
+                "[&.active]:opacity-100 [&.active]:scale-100",
                 idx % 2 !== 0 ? 'md:flex-row-reverse' : ''
               )}
             >
