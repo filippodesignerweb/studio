@@ -18,11 +18,11 @@ export default function Home() {
       <Header />
       <Hero />
       <Stats />
+      <SalesCards />
       <Targets />
       <Portfolio />
       <LogoMarquee />
       <Timeline />
-      <SalesCards />
       <Technology />
       <AboutUs />
       <FAQ />
