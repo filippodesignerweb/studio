@@ -55,27 +55,27 @@ function Counter({ end, suffix = "", prefix = "" }: CounterProps) {
 
 export function Stats() {
   return (
-    <section className="w-full bg-dark py-24 lg:py-32 relative z-20 flex flex-col items-center justify-center border-t border-white/5">
+    <section className="w-full bg-dark py-20 lg:py-24 relative z-20 flex flex-col items-center justify-center border-t border-white/5">
       <div className="container max-w-[1360px] mx-auto px-6 text-center text-white">
-        <h2 className="font-bold text-3xl md:text-5xl mb-16 uppercase tracking-tight font-headline">O que já entregamos?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 font-bold">
+        <h2 className="font-bold text-2xl md:text-3xl mb-12 uppercase tracking-tight font-headline">O que já entregamos?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 font-bold">
           <div className="flex flex-col items-center px-8 border-white/10 md:border-r">
-            <span className="text-5xl md:text-7xl lg:text-8xl mb-4 font-headline">
+            <span className="text-3xl md:text-4xl lg:text-5xl mb-3 font-headline">
               <Counter end={400} prefix="+" />
             </span>
-            <span className="text-white/60 uppercase tracking-widest text-sm font-headline">clientes atendidos</span>
+            <span className="text-white/40 uppercase tracking-widest text-[10px] md:text-xs font-headline">clientes atendidos</span>
           </div>
           <div className="flex flex-col items-center px-8 border-white/10 md:border-r">
-            <span className="text-5xl md:text-7xl lg:text-8xl mb-4 font-headline text-gradient-animate">
+            <span className="text-3xl md:text-4xl lg:text-5xl mb-3 font-headline text-gradient-animate">
               <Counter end={2000} prefix="+ " suffix="m²" />
             </span>
-            <span className="text-white/60 uppercase tracking-widest text-sm font-headline">LED instalados</span>
+            <span className="text-white/40 uppercase tracking-widest text-[10px] md:text-xs font-headline">LED instalados</span>
           </div>
           <div className="flex flex-col items-center px-8">
-            <span className="text-5xl md:text-7xl lg:text-8xl mb-4 font-headline">
+            <span className="text-3xl md:text-4xl lg:text-5xl mb-3 font-headline">
               <Counter end={150} prefix="+" />
             </span>
-            <span className="text-white/60 uppercase tracking-widest text-sm font-headline">eventos entregues</span>
+            <span className="text-white/40 uppercase tracking-widest text-[10px] md:text-xs font-headline">eventos entregues</span>
           </div>
         </div>
       </div>
