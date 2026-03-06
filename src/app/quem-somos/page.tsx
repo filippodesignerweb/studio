@@ -15,11 +15,18 @@ import {
   Building2
 } from 'lucide-react';
 
-// Importação lazy do componente Dithering com Fallback em CSS puro
+// Importação segura do componente Dithering com Fallback
 const Dithering = lazy(() =>
   import('@paper-design/shaders-react')
-    .then((mod) => ({ default: (mod as any).Dithering }))
+    .then((mod) => {
+      // Verifica se o componente existe na exportação para evitar retornar undefined
+      if (mod && (mod as any).Dithering) {
+        return { default: (mod as any).Dithering };
+      }
+      throw new Error('Dithering component not found');
+    })
     .catch(() => ({
+      // Fallback amigável caso a biblioteca falhe ou não seja encontrada
       default: ({ colorFront }: { colorFront: string }) => (
         <div
           className="absolute inset-0 opacity-40 mix-blend-screen"
@@ -73,14 +80,14 @@ export default function QuemSomosPage() {
           .animate-float-2 { animation: float 7s ease-in-out infinite 1.5s; }
           .animate-float-3 { animation: float 5.5s ease-in-out infinite 0.7s; }
           
-          @keyframes marquee {
+          @keyframes marquee-custom {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
           }
           .animate-marquee-custom {
             display: flex;
             width: max-content;
-            animation: marquee 30s linear infinite;
+            animation: marquee-custom 30s linear infinite;
           }
           .animate-marquee-custom:hover {
             animation-play-state: paused;
@@ -163,13 +170,21 @@ export default function QuemSomosPage() {
             >
               {/* Card Dithering */}
               <div 
-                className="absolute bottom-0 w-full max-w-7xl h-[75vh] rounded-t-[48px] border border-b-0 border-white/10 bg-[#0f0f0f] flex flex-col items-center justify-center"
+                className="absolute bottom-0 w-full max-w-7xl h-[75vh] rounded-t-[48px] border border-b-0 border-white/10 bg-[#0f0f0f] flex flex-col items-center justify-center overflow-hidden"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
                 <Suspense fallback={<div className="absolute inset-0 bg-[#9800FF]/10 animate-pulse" />}>
                   <div className="absolute inset-0 z-0 opacity-50 mix-blend-screen">
-                    <Dithering colorBack="#00000000" colorFront="#9800FF" shape="warp" type="4x4" speed={isHovered ? 0.6 : 0.2} className="size-full" minPixelRatio={1} />
+                    <Dithering 
+                      colorBack="#00000000" 
+                      colorFront="#9800FF" 
+                      shape="warp" 
+                      type="4x4" 
+                      speed={isHovered ? 0.6 : 0.2} 
+                      className="size-full" 
+                      minPixelRatio={1} 
+                    />
                   </div>
                 </Suspense>
               </div>
