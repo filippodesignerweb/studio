@@ -12,7 +12,7 @@ export function Timeline() {
   const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || !progressRef.current) return;
 
     const ctx = gsap.context(() => {
       // Barra de progresso da timeline
@@ -21,22 +21,23 @@ export function Timeline() {
         ease: 'none',
         scrollTrigger: {
           trigger: '.timeline-container',
-          start: 'top center',
-          end: 'bottom center',
-          scrub: true,
+          start: 'top 60%',
+          end: 'bottom 60%',
+          scrub: 0.5,
         }
       });
 
       // Ativação dos itens ao passar por eles
-      document.querySelectorAll('.timeline-item').forEach(item => {
+      const items = gsap.utils.toArray('.timeline-item');
+      items.forEach((item: any) => {
         ScrollTrigger.create({
           trigger: item,
-          start: 'top center',
+          start: 'top 60%',
           onEnter: () => item.classList.add('active'),
           onLeaveBack: () => item.classList.remove('active')
         });
       });
-    });
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
@@ -60,18 +61,22 @@ export function Timeline() {
           COMO <span className="text-gradient-animate font-bold uppercase">DESENVOLVEMOS</span> SEU PROJETO
         </h2>
         
-        <div className="timeline-container relative max-w-[1200px] margin-0 auto pb-12 md:pb-24">
-          <div className="absolute left-[20px] md:left-1/2 md:-ml-[2px] top-0 bottom-0 width-[4px] bg-black/5 rounded-[2px] w-[4px]"></div>
+        <div className="timeline-container relative max-w-[1200px] mx-auto pb-12 md:pb-24">
+          {/* Linha de fundo sutil */}
+          <div className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[4px] bg-black/5 rounded-full"></div>
+          
+          {/* Linha de progresso que preenche no scroll */}
           <div 
             ref={progressRef}
-            className="absolute left-[20px] md:left-1/2 md:-ml-[2px] top-0 width-[4px] bg-gradient-to-bottom from-accent to-[#12CFDB] rounded-[2px] z-10 w-[4px] h-0"
+            className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 top-0 w-[4px] bg-gradient-to-b from-accent to-[#12CFDB] rounded-full z-10 h-0"
           ></div>
           
           {steps.map((step, idx) => (
             <div 
               key={idx} 
               className={cn(
-                "timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-16 md:mb-32 group",
+                "timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-16 md:mb-32 group opacity-20 transition-all duration-700 scale-95",
+                "active:opacity-100 active:scale-100",
                 idx % 2 !== 0 ? 'md:flex-row-reverse' : ''
               )}
             >
@@ -79,7 +84,7 @@ export function Timeline() {
                 "flex flex-col justify-center",
                 idx % 2 === 0 ? "md:text-right md:pr-16 md:items-end" : "md:pl-16 md:items-start"
               )}>
-                <div className="text-accent text-3xl md:text-5xl font-black mb-2 opacity-20 group-[.active]:opacity-100 transition-opacity font-headline">
+                <div className="text-accent text-3xl md:text-5xl font-black mb-2 font-headline">
                   {step.number}
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold mb-2 font-headline uppercase tracking-tight">{step.title}</h3>
