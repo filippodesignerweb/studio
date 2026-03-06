@@ -9,21 +9,24 @@ export function SalesCards() {
   const services = [
     {
       title: 'Venda',
-      tag: 'Solução Definitiva',
-      desc: 'Ideal para residências, bares, restaurantes e escritórios. Projetos permanentes com suporte contínuo.',
+      tag: 'Foco Principal',
+      desc: 'Ideal para residências, bares, restaurantes e escritórios. Projetos permanentes com suporte contínuo e garantia total.',
       img: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m9_1x.webp',
       accentColor: '#9800FF',
-      shadowColor: 'rgba(152,0,255,0.1)',
-      borderOpacity: 'border-white/5'
+      shadowColor: 'rgba(152,0,255,0.25)',
+      isHighlight: true,
+      priority: 1,
+      borderColor: 'border-[#9800FF]/40'
     },
     {
       title: 'Locação Fixa',
       tag: 'Longo Prazo',
-      desc: 'Indicada para fachadas comerciais, publicidade e academias. Investimento diluído ao longo do tempo.',
+      desc: 'Indicada para fachadas comerciais, publicidade e academias. Investimento diluído ao longo do tempo com manutenção inclusa.',
       img: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m8_1x.webp',
       accentColor: '#12CFDB',
       shadowColor: 'rgba(18,207,219,0.15)',
       isHighlight: true,
+      priority: 2,
       borderColor: 'border-[#12CFDB]/30'
     },
     {
@@ -32,10 +35,10 @@ export function SalesCards() {
       desc: 'Para eventos corporativos, festas e casamentos. Inclui suporte técnico especializado antes e durante o evento.',
       img: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m7_1x.webp',
       accentColor: '#D4A955',
-      shadowColor: 'rgba(212,169,85,0.15)',
-      isHighlight: true,
-      borderColor: 'border-[#D4A955]/30',
-      gradient: 'from-[#D4A955] to-[#fde047]'
+      shadowColor: 'rgba(212,169,85,0.1)',
+      isHighlight: false,
+      priority: 3,
+      borderColor: 'border-white/5'
     }
   ];
 
@@ -54,50 +57,53 @@ export function SalesCards() {
             <div 
               key={idx}
               className={cn(
-                "bg-[#1A1822]/50 border rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-2",
-                service.isHighlight ? "md:-translate-y-4 shadow-xl" : "border-white/5",
+                "bg-[#1A1822]/50 border rounded-2xl overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-4 group",
+                service.priority === 1 && "md:-translate-y-8 shadow-2xl z-20 scale-105",
+                service.priority === 2 && "md:-translate-y-4 shadow-xl z-10",
+                service.priority === 3 && "shadow-lg z-0",
                 service.borderColor
               )}
-              style={{ boxShadow: `0 0 30px ${service.shadowColor}` }}
+              style={{ boxShadow: `0 0 40px ${service.shadowColor}` }}
             >
-              {service.gradient && (
-                <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${service.gradient} z-10`}></div>
-              )}
-              {service.accentColor && service.isHighlight && !service.gradient && (
-                <div 
-                  className="absolute top-0 left-0 w-full h-1 z-10" 
-                  style={{ backgroundColor: service.accentColor }}
-                ></div>
-              )}
+              <div 
+                className="absolute top-0 left-0 w-full h-1 z-10" 
+                style={{ backgroundColor: service.accentColor }}
+              ></div>
+              
               <div className="h-48 md:h-64 w-full overflow-hidden relative">
-                <img src={service.img} className="w-full h-full object-cover" alt={service.title} />
+                <img src={service.img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt={service.title} />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1822] to-transparent opacity-60"></div>
               </div>
-              <div className="p-8 flex flex-col flex-1">
+
+              <div className="p-8 flex flex-col flex-1 relative">
                 <span 
-                  className="font-bold text-xs tracking-widest uppercase mb-2 flex items-center gap-2 font-headline"
+                  className="font-bold text-[10px] tracking-[0.2em] uppercase mb-3 flex items-center gap-2 font-headline"
                   style={{ color: service.accentColor }}
                 >
                   {service.isHighlight && <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: service.accentColor }}></span>}
                   {service.tag}
                 </span>
-                <h3 className="text-2xl font-bold text-white mb-4 uppercase tracking-tighter font-headline">
+                
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 uppercase tracking-tighter font-headline">
                   {service.title}
                 </h3>
-                <p className="text-white/60 text-sm mb-8 flex-1 leading-relaxed font-body">
+                
+                <p className="text-white/60 text-sm mb-10 flex-1 leading-relaxed font-body">
                   {service.desc}
                 </p>
+                
                 <a 
                   href={whatsappUrl} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-glow-green w-full !text-white transition-all duration-300"
+                  className="btn-glow-green w-full !text-white transition-all duration-300 relative overflow-hidden group/btn"
                   style={{ 
                     borderColor: `${service.accentColor}66`,
                   }}
                   onMouseOver={(e) => {
                     e.currentTarget.style.backgroundColor = service.accentColor;
                     e.currentTarget.style.borderColor = service.accentColor;
-                    e.currentTarget.style.boxShadow = `0 0 15px ${service.accentColor}`;
+                    e.currentTarget.style.boxShadow = `0 0 25px ${service.accentColor}`;
                   }}
                   onMouseOut={(e) => {
                     e.currentTarget.style.backgroundColor = 'transparent';
@@ -105,7 +111,7 @@ export function SalesCards() {
                     e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
-                  Saiba Mais
+                  <span className="relative z-10">Saiba Mais</span>
                 </a>
               </div>
             </div>
