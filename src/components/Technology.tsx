@@ -60,9 +60,12 @@ export function Technology() {
         <div className="container max-w-[1360px] mx-auto px-6 relative flex flex-col items-center z-10">
           <div className="text-center mb-12 md:mb-20">
             <h2 className="font-bold text-3xl md:text-5xl lg:text-[54px] text-white uppercase tracking-tight font-headline">
-              TECNOLOGIA PROFISSIONAL QUE <br className="hidden md:block" /> 
-              <span className="text-gradient-animate font-bold uppercase">GARANTE RESULTADO</span>
+              Painéis <br className="hidden md:block" /> 
+              <span className="text-gradient-animate font-bold uppercase">P5 OUTDOOR</span>
             </h2>
+            <p className="text-white/60 max-w-3xl mx-auto mt-6 font-body text-base md:text-lg leading-relaxed">
+              Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch e altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista com clareza e cores vibrantes, mesmo sob a luz do sol.
+            </p>
           </div>
           
           <div className="w-full relative min-h-[500px] md:min-h-[600px] flex items-center justify-center">
@@ -70,7 +73,7 @@ export function Technology() {
             <div className="absolute inset-0 z-10 cursor-grab active:cursor-grabbing">
               {/* @ts-ignore */}
               <spline-viewer 
-                url="https://prod.spline.design/Nto6rsfK7aqoTE1y/scene.splinecode" 
+                url="https://prod.spline.design/DOwUXZ0t9vy3yP25/scene.splinecode" 
                 class="w-full h-full"
               ></spline-viewer>
             </div>
