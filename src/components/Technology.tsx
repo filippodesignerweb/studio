@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Script from 'next/script';
 import { Sparkles, Shield, Monitor, Zap, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -11,33 +11,38 @@ const features = [
     title: 'Brilho Extremo', 
     desc: 'Imagem nítida sob sol intenso, garantindo visibilidade perfeita em qualquer horário e clima.',
     icon: Zap,
-    pos: { top: '35%', left: '48%' }
+    pos: { top: '42%', left: '48%' }
   },
   { 
     id: 2,
     title: 'Alta Fidelidade', 
     desc: 'Cores vivas e uniformes, reproduzindo os seus conteúdos com qualidade fotográfica e sem distorção.',
     icon: Monitor,
-    pos: { top: '52%', left: '52%' }
+    pos: { top: '50%', left: '50%' }
   },
   { 
     id: 3,
     title: 'Durabilidade', 
     desc: 'Painéis blindados e altamente resistentes contra chuva, variações de calor e poeira.',
     icon: Shield,
-    pos: { top: '68%', left: '49%' }
+    pos: { top: '58%', left: '52%' }
   },
   { 
     id: 4,
     title: 'Sistema Modular', 
     desc: 'Totalmente dimensionado sob medida para o seu projeto, permitindo infinitas possibilidades.',
     icon: Sparkles,
-    pos: { top: '45%', left: '42%' }
+    pos: { top: '48%', left: '46%' }
   }
 ];
 
 export function Technology() {
   const [activeFeature, setActiveFeature] = useState<typeof features[0] | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <>
@@ -71,11 +76,13 @@ export function Technology() {
           <div className="w-full relative min-h-[450px] md:min-h-[550px] flex items-center justify-center">
             {/* Spline Viewer Container */}
             <div className="absolute inset-0 z-10 cursor-grab active:cursor-grabbing">
-              {/* @ts-ignore */}
-              <spline-viewer 
-                url="https://prod.spline.design/DOwUXZ0t9vy3yP25/scene.splinecode" 
-                class="w-full h-full"
-              ></spline-viewer>
+              {isMounted && (
+                /* @ts-ignore */
+                <spline-viewer 
+                  url="https://prod.spline.design/DOwUXZ0t9vy3yP25/scene.splinecode" 
+                  className="w-full h-full"
+                ></spline-viewer>
+              )}
             </div>
 
             {/* Hotspots Overlay */}
