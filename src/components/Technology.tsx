@@ -1,84 +1,173 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useState } from 'react';
+import Script from 'next/script';
+import { Sparkles, Shield, Monitor, Zap, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const features = [
+  { 
+    id: 1,
+    title: 'Brilho Extremo', 
+    desc: 'Imagem nítida sob sol intenso, garantindo visibilidade perfeita em qualquer horário e clima.',
+    icon: Zap,
+    pos: { top: '25%', left: '42%' }
+  },
+  { 
+    id: 2,
+    title: 'Alta Fidelidade', 
+    desc: 'Cores vivas e uniformes, reproduzindo os seus conteúdos com qualidade fotográfica e sem distorção.',
+    icon: Monitor,
+    pos: { top: '55%', left: '58%' }
+  },
+  { 
+    id: 3,
+    title: 'Durabilidade', 
+    desc: 'Painéis blindados e altamente resistentes contra chuva, variações de calor e poeira.',
+    icon: Shield,
+    pos: { top: '75%', left: '40%' }
+  },
+  { 
+    id: 4,
+    title: 'Sistema Modular', 
+    desc: 'Totalmente dimensionado sob medida para o seu projeto, permitindo infinitas possibilidades.',
+    icon: Sparkles,
+    pos: { top: '40%', left: '25%' }
+  }
+];
 
 export function Technology() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!sectionRef.current || !wrapperRef.current) return;
-      
-      const { clientX, clientY } = e;
-      const { left, top, width, height } = sectionRef.current.getBoundingClientRect();
-      
-      const x = (clientX - (left + width / 2)) / (width / 2);
-      const y = (clientY - (top + height / 2)) / (height / 2);
-      
-      gsap.to(wrapperRef.current, {
-        rotateY: x * 20,
-        rotateX: -y * 20,
-        duration: 0.5,
-        ease: 'power2.out'
-      });
-    };
-
-    const section = sectionRef.current;
-    if (section) {
-      section.addEventListener('mousemove', handleMouseMove);
-      return () => section.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, []);
-
-  const features = [
-    { title: 'Brilho Extremo', desc: 'Imagem nítida sob sol intenso, garantindo visibilidade perfeita em qualquer horário e clima.' },
-    { title: 'Alta Fidelidade', desc: 'Cores vivas e uniformes, reproduzindo os seus conteúdos com qualidade fotográfica e sem distorção.' },
-    { title: 'Durabilidade', desc: 'Painéis blindados e altamente resistentes contra chuva, variações de calor e poeira.' },
-    { title: 'Sistema Modular', desc: 'Totalmente dimensionado sob medida para o seu projeto, permitindo infinitas possibilidades.' }
-  ];
+  const [activeFeature, setActiveFeature] = useState<typeof features[0] | null>(null);
 
   return (
-    <section 
-      id="tecnologia-profissional" 
-      ref={sectionRef}
-      className="bg-black py-24 md:py-32 relative overflow-hidden flex items-center justify-center"
-      style={{ perspective: '2000px' }}
-    >
-      <div className="container max-w-[1360px] mx-auto px-6 relative flex flex-col items-center">
-        <h2 className="text-center font-bold text-3xl md:text-5xl lg:text-[54px] mb-12 md:mb-20 text-white uppercase tracking-tight z-[60] relative font-headline">
-          TECNOLOGIA PROFISSIONAL QUE <br className="hidden md:block" /> <span className="text-gradient-animate font-bold uppercase">GARANTE RESULTADO</span>
-        </h2>
-        
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center z-40">
-          <div className="flex flex-col gap-6 order-2 lg:order-1">
-            {features.map((f, i) => (
-              <div 
-                key={i} 
-                className="p-6 md:p-8 rounded-2xl bg-[#1A1822]/80 backdrop-blur-md border border-white/10 shadow-2xl transition-transform hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(152,0,255,0.2)] group"
-              >
-                <h3 className="text-xl md:text-2xl font-bold mb-2 text-white font-headline uppercase tracking-tight">{f.title}</h3>
-                <p className="text-white/70 text-sm md:text-base font-body">{f.desc}</p>
+    <>
+      <Script 
+        type="module" 
+        src="https://unpkg.com/@splinetool/viewer@1.9.7/build/spline-viewer.js" 
+        strategy="afterInteractive"
+      />
+      
+      <style jsx global>{`
+        spline-viewer::part(logo) {
+          display: none !important;
+        }
+      `}</style>
+
+      <section 
+        id="tecnologia-profissional" 
+        className="bg-black py-24 md:py-32 relative overflow-hidden flex items-center justify-center min-h-[800px]"
+      >
+        {/* Background Image Fallback (as per user snippet) */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <img 
+            src="https://cdn.prod.website-files.com/680fbe8bef9d3f9107de7fa8/68112a2a9c36255e84c9f348_Untitled%401-1904x1001%203.png" 
+            alt="Technology Background" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="container max-w-[1360px] mx-auto px-6 relative flex flex-col items-center z-10">
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="font-bold text-3xl md:text-5xl lg:text-[54px] text-white uppercase tracking-tight font-headline">
+              TECNOLOGIA PROFISSIONAL QUE <br className="hidden md:block" /> 
+              <span className="text-gradient-animate font-bold uppercase">GARANTE RESULTADO</span>
+            </h2>
+          </div>
+          
+          <div className="w-full relative min-h-[500px] md:min-h-[600px] flex items-center justify-center">
+            {/* Spline Viewer Container */}
+            <div className="absolute inset-0 z-10 cursor-grab active:cursor-grabbing">
+              {/* @ts-ignore */}
+              <spline-viewer 
+                url="https://prod.spline.design/Nto6rsfK7aqoTE1y/scene.splinecode" 
+                class="w-full h-full"
+              ></spline-viewer>
+            </div>
+
+            {/* Hotspots Overlay */}
+            <div className="absolute inset-0 z-20 pointer-events-none">
+              <div className="relative w-full h-full max-w-4xl mx-auto">
+                {features.map((feature) => (
+                  <button
+                    key={feature.id}
+                    className="absolute pointer-events-auto group focus:outline-none"
+                    style={{ top: feature.pos.top, left: feature.pos.left }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveFeature(feature);
+                    }}
+                    onMouseEnter={() => !activeFeature && setActiveFeature(feature)}
+                  >
+                    <div className="relative flex items-center justify-center">
+                      <div className="absolute w-10 h-10 bg-primary/30 rounded-full animate-ping"></div>
+                      <div className={cn(
+                        "relative w-8 h-8 rounded-full border-2 border-white flex items-center justify-center shadow-xl transition-all duration-300",
+                        activeFeature?.id === feature.id ? "bg-primary scale-125" : "bg-primary/80 group-hover:bg-primary group-hover:scale-110"
+                      )}>
+                        <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
+                      </div>
+                      
+                      {/* Tooltip Label */}
+                      <div className="absolute bottom-full mb-4 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-black/80 backdrop-blur-md px-3 py-1 rounded-md border border-white/10 text-[10px] font-headline uppercase tracking-widest text-white translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        {feature.title}
+                      </div>
+                    </div>
+                  </button>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Feature Content Overlay */}
+            {activeFeature && (
+              <div className="absolute z-50 bottom-0 md:bottom-12 left-1/2 -translate-x-1/2 w-full max-w-lg px-6 animate-in fade-in slide-in-from-bottom-4 duration-500 pointer-events-none">
+                <div className="bg-[#1A1822]/95 backdrop-blur-2xl border border-primary/30 rounded-3xl p-8 shadow-[0_0_60px_rgba(2,158,157,0.3)] pointer-events-auto">
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="flex items-center gap-5">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                        <activeFeature.icon className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-2xl font-bold font-headline uppercase tracking-tight text-white">
+                        {activeFeature.title}
+                      </h3>
+                    </div>
+                    <button 
+                      onClick={() => setActiveFeature(null)}
+                      className="text-white/40 hover:text-white transition-colors p-2"
+                    >
+                      <X className="w-6 h-6" />
+                    </button>
+                  </div>
+                  <p className="text-white/80 text-base md:text-lg font-body leading-relaxed">
+                    {activeFeature.desc}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
 
-          <div className="flex justify-center lg:justify-end order-1 lg:order-2 w-full">
-            <div 
-              ref={wrapperRef}
-              className="relative w-full max-w-[500px] lg:max-w-[600px] aspect-square rounded-[30px] md:rounded-[40px] overflow-hidden border border-white/20 shadow-[0_0_80px_rgba(152,0,255,0.2)] md:shadow-[0_0_100px_rgba(152,0,255,0.3)]"
-              style={{ transformStyle: 'preserve-3d' }}
-            >
-              <img 
-                src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m6_1x.webp" 
-                className="w-full h-full object-cover"
-                alt="Tech Image 3D"
-              />
-            </div>
+          {/* Bottom Indicators for Desktop */}
+          <div className="hidden lg:flex justify-center gap-10 w-full mt-16 z-30">
+             {features.map((f) => (
+                <button 
+                  key={f.id}
+                  onMouseEnter={() => setActiveFeature(f)}
+                  className={cn(
+                    "flex flex-col items-center gap-3 transition-all duration-300",
+                    activeFeature?.id === f.id ? "opacity-100 scale-110" : "opacity-40 hover:opacity-70"
+                  )}
+                >
+                  <div className={cn(
+                    "w-1 h-1 rounded-full transition-all duration-300",
+                    activeFeature?.id === f.id ? "bg-primary w-8" : "bg-white"
+                  )}></div>
+                  <span className="font-headline text-[10px] uppercase tracking-[0.2em] text-white">
+                    {f.title}
+                  </span>
+                </button>
+             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
