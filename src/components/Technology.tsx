@@ -57,15 +57,6 @@ export function Technology() {
         id="tecnologia-profissional" 
         className="bg-black py-24 md:py-32 relative overflow-hidden flex items-center justify-center min-h-[800px]"
       >
-        {/* Background Image Fallback (as per user snippet) */}
-        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-          <img 
-            src="https://cdn.prod.website-files.com/680fbe8bef9d3f9107de7fa8/68112a2a9c36255e84c9f348_Untitled%401-1904x1001%203.png" 
-            alt="Technology Background" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-
         <div className="container max-w-[1360px] mx-auto px-6 relative flex flex-col items-center z-10">
           <div className="text-center mb-12 md:mb-20">
             <h2 className="font-bold text-3xl md:text-5xl lg:text-[54px] text-white uppercase tracking-tight font-headline">
