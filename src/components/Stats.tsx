@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
@@ -34,8 +35,8 @@ function Counter({ end, suffix = "", prefix = "" }: CounterProps) {
     if (!hasStarted) return;
 
     let start = 0;
-    const duration = 2000; // 2 seconds
-    const increment = end / (duration / 16); // 60 fps approx
+    const duration = 2000;
+    const increment = end / (duration / 16);
 
     const timer = setInterval(() => {
       start += increment;
@@ -55,7 +56,7 @@ function Counter({ end, suffix = "", prefix = "" }: CounterProps) {
 
 export function Stats() {
   return (
-    <section className="w-full bg-dark py-20 lg:py-24 relative z-20 flex flex-col items-center justify-center border-t border-white/5">
+    <section className="w-full bg-dark py-20 lg:py-24 relative z-20 flex flex-col items-center justify-center">
       <div className="container max-w-[1360px] mx-auto px-6 text-center text-white">
         <h2 className="font-bold text-2xl md:text-3xl mb-12 uppercase tracking-tight font-headline">O que já entregamos?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 font-bold">

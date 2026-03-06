@@ -10,17 +10,23 @@ export function LogoMarquee() {
   useEffect(() => {
     if (!trackRef.current) return;
 
+    const track = trackRef.current;
+    
+    // Duplicar conteúdo para loop infinito perfeito
+    if (!track.dataset.duplicated) {
+      const items = Array.from(track.children);
+      items.forEach((item) => {
+        const clone = item.cloneNode(true);
+        track.appendChild(clone);
+      });
+      track.dataset.duplicated = "true";
+    }
+
     const ctx = gsap.context(() => {
-      const track = trackRef.current!;
-      if (!track.dataset.duplicated) {
-        track.innerHTML += track.innerHTML;
-        track.dataset.duplicated = "true";
-      }
-      
       gsap.to(track, {
         xPercent: -50,
         repeat: -1,
-        duration: 30,
+        duration: 25,
         ease: 'none',
       });
     });
@@ -38,17 +44,17 @@ export function LogoMarquee() {
   return (
     <section 
       id="section-logos" 
-      className="bg-white py-12 md:py-16 relative z-50 border-t border-gray-100 overflow-hidden" 
+      className="bg-white py-16 md:py-24 relative z-50 overflow-hidden" 
       data-theme="light"
     >
-      <div className="w-full overflow-hidden px-0">
-        <div ref={trackRef} className="flex gap-[120px] items-center w-max">
+      <div className="w-full overflow-hidden">
+        <div ref={trackRef} className="flex gap-[100px] md:gap-[150px] items-center w-max">
           {logos.map((src, i) => (
             <img 
               key={i} 
               src={src} 
-              className="h-20 w-auto grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-              alt={`Partner ${i}`}
+              className="h-24 md:h-32 w-auto object-contain transition-transform duration-300 hover:scale-110" 
+              alt={`Parceiro ${i}`}
             />
           ))}
         </div>
