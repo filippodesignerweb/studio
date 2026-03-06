@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect, Suspense, lazy } from 'react';
@@ -15,18 +14,15 @@ import {
   Building2
 } from 'lucide-react';
 
-// Importação segura do componente Dithering com Fallback
 const Dithering = lazy(() =>
   import('@paper-design/shaders-react')
     .then((mod) => {
-      // Verifica se o componente existe na exportação para evitar retornar undefined
       if (mod && (mod as any).Dithering) {
         return { default: (mod as any).Dithering };
       }
       throw new Error('Dithering component not found');
     })
     .catch(() => ({
-      // Fallback amigável caso a biblioteca falhe ou não seja encontrada
       default: ({ colorFront }: { colorFront: string }) => (
         <div
           className="absolute inset-0 opacity-40 mix-blend-screen"
@@ -117,7 +113,7 @@ export default function QuemSomosPage() {
           <div className="hidden md:flex items-center space-x-10 text-sm font-semibold tracking-wide text-white font-headline">
             <Link href="/" className="hover:opacity-70 transition-opacity">INICIO</Link>
             <Link href="/quem-somos" className="hover:opacity-70 transition-opacity">QUEM SOMOS</Link>
-            <Link href="/#venda-locacao" className="hover:opacity-70 transition-opacity">PRODUTOS</Link>
+            <Link href="/produtos" className="hover:opacity-70 transition-opacity">PRODUTOS</Link>
             <Link href="/#section-4" className="hover:opacity-70 transition-opacity">CASE</Link>
             <Link href="#" className="hover:opacity-70 transition-opacity">BLOG</Link>
           </div>
@@ -149,7 +145,7 @@ export default function QuemSomosPage() {
             <nav className="flex flex-col space-y-8 text-2xl font-bold">
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>INICIO</Link>
               <Link href="/quem-somos" onClick={() => setIsMobileMenuOpen(false)}>QUEM SOMOS</Link>
-              <Link href="/#venda-locacao" onClick={() => setIsMobileMenuOpen(false)}>PRODUTOS</Link>
+              <Link href="/produtos" onClick={() => setIsMobileMenuOpen(false)}>PRODUTOS</Link>
               <Link href="/#section-4" onClick={() => setIsMobileMenuOpen(false)}>CASE</Link>
               <a href="https://wa.me/55999999999" className="mt-8 px-8 py-4 border border-white rounded-xl">ORÇAMENTO</a>
             </nav>
