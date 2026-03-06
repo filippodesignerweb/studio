@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -10,8 +11,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        body: ['Bricolage Grotesque', 'sans-serif'],
+        headline: ['Unbounded', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
@@ -40,6 +41,9 @@ export default {
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
+        },
+        dark: {
+          DEFAULT: '#0E0D12',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
@@ -88,10 +92,20 @@ export default {
             height: '0',
           },
         },
+        'gradient-move': {
+          '0%': { backgroundPosition: '0% center' },
+          '100%': { backgroundPosition: '200% center' },
+        },
+        'marquee': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'gradient-text': 'gradient-move 3s linear infinite',
+        'marquee': 'marquee 30s linear infinite',
       },
     },
   },

@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-led",
+      "description": "High-end LED panel in a luxury residence",
+      "imageUrl": "https://picsum.photos/seed/led1/1200/800",
+      "imageHint": "led panel luxury"
+    },
+    {
+      "id": "portfolio-1",
+      "description": "Corporate lobby with giant LED screen",
+      "imageUrl": "https://picsum.photos/seed/port1/800/600",
+      "imageHint": "corporate led screen"
+    },
+    {
+      "id": "portfolio-2",
+      "description": "Outdoor digital billboard",
+      "imageUrl": "https://picsum.photos/seed/port2/800/600",
+      "imageHint": "outdoor digital signage"
+    },
+    {
+      "id": "portfolio-3",
+      "description": "Bar with immersive LED ceiling",
+      "imageUrl": "https://picsum.photos/seed/port3/800/600",
+      "imageHint": "bar led lighting"
+    },
+    {
+      "id": "tech-detail",
+      "description": "Close up of LED pixel pitch technology",
+      "imageUrl": "https://picsum.photos/seed/tech/800/800",
+      "imageHint": "led technology detail"
+    },
+    {
+      "id": "totem",
+      "description": "Professional LED totem display",
+      "imageUrl": "https://picsum.photos/seed/totem/600/900",
+      "imageHint": "led totem kiosk"
+    }
+  ]
 }
