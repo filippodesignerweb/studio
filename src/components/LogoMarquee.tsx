@@ -10,16 +10,22 @@ export function LogoMarquee() {
   useEffect(() => {
     if (!trackRef.current) return;
 
-    const track = trackRef.current;
-    const originalContent = track.innerHTML;
-    track.innerHTML = originalContent + originalContent;
-    
-    gsap.to(track, {
-      xPercent: -50,
-      repeat: -1,
-      duration: 30,
-      ease: 'none',
+    const ctx = gsap.context(() => {
+      const track = trackRef.current!;
+      if (!track.dataset.duplicated) {
+        track.innerHTML += track.innerHTML;
+        track.dataset.duplicated = "true";
+      }
+      
+      gsap.to(track, {
+        xPercent: -50,
+        repeat: -1,
+        duration: 30,
+        ease: 'none',
+      });
     });
+    
+    return () => ctx.revert();
   }, []);
 
   const logos = [
@@ -35,7 +41,7 @@ export function LogoMarquee() {
       className="bg-white py-12 md:py-16 relative z-50 border-t border-gray-100 overflow-hidden" 
       data-theme="light"
     >
-      <div className="w-full overflow-hidden px-0 -webkit-mask-image:linear-gradient(to right,transparent,black 15%,black 85%,transparent);mask-image:linear-gradient(to right,transparent,black 15%,black 85%,transparent)">
+      <div className="w-full overflow-hidden px-0">
         <div ref={trackRef} className="flex gap-[120px] items-center w-max">
           {logos.map((src, i) => (
             <img 

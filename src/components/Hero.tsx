@@ -35,6 +35,18 @@ export function Hero() {
           onLeave: () => {
             gsap.set(bgRef.current, { visibility: 'hidden' });
             gsap.set(placeholderRef.current, { opacity: 1 });
+            // Inicia marquee quando sai do pin
+            if (trackRef.current && !trackRef.current.dataset.duplicated) {
+              const track = trackRef.current;
+              track.innerHTML += track.innerHTML;
+              track.dataset.duplicated = "true";
+              gsap.to(track, {
+                xPercent: -50,
+                repeat: -1,
+                duration: 25,
+                ease: 'none',
+              });
+            }
           },
           onEnterBack: () => {
             gsap.set(bgRef.current, { visibility: 'visible' });
@@ -56,21 +68,6 @@ export function Hero() {
         }, 0.5)
         .to(marqueeRef.current, { autoAlpha: 1, duration: 0.1 }, 1.5)
         .to('.carousel-item', { x: 0, opacity: 1, stagger: 0.1, duration: 2 }, 2);
-
-      // Animação contínua do Marquee
-      if (trackRef.current) {
-        // Duplicar conteúdo para scroll infinito
-        const track = trackRef.current;
-        const originalContent = track.innerHTML;
-        track.innerHTML = originalContent + originalContent;
-        
-        gsap.to(track, {
-          xPercent: -50,
-          repeat: -1,
-          duration: 25,
-          ease: 'none',
-        });
-      }
     });
 
     return () => ctx.revert();
@@ -104,7 +101,7 @@ export function Hero() {
         className="absolute inset-0 z-10 flex flex-col justify-end pb-16 lg:pb-32 container max-w-[1360px] mx-auto px-6 text-center lg:text-left items-center lg:items-start text-white"
       >
         <h1 className="font-bold leading-[1.1] mb-6 text-[32px] md:text-[40px] lg:text-[54px] max-w-4xl lg:max-w-[60%] font-headline uppercase tracking-tight">
-          Especialistas em <span className="animate-gradient-text">painéis de LED</span> para Residências, Fachadas e Empresas
+          Especialistas em <span className="text-gradient-animate">painéis de LED</span> para Residências, Fachadas e Empresas
         </h1>
         <p className="text-white/90 font-body leading-relaxed mb-10 text-[16px] md:text-[18px] max-w-2xl">
           Projetos sob medida, instalação completa e suporte técnico especializado.
