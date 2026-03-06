@@ -1,16 +1,82 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+
+interface CounterProps {
+  end: number;
+  suffix?: string;
+  prefix?: string;
+}
+
+function Counter({ end, suffix = "", prefix = "" }: CounterProps) {
+  const [count, setCount] = useState(0);
+  const countRef = useRef<HTMLSpanElement>(null);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setHasStarted(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (countRef.current) {
+      observer.observe(countRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    let start = 0;
+    const duration = 2000; // 2 seconds
+    const increment = end / (duration / 16); // 60 fps approx
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [hasStarted, end]);
+
+  return <span ref={countRef}>{prefix}{count.toLocaleString()}{suffix}</span>;
+}
 
 export function Stats() {
   return (
-    <section className="w-full bg-dark py-20 lg:py-28 relative z-20 flex flex-col items-center justify-center border-t border-white/5">
+    <section className="w-full bg-dark py-24 lg:py-32 relative z-20 flex flex-col items-center justify-center border-t border-white/5">
       <div className="container max-w-[1360px] mx-auto px-6 text-center text-white">
-        <h2 className="font-bold text-3xl md:text-5xl mb-10 uppercase tracking-tight font-headline">O que já entregamos?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20 font-medium text-lg md:text-xl">
-          <div className="py-4 md:py-2">+400 clientes atendidos</div>
-          <div className="py-4 md:py-2">+ 2.000m² <span className="text-gradient-animate font-bold">LED instalados</span></div>
-          <div className="py-4 md:py-2">+150 eventos entregues</div>
+        <h2 className="font-bold text-3xl md:text-5xl mb-16 uppercase tracking-tight font-headline">O que já entregamos?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 font-bold">
+          <div className="flex flex-col items-center px-8 border-white/10 md:border-r">
+            <span className="text-5xl md:text-7xl lg:text-8xl mb-4 font-headline">
+              <Counter end={400} prefix="+" />
+            </span>
+            <span className="text-white/60 uppercase tracking-widest text-sm font-headline">clientes atendidos</span>
+          </div>
+          <div className="flex flex-col items-center px-8 border-white/10 md:border-r">
+            <span className="text-5xl md:text-7xl lg:text-8xl mb-4 font-headline text-gradient-animate">
+              <Counter end={2000} prefix="+ " suffix="m²" />
+            </span>
+            <span className="text-white/60 uppercase tracking-widest text-sm font-headline">LED instalados</span>
+          </div>
+          <div className="flex flex-col items-center px-8">
+            <span className="text-5xl md:text-7xl lg:text-8xl mb-4 font-headline">
+              <Counter end={150} prefix="+" />
+            </span>
+            <span className="text-white/60 uppercase tracking-widest text-sm font-headline">eventos entregues</span>
+          </div>
         </div>
       </div>
     </section>
