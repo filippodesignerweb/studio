@@ -35,7 +35,7 @@ export function Header() {
     { name: 'Início', href: '/' },
     { name: 'Quem Somos', href: '/quem-somos' },
     { name: 'Produtos', href: '/produtos' },
-    { name: 'Case', href: '/#section-4' },
+    { name: 'Case', href: '/case' },
     { name: 'Blog', href: '#' },
   ];
 

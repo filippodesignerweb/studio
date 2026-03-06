@@ -44,7 +44,7 @@ export default function ProdutosPage() {
               </div>
               <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors font-headline uppercase tracking-tight">Painéis P1 INDOOR</h3>
               <p className="text-white/70 text-sm leading-relaxed font-body">
-                Experimente a máxima nitidez com nossos painéis de LED P1. Com apenas <strong className="text-white">1 milímetro</strong> de distância entre os pixels, eles oferecem uma resolução de imagem impressionante, ideal para visualização a curta distância. Perfeito para salas de controle, estúdios e ambientes de luxo, onde cada detalhe importa.
+                Experimente a máxima nitidez com nossos painéis de LED P1. Com apenas <strong className="text-white">1 milímetro</strong> de distância entre os pixels, eles oferecem uma resolução de image impressionante, ideal para visualização a curta distância. Perfeito para salas de controle, estúdios e ambientes de luxo, onde cada detalhe importa.
               </p>
             </div>
 

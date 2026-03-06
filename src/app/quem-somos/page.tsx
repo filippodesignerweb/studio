@@ -114,7 +114,7 @@ export default function QuemSomosPage() {
             <Link href="/" className="hover:opacity-70 transition-opacity">INICIO</Link>
             <Link href="/quem-somos" className="hover:opacity-70 transition-opacity">QUEM SOMOS</Link>
             <Link href="/produtos" className="hover:opacity-70 transition-opacity">PRODUTOS</Link>
-            <Link href="/#section-4" className="hover:opacity-70 transition-opacity">CASE</Link>
+            <Link href="/case" className="hover:opacity-70 transition-opacity">CASE</Link>
             <Link href="#" className="hover:opacity-70 transition-opacity">BLOG</Link>
           </div>
 
@@ -146,7 +146,7 @@ export default function QuemSomosPage() {
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>INICIO</Link>
               <Link href="/quem-somos" onClick={() => setIsMobileMenuOpen(false)}>QUEM SOMOS</Link>
               <Link href="/produtos" onClick={() => setIsMobileMenuOpen(false)}>PRODUTOS</Link>
-              <Link href="/#section-4" onClick={() => setIsMobileMenuOpen(false)}>CASE</Link>
+              <Link href="/case" onClick={() => setIsMobileMenuOpen(false)}>CASE</Link>
               <a href="https://wa.me/55999999999" className="mt-8 px-8 py-4 border border-white rounded-xl">ORÇAMENTO</a>
             </nav>
           </div>
