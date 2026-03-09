@@ -19,6 +19,7 @@ export function Header() {
   }, []);
 
   useEffect(() => {
+    // Observer mais rigoroso para garantir que o tema mude exatamente quando a navbar toca a seção
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -28,7 +29,7 @@ export function Header() {
       });
     }, { 
       threshold: 0,
-      rootMargin: '-10% 0% -90% 0%' 
+      rootMargin: '0px 0px -95% 0%' // Foca apenas na pequena faixa no topo da viewport
     });
 
     document.querySelectorAll('[data-theme]').forEach(section => observer.observe(section));
@@ -102,7 +103,7 @@ export function Header() {
             className="lg:hidden p-2 transition-colors duration-500"
             onClick={() => setMobileMenuOpen(true)}
           >
-            <Menu className="w-8 h-8 text-white" />
+            <Menu className={cn("w-8 h-8", isNavInvert ? "text-dark" : "text-white")} />
           </button>
         </div>
       </header>

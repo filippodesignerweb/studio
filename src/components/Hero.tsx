@@ -13,18 +13,19 @@ export function Hero() {
         entries.forEach((entry) => {
           if (iframeRef.current && iframeRef.current.contentWindow) {
             try {
+              // Usando a API do Vimeo para controlar o player via postMessage
               if (entry.isIntersecting) {
                 iframeRef.current.contentWindow.postMessage('{"method":"play"}', '*');
               } else {
                 iframeRef.current.contentWindow.postMessage('{"method":"pause"}', '*');
               }
             } catch (e) {
-              // Silently handle if frame not ready or origin issues
+              // Silencioso se o frame ainda não estiver pronto
             }
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.05 } // Inicia a ação assim que 5% da hero estiver visível
     );
 
     if (containerRef.current) {
@@ -42,7 +43,7 @@ export function Hero() {
       data-theme="dark"
     >
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Background Vimeo Video */}
+        {/* Background Vimeo Video - Adicionado param api=1 para controle via JS */}
         <iframe
           ref={iframeRef}
           src="https://player.vimeo.com/video/1171839535?background=1&autoplay=1&loop=1&muted=1&api=1"
@@ -55,10 +56,11 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 container max-w-[1360px] mx-auto px-6 text-center lg:text-left items-center lg:items-start text-white">
-        <h1 className="font-bold leading-[1.1] mb-6 text-[32px] md:text-[50px] lg:text-[64px] max-w-4xl font-headline uppercase tracking-tight">
+        {/* Heading adaptável com escalas de tamanho mais suaves para responsividade */}
+        <h1 className="font-bold leading-[1.1] mb-6 text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px] xl:text-[64px] max-w-4xl font-headline uppercase tracking-tight">
           Especialistas em <span className="text-gradient-animate">painéis de LED</span> para Residências, Fachadas e Empresas
         </h1>
-        <p className="text-white/90 font-body leading-relaxed mb-10 text-[18px] md:text-[20px] max-w-2xl">
+        <p className="text-white/90 font-body leading-relaxed mb-10 text-[16px] md:text-[18px] lg:text-[20px] max-w-2xl">
           Projetos sob medida, instalação completa e suporte técnico especializado.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
