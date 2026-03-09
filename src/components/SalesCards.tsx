@@ -1,6 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function SalesCards() {
@@ -13,10 +15,6 @@ export function SalesCards() {
       desc: 'Ideal para residências, bares, restaurantes e escritórios. Projetos permanentes com suporte contínuo e garantia total.',
       img: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m9_1x.webp',
       accentColor: '#9800FF',
-      shadowColor: 'rgba(152,0,255,0.25)',
-      isHighlight: true,
-      priority: 1,
-      borderColor: 'border-[#9800FF]/40'
     },
     {
       title: 'Locação Fixa',
@@ -24,10 +22,6 @@ export function SalesCards() {
       desc: 'Indicada para fachadas comerciais, publicidade e academias. Investimento diluído ao longo do tempo com manutenção inclusa.',
       img: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m8_1x.webp',
       accentColor: '#12CFDB',
-      shadowColor: 'rgba(18,207,219,0.15)',
-      isHighlight: true,
-      priority: 2,
-      borderColor: 'border-[#12CFDB]/30'
     },
     {
       title: 'Locação Eventos',
@@ -35,12 +29,27 @@ export function SalesCards() {
       desc: 'Para eventos corporativos, festas e casamentos. Inclui suporte técnico especializado antes e durante o evento.',
       img: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m7_1x.webp',
       accentColor: '#D4A955',
-      shadowColor: 'rgba(212,169,85,0.1)',
-      isHighlight: false,
-      priority: 3,
-      borderColor: 'border-white/5'
     }
   ];
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 30 });
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+
+  const onSelect = useCallback((emblaApi: any) => {
+    setPrevBtnEnabled(emblaApi.canScrollPrev());
+    setNextBtnEnabled(emblaApi.canScrollNext());
+  }, []);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect(emblaApi);
+    emblaApi.on('reInit', onSelect);
+    emblaApi.on('select', onSelect);
+  }, [emblaApi, onSelect]);
 
   return (
     <section id="venda-locacao" className="bg-dark pt-24 md:pt-32 pb-16 md:pb-32 relative overflow-hidden">
@@ -52,70 +61,71 @@ export function SalesCards() {
       </div>
       
       <div className="container max-w-[1360px] mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-          {services.map((service, idx) => (
-            <div 
-              key={idx}
-              className={cn(
-                "bg-[#1A1822]/50 border rounded-2xl overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-4 group",
-                service.priority === 1 && "md:-translate-y-8 shadow-2xl z-20 scale-105",
-                service.priority === 2 && "md:-translate-y-4 shadow-xl z-10",
-                service.priority === 3 && "shadow-lg z-0",
-                service.borderColor
-              )}
-              style={{ boxShadow: `0 0 40px ${service.shadowColor}` }}
-            >
-              <div 
-                className="absolute top-0 left-0 w-full h-1 z-10" 
-                style={{ backgroundColor: service.accentColor }}
-              ></div>
-              
-              <div className="h-48 md:h-64 w-full overflow-hidden relative">
-                <img src={service.img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt={service.title} />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1822] to-transparent opacity-60"></div>
-              </div>
+        <div className="relative group/carousel">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {services.map((service, idx) => (
+                <div key={idx} className="flex-[0_0_100%] min-w-0">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-[#1A1822]/40 border border-white/5 rounded-[40px] p-8 md:p-12 lg:p-16 mx-4">
+                    {/* Conteúdo Esquerda */}
+                    <div className="flex flex-col items-start text-left">
+                      <span 
+                        className="font-bold text-xs tracking-[0.2em] uppercase mb-6 flex items-center gap-3 font-headline"
+                        style={{ color: service.accentColor }}
+                      >
+                        <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: service.accentColor }}></span>
+                        {service.tag}
+                      </span>
+                      
+                      <h3 className="text-4xl md:text-6xl font-black text-white mb-8 uppercase tracking-tighter font-headline leading-tight">
+                        {service.title}
+                      </h3>
+                      
+                      <p className="text-white/60 text-lg md:text-xl mb-12 leading-relaxed font-body max-w-lg">
+                        {service.desc}
+                      </p>
+                      
+                      <a 
+                        href={whatsappUrl} 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-glow-green"
+                      >
+                        Saiba Mais
+                      </a>
+                    </div>
 
-              <div className="p-8 flex flex-col flex-1 relative">
-                <span 
-                  className="font-bold text-[10px] tracking-[0.2em] uppercase mb-3 flex items-center gap-2 font-headline"
-                  style={{ color: service.accentColor }}
-                >
-                  {service.isHighlight && <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: service.accentColor }}></span>}
-                  {service.tag}
-                </span>
-                
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 uppercase tracking-tighter font-headline">
-                  {service.title}
-                </h3>
-                
-                <p className="text-white/60 text-sm mb-10 flex-1 leading-relaxed font-body">
-                  {service.desc}
-                </p>
-                
-                <a 
-                  href={whatsappUrl} 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-glow-green w-full !text-white transition-all duration-300 relative overflow-hidden group/btn"
-                  style={{ 
-                    borderColor: `${service.accentColor}66`,
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.backgroundColor = service.accentColor;
-                    e.currentTarget.style.borderColor = service.accentColor;
-                    e.currentTarget.style.boxShadow = `0 0 25px ${service.accentColor}`;
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.backgroundColor = 'transparent';
-                    e.currentTarget.style.borderColor = `${service.accentColor}66`;
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
-                >
-                  <span className="relative z-10">Saiba Mais</span>
-                </a>
-              </div>
+                    {/* Imagem Direita */}
+                    <div className="relative h-[300px] md:h-[500px] rounded-[32px] overflow-hidden group">
+                      <img 
+                        src={service.img} 
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                        alt={service.title} 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent"></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Botões de Navegação */}
+          <button 
+            onClick={scrollPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 lg:-translate-x-full w-14 h-14 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white hover:text-dark transition-all duration-300 z-20 backdrop-blur-md"
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="w-8 h-8" />
+          </button>
+          
+          <button 
+            onClick={scrollNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 lg:translate-x-full w-14 h-14 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white hover:text-dark transition-all duration-300 z-20 backdrop-blur-md"
+            aria-label="Próximo"
+          >
+            <ChevronRight className="w-8 h-8" />
+          </button>
         </div>
       </div>
     </section>

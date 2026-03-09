@@ -11,28 +11,28 @@ const features = [
     title: 'Brilho Extremo', 
     desc: 'Imagem nítida sob sol intenso, garantindo visibilidade perfeita em qualquer horário e clima.',
     icon: Zap,
-    pos: { top: '35%', left: '48%' }
+    pos: { top: '35%', left: '40%' }
   },
   { 
     id: 2,
     title: 'Alta Fidelidade', 
     desc: 'Cores vivas e uniformes, reproduzindo os seus conteúdos com qualidade fotográfica e sem distorção.',
     icon: Monitor,
-    pos: { top: '50%', left: '54%' }
+    pos: { top: '50%', left: '58%' }
   },
   { 
     id: 3,
     title: 'Durabilidade', 
     desc: 'Painéis blindados e altamente resistentes contra chuva, variações de calor e poeira.',
     icon: Shield,
-    pos: { top: '65%', left: '51%' }
+    pos: { top: '65%', left: '45%' }
   },
   { 
     id: 4,
     title: 'Sistema Modular', 
     desc: 'Totalmente dimensionado sob medida para o seu projeto, permitindo infinitas possibilidades.',
     icon: Sparkles,
-    pos: { top: '48%', left: '43%' }
+    pos: { top: '48%', left: '35%' }
   }
 ];
 
@@ -65,8 +65,8 @@ export function Technology() {
         <div className="container max-w-[1360px] mx-auto px-6 relative flex flex-col items-center z-10">
           <div className="text-center mb-6 md:mb-8">
             <h2 className="font-bold text-3xl md:text-5xl lg:text-[54px] text-white uppercase tracking-tight font-headline">
-              Painéis <br className="hidden md:block" /> 
-              <span className="text-gradient-animate font-bold uppercase">P5 OUTDOOR</span>
+              TECNOLOGIA PROFISSIONAL <br className="hidden md:block" /> 
+              <span className="text-gradient-animate font-bold uppercase">QUE GARANTE RESULTADO</span>
             </h2>
             <p className="text-white/60 max-w-3xl mx-auto mt-4 font-body text-base md:text-lg leading-relaxed">
               Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch e altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista com clareza e cores vibrantes, mesmo sob a luz do sol.
@@ -93,11 +93,12 @@ export function Technology() {
                     key={feature.id}
                     className="absolute pointer-events-auto group focus:outline-none"
                     style={{ top: feature.pos.top, left: feature.pos.left }}
+                    onMouseEnter={() => setActiveFeature(feature)}
+                    onMouseLeave={() => setActiveFeature(null)}
                     onClick={(e) => {
                       e.stopPropagation();
-                      setActiveFeature(feature);
+                      setActiveFeature(activeFeature?.id === feature.id ? null : feature);
                     }}
-                    onMouseEnter={() => !activeFeature && setActiveFeature(feature)}
                   >
                     <div className="relative flex items-center justify-center">
                       <div className="absolute w-10 h-10 bg-primary/30 rounded-full animate-ping"></div>
@@ -144,28 +145,6 @@ export function Technology() {
                 </div>
               </div>
             )}
-          </div>
-
-          {/* Bottom Indicators for Desktop */}
-          <div className="hidden lg:flex justify-center gap-10 w-full mt-10 z-30">
-             {features.map((f) => (
-                <button 
-                  key={f.id}
-                  onMouseEnter={() => setActiveFeature(f)}
-                  className={cn(
-                    "flex flex-col items-center gap-3 transition-all duration-300",
-                    activeFeature?.id === f.id ? "opacity-100 scale-110" : "opacity-40 hover:opacity-70"
-                  )}
-                >
-                  <div className={cn(
-                    "w-1 h-1 rounded-full transition-all duration-300",
-                    activeFeature?.id === f.id ? "bg-primary w-8" : "bg-white"
-                  )}></div>
-                  <span className="font-headline text-[10px] uppercase tracking-[0.2em] text-white">
-                    {f.title}
-                  </span>
-                </button>
-             ))}
           </div>
         </div>
       </section>

@@ -12,7 +12,6 @@ export function Timeline() {
 
   useEffect(() => {
     setIsMounted(true);
-    // Registra o plugin apenas no lado do cliente
     gsap.registerPlugin(ScrollTrigger);
   }, []);
 
@@ -69,8 +68,10 @@ export function Timeline() {
         </h2>
         
         <div className="timeline-container relative max-w-[1200px] mx-auto pb-12 md:pb-24">
+          {/* Linha de base */}
           <div className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[4px] bg-black/5 rounded-full"></div>
           
+          {/* Linha de progresso */}
           <div 
             ref={progressRef}
             className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 top-0 w-[4px] bg-gradient-to-b from-accent to-[#12CFDB] rounded-full z-10 h-0"
@@ -81,21 +82,46 @@ export function Timeline() {
               key={idx} 
               className={cn(
                 "timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-16 md:mb-32 group opacity-20 transition-all duration-700 scale-95",
-                "[&.active]:opacity-100 [&.active]:scale-100",
-                idx % 2 !== 0 ? 'md:flex-row-reverse' : ''
+                "[&.active]:opacity-100 [&.active]:scale-100"
               )}
             >
+              {/* Conteúdo à esquerda se par (idx 0, 2...) */}
               <div className={cn(
                 "flex flex-col justify-center",
-                idx % 2 === 0 ? "md:text-right md:pr-16 md:items-end" : "md:pl-16 md:items-start"
+                idx % 2 === 0 
+                  ? "md:text-right md:pr-16 md:items-end" 
+                  : "md:hidden"
               )}>
-                <div className="text-accent text-3xl md:text-5xl font-black mb-2 font-headline">
-                  {step.number}
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold mb-2 font-headline uppercase tracking-tight">{step.title}</h3>
-                <p className="text-gray-600 text-sm md:text-lg font-body">{step.desc}</p>
+                {idx % 2 === 0 && (
+                  <>
+                    <div className="text-accent text-3xl md:text-5xl font-black mb-2 font-headline">{step.number}</div>
+                    <h3 className="text-xl md:text-2xl font-bold mb-2 font-headline uppercase tracking-tight">{step.title}</h3>
+                    <p className="text-gray-600 text-sm md:text-lg font-body">{step.desc}</p>
+                  </>
+                )}
               </div>
-              <div className="hidden md:block"></div>
+
+              {/* Conteúdo à direita se ímpar (idx 1, 3...) */}
+              <div className={cn(
+                "flex flex-col justify-center",
+                idx % 2 !== 0 
+                  ? "md:pl-16 md:items-start md:text-left" 
+                  : "hidden md:block"
+              )}>
+                {(idx % 2 !== 0 || window.innerWidth < 768) && (
+                   <div className="md:block">
+                      <div className="text-accent text-3xl md:text-5xl font-black mb-2 font-headline">{step.number}</div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-2 font-headline uppercase tracking-tight">{step.title}</h3>
+                      <p className="text-gray-600 text-sm md:text-lg font-body">{step.desc}</p>
+                   </div>
+                )}
+                {/* Mobile view fallback: steps are stacked */}
+                <div className="md:hidden">
+                    <div className="text-accent text-3xl md:text-5xl font-black mb-2 font-headline">{step.number}</div>
+                    <h3 className="text-xl md:text-2xl font-bold mb-2 font-headline uppercase tracking-tight">{step.title}</h3>
+                    <p className="text-gray-600 text-sm md:text-lg font-body">{step.desc}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

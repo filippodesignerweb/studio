@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 export function Targets() {
   const targets = [
@@ -22,7 +23,7 @@ export function Targets() {
       </div>
       
       <div className="container max-w-[1360px] mx-auto px-6 relative z-30">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {targets.map((target, idx) => (
             <div 
               key={idx} 
@@ -36,6 +37,12 @@ export function Targets() {
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-center">
+          <Link href="/case" className="btn-glow-green">
+            Saiba Mais
+          </Link>
         </div>
       </div>
     </section>
