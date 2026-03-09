@@ -2,9 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Phone, Instagram, Mail, MapPin } from 'lucide-react';
+import { MessageCircle, Instagram, Mail, MapPin } from 'lucide-react';
 
 export function Footer() {
+  const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
+
   return (
     <footer id="footer" className="bg-white pt-20 pb-10 border-t border-gray-200 text-dark" data-theme="light">
       <div className="container max-w-[1360px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
@@ -23,7 +25,7 @@ export function Footer() {
         <div>
           <h4 className="font-black text-lg mb-6 uppercase tracking-wider text-dark font-headline">Links Úteis</h4>
           <ul className="space-y-3 text-gray-600 font-medium text-sm font-body">
-            <li><Link href="#" className="hover:text-accent transition-colors">Início</Link></li>
+            <li><Link href="/" className="hover:text-accent transition-colors">Início</Link></li>
             <li><Link href="/quem-somos" className="hover:text-accent transition-colors">Quem Somos</Link></li>
             <li><Link href="/case" className="hover:text-accent transition-colors">Projetos Realizados</Link></li>
             <li><Link href="#" className="hover:text-accent transition-colors">Políticas de Privacidade</Link></li>
@@ -35,9 +37,9 @@ export function Footer() {
           <h4 className="font-black text-lg mb-6 uppercase tracking-wider text-dark font-headline">Contato</h4>
           <ul className="space-y-4 text-gray-600 font-medium text-sm font-body">
             <li>
-              <a href="tel:55999999999" className="flex items-center gap-3 hover:text-accent transition-colors">
-                <Phone className="w-5 h-5 text-accent flex-shrink-0" />
-                (99) 9999-9999
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-accent transition-colors">
+                <MessageCircle className="w-5 h-5 text-accent flex-shrink-0" />
+                WhatsApp
               </a>
             </li>
             <li>

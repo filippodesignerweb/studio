@@ -39,6 +39,7 @@ export default function QuemSomosPage() {
   const [isHovered, setIsHovered] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
 
   const categories = [
     { title: "Igrejas", icon: Church },
@@ -120,7 +121,7 @@ export default function QuemSomosPage() {
 
           <div className="hidden md:block">
             <a 
-              href="https://wa.me/55999999999"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2.5 border border-white rounded-xl text-sm font-bold tracking-wide hover:bg-white hover:text-black transition-all duration-300 font-headline"
@@ -147,7 +148,7 @@ export default function QuemSomosPage() {
               <Link href="/quem-somos" onClick={() => setIsMobileMenuOpen(false)}>QUEM SOMOS</Link>
               <Link href="/produtos" onClick={() => setIsMobileMenuOpen(false)}>PRODUTOS</Link>
               <Link href="/case" onClick={() => setIsMobileMenuOpen(false)}>CASE</Link>
-              <a href="https://wa.me/55999999999" className="mt-8 px-8 py-4 border border-white rounded-xl">ORÇAMENTO</a>
+              <a href={whatsappUrl} className="mt-8 px-8 py-4 border border-white rounded-xl">ORÇAMENTO</a>
             </nav>
           </div>
         )}
@@ -306,11 +307,11 @@ export default function QuemSomosPage() {
                 </h2>
                 
                 <p className="text-[#3A3A3A]/70 text-lg md:text-xl font-medium max-w-2xl mb-12 leading-relaxed">
-                  Transforme seu espaço com o brilho e a tecnologia que só a Led4U proporciona. Painéis de alta resolução adaptados para cada necessidade do seu negócio ou residência.
+                  Transforme seu espaço com o brilho e a tecnologia que só a Led4U proporciona. Painéis de alta resolução adaptados para cada necessidade do seu negócio or residência.
                 </p>
                 
                 <a 
-                  href="https://wa.me/55999999999"
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative inline-flex items-center justify-center px-10 py-5 font-black text-black tracking-tighter overflow-hidden border-2 border-[#9800FF] rounded-2xl transition-all duration-300 hover:text-white font-headline"

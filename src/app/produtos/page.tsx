@@ -7,6 +7,7 @@ import { Footer } from '@/components/Footer';
 
 export default function ProdutosPage() {
   const [isMounted, setIsMounted] = useState(false);
+  const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
 
   useEffect(() => {
     setIsMounted(true);
@@ -100,7 +101,7 @@ export default function ProdutosPage() {
 
           <div className="mt-16 md:mt-24 w-full flex justify-center relative z-20">
             <a 
-              href="https://wa.me/55999999999" 
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-glow-green text-lg px-10 py-4"
