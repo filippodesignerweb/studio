@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const faqItems = [
@@ -37,7 +37,7 @@ export function FAQ() {
         
         <div className="space-y-2">
           {faqItems.map((item, index) => (
-            <div key={index} className="border-bottom border-gray-100 group">
+            <div key={index} className="border-b border-gray-100 group">
               <button 
                 onClick={() => setActiveIndex(activeIndex === index ? null : index)}
                 className="flex justify-between items-center py-6 w-full text-left"
@@ -68,9 +68,9 @@ export function FAQ() {
             href={whatsappUrl} 
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-glow-green !bg-[#25D366] !border-[#25D366] !text-white flex gap-3 items-center hover:!bg-[#1ebc59] hover:!border-[#1ebc59] hover:shadow-[0_0_20px_rgba(37,211,102,0.6)]"
+            className="btn-glow-green !bg-[#25D366] !border-[#25D366] !text-black flex gap-3 items-center hover:!bg-[#1ebc59] hover:!border-[#1ebc59] hover:shadow-[0_0_20px_rgba(37,211,102,0.6)]"
           >
-            <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/message-circle.svg" className="w-5 h-5 md:w-6 md:h-6 invert" alt="WhatsApp" />
+            <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />
             Chamar no WhatsApp
           </a>
         </div>
