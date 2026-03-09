@@ -12,13 +12,15 @@ export function Timeline() {
 
   useEffect(() => {
     setIsMounted(true);
-    if (typeof window !== 'undefined') {
-      gsap.registerPlugin(ScrollTrigger);
-    }
   }, []);
 
   useEffect(() => {
     if (!isMounted || !containerRef.current || !progressRef.current) return;
+
+    // Registrar o plugin apenas no lado do cliente
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
 
     const ctx = gsap.context(() => {
       gsap.to(progressRef.current, {
@@ -83,9 +85,10 @@ export function Timeline() {
                 "[&.active]:opacity-100 [&.active]:scale-100"
               )}
             >
+              {/* Lado Esquerdo (Aparece para Tópico 1 e 3) */}
               <div className={cn(
                 "hidden md:flex flex-col justify-center text-right pr-16 items-end",
-                idx % 2 !== 0 && "invisible"
+                idx % 2 !== 0 && "invisible pointer-events-none"
               )}>
                 {idx % 2 === 0 && (
                   <>
@@ -96,9 +99,10 @@ export function Timeline() {
                 )}
               </div>
 
+              {/* Lado Direito (Aparece para Tópico 2 e 4) */}
               <div className={cn(
                 "hidden md:flex flex-col justify-center text-left pl-16 items-start",
-                idx % 2 === 0 && "invisible"
+                idx % 2 === 0 && "invisible pointer-events-none"
               )}>
                 {idx % 2 !== 0 && (
                   <>
@@ -109,6 +113,7 @@ export function Timeline() {
                 )}
               </div>
 
+              {/* Mobile View */}
               <div className="md:hidden pl-12 flex flex-col justify-center">
                 <div className="text-accent text-3xl font-black mb-2 font-headline">{step.number}</div>
                 <h3 className="text-xl font-bold mb-2 font-headline uppercase tracking-tight">{step.title}</h3>

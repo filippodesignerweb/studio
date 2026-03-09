@@ -1,18 +1,56 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 export function Hero() {
   const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (iframeRef.current && iframeRef.current.contentWindow) {
+            try {
+              if (entry.isIntersecting) {
+                iframeRef.current.contentWindow.postMessage('{"method":"play"}', '*');
+              } else {
+                iframeRef.current.contentWindow.postMessage('{"method":"pause"}', '*');
+              }
+            } catch (e) {
+              // Silently handle if frame not ready or origin issues
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section id="hero" className="relative w-full h-screen bg-dark overflow-hidden flex items-center" data-theme="dark">
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://rtlxptnormal.easybuilder.com.br/wp-content/uploads/2025/12/Image_fx-3.webp" 
-          className="w-full h-full object-cover"
-          alt="LED 4U Background"
-        />
+    <section 
+      id="hero" 
+      ref={containerRef}
+      className="relative w-full h-screen bg-dark overflow-hidden flex items-center" 
+      data-theme="dark"
+    >
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Background Vimeo Video */}
+        <iframe
+          ref={iframeRef}
+          src="https://player.vimeo.com/video/1171839535?background=1&autoplay=1&loop=1&muted=1&api=1"
+          className="absolute top-1/2 left-1/2 min-w-[100%] min-h-[100%] w-auto h-auto scale-[1.3] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          frameBorder="0"
+          allow="autoplay; fullscreen"
+          title="LED 4U Background Video"
+        ></iframe>
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 

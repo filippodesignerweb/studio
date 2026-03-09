@@ -11,32 +11,32 @@ const features = [
     title: 'Brilho Extremo', 
     desc: 'Imagem nítida sob sol intenso, garantindo visibilidade perfeita em qualquer horário e clima.',
     icon: Zap,
-    pos: { top: '25%', left: '20%' },
-    labelPos: 'bottom-full mb-4 left-0'
+    pos: { top: '30%', left: '35%' },
+    labelPos: 'bottom-full mb-4 right-full mr-4' // Apontado para fora (cima-esquerda)
   },
   { 
     id: 2,
     title: 'Alta Fidelidade', 
     desc: 'Cores vivas e uniformes, reproduzindo os seus conteúdos com qualidade fotográfica e sem distorção.',
     icon: Monitor,
-    pos: { top: '35%', left: '80%' },
-    labelPos: 'bottom-full mb-4 right-0'
+    pos: { top: '30%', left: '65%' },
+    labelPos: 'bottom-full mb-4 left-full ml-4' // Apontado para fora (cima-direita)
   },
   { 
     id: 3,
     title: 'Durabilidade', 
     desc: 'Painéis blindados e altamente resistentes contra chuva, variações de calor e poeira.',
     icon: Shield,
-    pos: { top: '75%', left: '70%' },
-    labelPos: 'top-full mt-4 right-0'
+    pos: { top: '65%', left: '65%' },
+    labelPos: 'top-full mt-4 left-full ml-4' // Apontado para fora (baixo-direita)
   },
   { 
     id: 4,
     title: 'Sistema Modular', 
     desc: 'Totalmente dimensionado sob medida para o seu projeto, permitindo infinitas possibilidades.',
     icon: Sparkles,
-    pos: { top: '65%', left: '15%' },
-    labelPos: 'top-full mt-4 left-0'
+    pos: { top: '65%', left: '35%' },
+    labelPos: 'top-full mt-4 right-full mr-4' // Apontado para fora (baixo-esquerda)
   }
 ];
 
@@ -64,21 +64,21 @@ export function Technology() {
 
       <section 
         id="tecnologia-profissional" 
-        className="bg-black py-16 md:py-20 relative overflow-hidden flex items-center justify-center min-h-[700px]"
+        className="bg-black py-12 md:py-16 relative overflow-hidden flex items-center justify-center min-h-[600px]"
         data-theme="dark"
       >
         <div className="container max-w-[1360px] mx-auto px-6 relative flex flex-col items-center z-10">
-          <div className="text-center mb-6 md:mb-8">
+          <div className="text-center mb-4 md:mb-6">
             <h2 className="font-bold text-3xl md:text-5xl lg:text-[54px] text-white uppercase tracking-tight font-headline">
               TECNOLOGIA PROFISSIONAL <br className="hidden md:block" /> 
               <span className="text-gradient-animate font-bold uppercase">QUE GARANTE RESULTADO</span>
             </h2>
             <p className="text-white/60 max-w-3xl mx-auto mt-4 font-body text-base md:text-lg leading-relaxed">
-              Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch e altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista com clareza e cores vibrantes, mesmo sob a luz do sol.
+              Inovação e qualidade em cada pixel. Nossos painéis são projetados para máxima performance em qualquer ambiente.
             </p>
           </div>
           
-          <div className="w-full relative min-h-[450px] md:min-h-[550px] flex items-center justify-center">
+          <div className="w-full relative min-h-[400px] md:min-h-[500px] flex items-center justify-center">
             <div className="absolute inset-0 z-10 cursor-grab active:cursor-grabbing">
               {isMounted && (
                 /* @ts-ignore */
@@ -90,7 +90,7 @@ export function Technology() {
             </div>
 
             <div className="absolute inset-0 z-20 pointer-events-none">
-              <div className="relative w-full h-full max-w-4xl mx-auto">
+              <div className="relative w-full h-full max-w-2xl mx-auto">
                 {features.map((feature) => (
                   <button
                     key={feature.id}
@@ -98,57 +98,33 @@ export function Technology() {
                     style={{ top: feature.pos.top, left: feature.pos.left }}
                     onMouseEnter={() => setActiveFeature(feature)}
                     onMouseLeave={() => setActiveFeature(null)}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActiveFeature(activeFeature?.id === feature.id ? null : feature);
-                    }}
                   >
                     <div className="relative flex items-center justify-center">
                       <div className="absolute w-10 h-10 bg-primary/30 rounded-full animate-ping"></div>
                       <div className={cn(
                         "relative w-8 h-8 rounded-full border-2 border-white flex items-center justify-center shadow-xl transition-all duration-300",
-                        activeFeature?.id === feature.id ? "bg-primary scale-125" : "bg-primary/80 group-hover:bg-primary group-hover:scale-110"
+                        activeFeature?.id === feature.id ? "bg-primary scale-125" : "bg-primary/80 group-hover:bg-primary"
                       )}>
                         <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
                       </div>
                       
                       <div className={cn(
-                        "absolute opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-md border border-white/10 text-[10px] font-headline uppercase tracking-widest text-white translate-y-2 group-hover:translate-y-0",
+                        "absolute opacity-0 group-hover:opacity-100 transition-all duration-300 w-[200px] bg-black/90 backdrop-blur-md p-4 rounded-xl border border-white/10 text-white z-[60] text-left",
                         feature.labelPos
                       )}>
-                        {feature.title}
+                        <div className="flex items-center gap-3 mb-2">
+                           <feature.icon className="w-4 h-4 text-primary" />
+                           <h4 className="text-sm font-bold font-headline uppercase tracking-tight">{feature.title}</h4>
+                        </div>
+                        <p className="text-[11px] font-body text-white/70 leading-relaxed">
+                          {feature.desc}
+                        </p>
                       </div>
                     </div>
                   </button>
                 ))}
               </div>
             </div>
-
-            {activeFeature && (
-              <div className="absolute z-50 bottom-0 md:bottom-12 left-1/2 -translate-x-1/2 w-full max-w-lg px-6 animate-in fade-in slide-in-from-bottom-4 duration-500 pointer-events-none">
-                <div className="bg-[#1A1822]/95 backdrop-blur-2xl border border-primary/30 rounded-3xl p-8 shadow-[0_0_60px_rgba(2,158,157,0.3)] pointer-events-auto">
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="flex items-center gap-5">
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                        <activeFeature.icon className="w-6 h-6" />
-                      </div>
-                      <h3 className="text-2xl font-bold font-headline uppercase tracking-tight text-white">
-                        {activeFeature.title}
-                      </h3>
-                    </div>
-                    <button 
-                      onClick={() => setActiveFeature(null)}
-                      className="text-white/40 hover:text-white transition-colors p-2"
-                    >
-                      <X className="w-6 h-6" />
-                    </button>
-                  </div>
-                  <p className="text-white/80 text-base md:text-lg font-body leading-relaxed">
-                    {activeFeature.desc}
-                  </p>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </section>

@@ -33,23 +33,9 @@ export function SalesCards() {
   ];
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 30 });
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
-
-  const onSelect = useCallback((emblaApi: any) => {
-    setPrevBtnEnabled(emblaApi.canScrollPrev());
-    setNextBtnEnabled(emblaApi.canScrollNext());
-  }, []);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    onSelect(emblaApi);
-    emblaApi.on('reInit', onSelect);
-    emblaApi.on('select', onSelect);
-  }, [emblaApi, onSelect]);
 
   return (
     <section id="venda-locacao" className="bg-dark pt-24 md:pt-32 pb-16 md:pb-32 relative overflow-hidden" data-theme="dark">
@@ -67,7 +53,7 @@ export function SalesCards() {
               {services.map((service, idx) => (
                 <div key={idx} className="flex-[0_0_100%] min-w-0">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-[#1A1822]/40 border border-white/5 rounded-[40px] p-8 md:p-12 lg:p-16 mx-4">
-                    <div className="flex flex-col items-start text-left">
+                    <div className="flex flex-col items-start text-left order-2 lg:order-1">
                       <span 
                         className="font-bold text-xs tracking-[0.2em] uppercase mb-6 flex items-center gap-3 font-headline"
                         style={{ color: service.accentColor }}
@@ -94,7 +80,7 @@ export function SalesCards() {
                       </a>
                     </div>
 
-                    <div className="relative h-[300px] md:h-[500px] rounded-[32px] overflow-hidden group">
+                    <div className="relative h-[300px] md:h-[500px] rounded-[32px] overflow-hidden group order-1 lg:order-2">
                       <img 
                         src={service.img} 
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 

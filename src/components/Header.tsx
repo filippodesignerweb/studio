@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Instagram } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function Header() {
@@ -19,17 +19,14 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    // Observer mais preciso para detectar qual seção está no topo do viewport
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        // Se a seção está cruzando o topo (ou próxima dele)
         if (entry.isIntersecting) {
           const theme = entry.target.getAttribute('data-theme');
           setIsNavInvert(theme === 'light');
         }
       });
     }, { 
-      // Monitora o cruzamento com o topo do viewport com margem negativa
       threshold: 0,
       rootMargin: '-10% 0% -90% 0%' 
     });
@@ -79,6 +76,14 @@ export function Header() {
                 {link.name}
               </Link>
             ))}
+            <a 
+              href="https://www.instagram.com/led_4u/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="nav-link text-white/80 hover:text-white"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
           </nav>
 
           <div className="hidden md:block">
@@ -127,6 +132,14 @@ export function Header() {
               {link.name}
             </Link>
           ))}
+          <a 
+            href="https://www.instagram.com/led_4u/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-white hover:text-primary transition-colors flex items-center gap-2 text-xl font-bold font-headline uppercase"
+          >
+            <Instagram className="w-6 h-6" /> Instagram
+          </a>
           <a
             href={whatsappUrl}
             target="_blank"
