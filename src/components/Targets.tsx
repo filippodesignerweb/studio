@@ -4,33 +4,22 @@ import React from 'react';
 import Link from 'next/link';
 
 export function Targets() {
-  const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
-
   const targets = [
     { 
       title: 'Residências de Alto Padrão', 
       desc: 'Transforme sua área gourmet ou cinema em uma experiência imersiva.',
-      btn: 'Ver Soluções Residenciais',
-      href: '/case'
     },
     { 
       title: 'Fachadas Comerciais', 
       desc: 'Aumente sua visibilidade e destaque sua marca com painéis de LED outdoor de alto impacto visual.',
-      btn: 'Ver Soluções para Fachadas',
-      href: '/case'
     },
     { 
       title: 'Bares e Restaurantes', 
       desc: 'Transmissões profissionais de jogos e eventos com qualidade superior de imagem.',
-      btn: 'Ver Soluções para Bares',
-      href: '/case'
     },
     { 
       title: 'Eventos', 
       desc: 'Soluções completas em painéis de LED para eventos empresariais, ativações de marca e projetos estruturados.',
-      btn: 'Solicitar Avaliação para Evento',
-      href: whatsappUrl,
-      isExternal: true
     }
   ];
 
@@ -56,29 +45,9 @@ export function Targets() {
               <h3 className="text-xl md:text-2xl font-bold mb-4 font-headline uppercase tracking-tight min-h-[60px]">
                 {target.title}
               </h3>
-              <p className="text-white/70 text-sm font-body leading-relaxed mb-8 flex-grow">
+              <p className="text-white/70 text-sm font-body leading-relaxed flex-grow">
                 {target.desc}
               </p>
-              
-              {target.isExternal ? (
-                <a 
-                  href={target.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-bold uppercase tracking-widest text-primary hover:text-white transition-colors flex items-center gap-2 group/btn font-headline"
-                >
-                  {target.btn}
-                  <span className="block w-4 h-px bg-current transition-all group-hover/btn:w-8"></span>
-                </a>
-              ) : (
-                <Link 
-                  href={target.href}
-                  className="text-xs font-bold uppercase tracking-widest text-primary hover:text-white transition-colors flex items-center gap-2 group/btn font-headline"
-                >
-                  {target.btn}
-                  <span className="block w-4 h-px bg-current transition-all group-hover/btn:w-8"></span>
-                </Link>
-              )}
             </div>
           ))}
         </div>
