@@ -63,19 +63,19 @@ export function Stats() {
             <span className="text-3xl md:text-4xl lg:text-5xl mb-3 font-headline">
               <Counter end={400} prefix="+" />
             </span>
-            <span className="text-white/40 uppercase tracking-widest text-[10px] md:text-xs font-headline">clientes atendidos</span>
+            <span className="text-white/40 uppercase tracking-widest text-[10px] md:text-xs font-headline max-w-[200px]">clientes empresariais e residenciais atendidos</span>
           </div>
           <div className="flex flex-col items-center px-8 border-white/10 md:border-r">
             <span className="text-3xl md:text-4xl lg:text-5xl mb-3 font-headline text-gradient-animate">
-              <Counter end={2000} prefix="+ " suffix="m²" />
+              <Counter end={2000} prefix="+ " />
             </span>
-            <span className="text-white/40 uppercase tracking-widest text-[10px] md:text-xs font-headline">LED instalados</span>
+            <span className="text-white/40 uppercase tracking-widest text-[10px] md:text-xs font-headline max-w-[200px]">metros de LED instalados</span>
           </div>
           <div className="flex flex-col items-center px-8">
             <span className="text-3xl md:text-4xl lg:text-5xl mb-3 font-headline">
               <Counter end={150} prefix="+" />
             </span>
-            <span className="text-white/40 uppercase tracking-widest text-[10px] md:text-xs font-headline">eventos entregues</span>
+            <span className="text-white/40 uppercase tracking-widest text-[10px] md:text-xs font-headline max-w-[200px]">eventos entregues</span>
           </div>
         </div>
       </div>

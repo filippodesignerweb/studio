@@ -11,22 +11,25 @@ export function SalesCards() {
   const services = [
     {
       title: 'Venda',
-      tag: 'Foco Principal',
-      desc: 'Ideal para residências, bares, restaurantes e escritórios. Projetos permanentes com suporte contínuo e garantia total.',
+      tag: 'Ideal para:',
+      bullets: ['Residências', 'Bares e restaurantes', 'Escritórios', 'Projetos permanentes'],
+      desc: 'Solução completa com estrutura, instalação e suporte contínuo.',
       img: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m9_1x.webp',
       accentColor: '#9800FF',
     },
     {
-      title: 'Locação Fixa',
-      tag: 'Longo Prazo',
-      desc: 'Indicada para fachadas comerciais, publicidade e academias. Investimento diluído ao longo do tempo com manutenção inclusa.',
+      title: 'Locação Fixa (Longo Prazo)',
+      tag: 'Ideal para:',
+      bullets: ['Fachadas comerciais', 'Publicidade', 'Academias', 'Comércios'],
+      desc: 'Indicada para clientes que desejam instalar o painel de forma contínua, mas preferem diluir o investimento ao longo do tempo.',
       img: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m8_1x.webp',
       accentColor: '#12CFDB',
     },
     {
-      title: 'Locação Eventos',
-      tag: 'Projetos Temporários',
-      desc: 'Para eventos corporativos, festas e casamentos. Inclui suporte técnico especializado antes e durante o evento.',
+      title: 'Locação para Eventos',
+      tag: 'Indicada para:',
+      bullets: ['Eventos corporativos', 'Ações promocionais', 'Festas e Casamentos', 'Projetos temporários'],
+      desc: 'Inclui montagem, desmontagem e suporte técnico durante o período contratado.',
       img: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m7_1x.webp',
       accentColor: '#D4A955',
     }
@@ -54,19 +57,25 @@ export function SalesCards() {
                 <div key={idx} className="flex-[0_0_100%] min-w-0">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-[#1A1822]/40 border border-white/5 rounded-[40px] p-8 md:p-12 lg:p-16 mx-4">
                     <div className="flex flex-col items-start text-left order-2 lg:order-1">
-                      <span 
-                        className="font-bold text-xs tracking-[0.2em] uppercase mb-6 flex items-center gap-3 font-headline"
-                        style={{ color: service.accentColor }}
-                      >
-                        <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: service.accentColor }}></span>
-                        {service.tag}
-                      </span>
-                      
-                      <h3 className="text-4xl md:text-6xl font-black text-white mb-8 uppercase tracking-tighter font-headline leading-tight">
+                      <h3 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tighter font-headline leading-tight">
                         {service.title}
                       </h3>
+
+                      <div className="mb-6">
+                        <span className="font-bold text-xs tracking-[0.2em] uppercase mb-4 block font-headline text-white/40">
+                          {service.tag}
+                        </span>
+                        <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-white/80 font-body text-sm md:text-base">
+                          {service.bullets.map((bullet, bIdx) => (
+                            <li key={bIdx} className="flex items-center gap-2">
+                              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: service.accentColor }}></span>
+                              {bullet}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                       
-                      <p className="text-white/60 text-lg md:text-xl mb-12 leading-relaxed font-body max-w-lg">
+                      <p className="text-white/60 text-lg mb-10 leading-relaxed font-body max-w-lg">
                         {service.desc}
                       </p>
                       
