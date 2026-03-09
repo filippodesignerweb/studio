@@ -45,7 +45,6 @@
     animation: gradient-move 3s linear infinite;
   }
 
-  /* NOVO ESTILO DE BOTÃO ANIMADO */
   .btn-glow-green {
     @apply font-headline inline-flex items-center justify-center px-10 py-5 text-[15px] md:text-[20px] font-bold uppercase tracking-tight rounded-full transition-all duration-500 cursor-pointer border border-white/20 relative overflow-hidden;
     background: linear-gradient(-45deg, #3AFF5F, #FFFF00, #3AFF5F, #FFFF00, #3AFF5F, #FFFF00);
@@ -72,21 +71,17 @@
     @apply scale-95;
   }
 
+  /* Estilos de Inversão do Header */
   .nav-invert .logo-img {
     filter: brightness(0);
   }
   
   .nav-invert .nav-link {
-    @apply !text-[#0E0D12] font-bold hover:!text-accent;
+    @apply !text-dark/80 hover:!text-accent;
   }
 
-  /* No nav-invert, o botão mantém o estilo principal mas pode precisar de ajuste se necessário */
-  .nav-invert .btn-glow-green {
-    @apply border-dark/20;
-  }
-
-  .nav-invert #menu-btn {
-    @apply !text-[#0E0D12];
+  .nav-invert #menu-btn svg {
+    @apply !text-dark;
   }
 }
 

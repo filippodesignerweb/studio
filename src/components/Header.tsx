@@ -19,13 +19,20 @@ export function Header() {
   }, []);
 
   useEffect(() => {
+    // Observer mais preciso para detectar qual seção está no topo do viewport
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        // Se a seção está cruzando o topo (ou próxima dele)
         if (entry.isIntersecting) {
-          setIsNavInvert(entry.target.getAttribute('data-theme') === 'light');
+          const theme = entry.target.getAttribute('data-theme');
+          setIsNavInvert(theme === 'light');
         }
       });
-    }, { threshold: 0.1, rootMargin: '-80px 0px 0px 0px' });
+    }, { 
+      // Monitora o cruzamento com o topo do viewport com margem negativa
+      threshold: 0,
+      rootMargin: '-10% 0% -90% 0%' 
+    });
 
     document.querySelectorAll('[data-theme]').forEach(section => observer.observe(section));
     return () => observer.disconnect();
@@ -45,17 +52,20 @@ export function Header() {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 w-full z-[2000] transition-all duration-400',
-          isScrolled ? 'bg-dark/80 backdrop-blur-md py-4' : 'bg-transparent py-5 lg:py-8',
+          'fixed top-0 left-0 w-full z-[2000] transition-all duration-500',
+          isScrolled 
+            ? (isNavInvert ? 'bg-white/95 shadow-sm py-3' : 'bg-dark/80 py-3') 
+            : 'bg-transparent py-5 lg:py-8',
+          isScrolled && 'backdrop-blur-md',
           isNavInvert && 'nav-invert'
         )}
       >
         <div className="max-w-[1360px] mx-auto px-6 flex items-center justify-between">
-          <Link href="/" className="flex-shrink-0 w-[120px]">
+          <Link href="/" className="flex-shrink-0 w-[110px] md:w-[130px]">
             <img 
               src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logo%20led4u.svg" 
               alt="Logo LED 4U" 
-              className="w-full h-auto logo-img transition-all duration-400"
+              className="w-full h-auto logo-img transition-all duration-500"
             />
           </Link>
 
@@ -64,7 +74,7 @@ export function Header() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="nav-link text-sm uppercase tracking-widest font-medium text-white/80 hover:text-white transition-colors"
+                className="nav-link text-xs uppercase tracking-[0.2em] font-bold text-white/80 hover:text-white transition-colors"
               >
                 {link.name}
               </Link>
@@ -76,7 +86,7 @@ export function Header() {
               href={whatsappUrl} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="btn-glow-green"
+              className="btn-glow-green !text-xs !px-8 !py-4"
             >
               Fazer Orçamento
             </a>
@@ -84,14 +94,15 @@ export function Header() {
 
           <button
             id="menu-btn"
-            className="lg:hidden text-white p-2"
+            className="lg:hidden p-2 transition-colors duration-500"
             onClick={() => setMobileMenuOpen(true)}
           >
-            <Menu className="w-8 h-8" />
+            <Menu className="w-8 h-8 text-white" />
           </button>
         </div>
       </header>
 
+      {/* Mobile Menu */}
       <div
         className={cn(
           'fixed inset-0 z-[2100] bg-dark/98 flex flex-col items-center justify-center p-8 transition-transform duration-500 lg:hidden',
@@ -111,7 +122,7 @@ export function Header() {
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="text-2xl font-bold text-white hover:text-primary transition-colors"
+              className="text-2xl font-bold text-white hover:text-primary transition-colors font-headline uppercase"
             >
               {link.name}
             </Link>
