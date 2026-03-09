@@ -12,7 +12,10 @@ export function Timeline() {
 
   useEffect(() => {
     setIsMounted(true);
-    gsap.registerPlugin(ScrollTrigger);
+    // Registra o plugin apenas no cliente
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
   }, []);
 
   useEffect(() => {
@@ -85,12 +88,10 @@ export function Timeline() {
                 "[&.active]:opacity-100 [&.active]:scale-100"
               )}
             >
-              {/* Conteúdo à esquerda se par (idx 0, 2...) */}
+              {/* Desktop: Lado Esquerdo (Índices 0 e 2 - Passos 1 e 3) */}
               <div className={cn(
-                "flex flex-col justify-center",
-                idx % 2 === 0 
-                  ? "md:text-right md:pr-16 md:items-end" 
-                  : "md:hidden"
+                "hidden md:flex flex-col justify-center text-right pr-16 items-end",
+                idx % 2 !== 0 && "invisible"
               )}>
                 {idx % 2 === 0 && (
                   <>
@@ -101,26 +102,25 @@ export function Timeline() {
                 )}
               </div>
 
-              {/* Conteúdo à direita se ímpar (idx 1, 3...) */}
+              {/* Desktop: Lado Direito (Índices 1 e 3 - Passos 2 e 4) */}
               <div className={cn(
-                "flex flex-col justify-center",
-                idx % 2 !== 0 
-                  ? "md:pl-16 md:items-start md:text-left" 
-                  : "hidden md:block"
+                "hidden md:flex flex-col justify-center text-left pl-16 items-start",
+                idx % 2 === 0 && "invisible"
               )}>
-                {(idx % 2 !== 0 || window.innerWidth < 768) && (
-                   <div className="md:block">
-                      <div className="text-accent text-3xl md:text-5xl font-black mb-2 font-headline">{step.number}</div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-2 font-headline uppercase tracking-tight">{step.title}</h3>
-                      <p className="text-gray-600 text-sm md:text-lg font-body">{step.desc}</p>
-                   </div>
-                )}
-                {/* Mobile view fallback: steps are stacked */}
-                <div className="md:hidden">
+                {idx % 2 !== 0 && (
+                  <>
                     <div className="text-accent text-3xl md:text-5xl font-black mb-2 font-headline">{step.number}</div>
                     <h3 className="text-xl md:text-2xl font-bold mb-2 font-headline uppercase tracking-tight">{step.title}</h3>
                     <p className="text-gray-600 text-sm md:text-lg font-body">{step.desc}</p>
-                </div>
+                  </>
+                )}
+              </div>
+
+              {/* Mobile Content (Sempre visível no mobile, alinhado à direita da linha) */}
+              <div className="md:hidden pl-12 flex flex-col justify-center">
+                <div className="text-accent text-3xl font-black mb-2 font-headline">{step.number}</div>
+                <h3 className="text-xl font-bold mb-2 font-headline uppercase tracking-tight">{step.title}</h3>
+                <p className="text-gray-600 text-sm font-body">{step.desc}</p>
               </div>
             </div>
           ))}

@@ -11,28 +11,28 @@ const features = [
     title: 'Brilho Extremo', 
     desc: 'Imagem nítida sob sol intenso, garantindo visibilidade perfeita em qualquer horário e clima.',
     icon: Zap,
-    pos: { top: '35%', left: '40%' }
+    pos: { top: '30%', left: '35%' }
   },
   { 
     id: 2,
     title: 'Alta Fidelidade', 
     desc: 'Cores vivas e uniformes, reproduzindo os seus conteúdos com qualidade fotográfica e sem distorção.',
     icon: Monitor,
-    pos: { top: '50%', left: '58%' }
+    pos: { top: '45%', left: '65%' }
   },
   { 
     id: 3,
     title: 'Durabilidade', 
     desc: 'Painéis blindados e altamente resistentes contra chuva, variações de calor e poeira.',
     icon: Shield,
-    pos: { top: '65%', left: '45%' }
+    pos: { top: '65%', left: '40%' }
   },
   { 
     id: 4,
     title: 'Sistema Modular', 
     desc: 'Totalmente dimensionado sob medida para o seu projeto, permitindo infinitas possibilidades.',
     icon: Sparkles,
-    pos: { top: '48%', left: '35%' }
+    pos: { top: '50%', left: '30%' }
   }
 ];
 
