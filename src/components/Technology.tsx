@@ -8,32 +8,32 @@ import { cn } from '@/lib/utils';
 const features = [
   { 
     id: 1,
-    title: 'Brilho Extremo', 
-    desc: 'Imagem nítida sob sol intenso, garantindo visibilidade perfeita em qualquer horário e clima.',
+    title: 'Brilho de Alto Desempenho', 
+    desc: 'Imagem nítida mesmo sob sol intenso. Ideal para fachadas, piscinas e ambientes externos.',
     icon: Zap,
     pos: { top: '30%', left: '35%' },
     labelPos: 'bottom-full mb-4 right-full mr-4' // Apontado para fora (cima-esquerda)
   },
   { 
     id: 2,
-    title: 'Alta Fidelidade', 
-    desc: 'Cores vivas e uniformes, reproduzindo os seus conteúdos com qualidade fotográfica e sem distorção.',
+    title: 'Alta Definição e Fidelidade de Cores', 
+    desc: 'Experiência imersiva com cores vivas e imagem uniforme. Perfeito para jogos, filmes e momentos especiais.',
     icon: Monitor,
     pos: { top: '30%', left: '65%' },
     labelPos: 'bottom-full mb-4 left-full ml-4' // Apontado para fora (cima-direita)
   },
   { 
     id: 3,
-    title: 'Durabilidade', 
-    desc: 'Painéis blindados e altamente resistentes contra chuva, variações de calor e poeira.',
+    title: 'Painéis Outdoor de Longa Durabilidade', 
+    desc: 'Resistência contra chuva, calor e variações climáticas. Projetado para uso contínuo e seguro.',
     icon: Shield,
     pos: { top: '65%', left: '65%' },
     labelPos: 'top-full mt-4 left-full ml-4' // Apontado para fora (baixo-direita)
   },
   { 
     id: 4,
-    title: 'Sistema Modular', 
-    desc: 'Totalmente dimensionado sob medida para o seu projeto, permitindo infinitas possibilidades.',
+    title: 'Sistema Modular Inteligente', 
+    desc: 'Painéis dimensionados sob medida para cada ambiente. Sem adaptações improvisadas.',
     icon: Sparkles,
     pos: { top: '65%', left: '35%' },
     labelPos: 'top-full mt-4 right-full mr-4' // Apontado para fora (baixo-esquerda)
@@ -109,12 +109,12 @@ export function Technology() {
                       </div>
                       
                       <div className={cn(
-                        "absolute opacity-0 group-hover:opacity-100 transition-all duration-300 w-[200px] bg-black/90 backdrop-blur-md p-4 rounded-xl border border-white/10 text-white z-[60] text-left",
+                        "absolute opacity-0 group-hover:opacity-100 transition-all duration-300 w-[240px] bg-black/90 backdrop-blur-md p-4 rounded-xl border border-white/10 text-white z-[60] text-left pointer-events-none",
                         feature.labelPos
                       )}>
                         <div className="flex items-center gap-3 mb-2">
                            <feature.icon className="w-4 h-4 text-primary" />
-                           <h4 className="text-sm font-bold font-headline uppercase tracking-tight">{feature.title}</h4>
+                           <h4 className="text-sm font-bold font-headline uppercase tracking-tight leading-tight">{feature.title}</h4>
                         </div>
                         <p className="text-[11px] font-body text-white/70 leading-relaxed">
                           {feature.desc}
