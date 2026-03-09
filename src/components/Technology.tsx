@@ -11,28 +11,32 @@ const features = [
     title: 'Brilho Extremo', 
     desc: 'Imagem nítida sob sol intenso, garantindo visibilidade perfeita em qualquer horário e clima.',
     icon: Zap,
-    pos: { top: '30%', left: '35%' }
+    pos: { top: '25%', left: '20%' }, // Superior Esquerda
+    labelPos: 'bottom-full mb-4 left-0'
   },
   { 
     id: 2,
     title: 'Alta Fidelidade', 
     desc: 'Cores vivas e uniformes, reproduzindo os seus conteúdos com qualidade fotográfica e sem distorção.',
     icon: Monitor,
-    pos: { top: '45%', left: '65%' }
+    pos: { top: '35%', left: '80%' }, // Lateral Direita
+    labelPos: 'bottom-full mb-4 right-0'
   },
   { 
     id: 3,
     title: 'Durabilidade', 
     desc: 'Painéis blindados e altamente resistentes contra chuva, variações de calor e poeira.',
     icon: Shield,
-    pos: { top: '65%', left: '40%' }
+    pos: { top: '75%', left: '70%' }, // Inferior Direita
+    labelPos: 'top-full mt-4 right-0'
   },
   { 
     id: 4,
     title: 'Sistema Modular', 
     desc: 'Totalmente dimensionado sob medida para o seu projeto, permitindo infinitas possibilidades.',
     icon: Sparkles,
-    pos: { top: '50%', left: '30%' }
+    pos: { top: '65%', left: '15%' }, // Inferior Esquerda
+    labelPos: 'top-full mt-4 left-0'
   }
 ];
 
@@ -109,8 +113,11 @@ export function Technology() {
                         <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
                       </div>
                       
-                      {/* Tooltip Label */}
-                      <div className="absolute bottom-full mb-4 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-black/80 backdrop-blur-md px-3 py-1 rounded-md border border-white/10 text-[10px] font-headline uppercase tracking-widest text-white translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                      {/* Tooltip Label - Pointing Outwards */}
+                      <div className={cn(
+                        "absolute opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-md border border-white/10 text-[10px] font-headline uppercase tracking-widest text-white translate-y-2 group-hover:translate-y-0",
+                        feature.labelPos
+                      )}>
                         {feature.title}
                       </div>
                     </div>
