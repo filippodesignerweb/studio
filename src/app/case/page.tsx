@@ -48,7 +48,7 @@ const cases: CaseItem[] = [
 export default function CasePage() {
   const [selectedCase, setSelectedCase] = useState<CaseItem | null>(null);
 
-  const whatsappUrl = "https://wa.me/55999999999";
+  const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
 
   return (
     <main className="min-h-screen bg-[#0E0D12] text-white font-body antialiased">

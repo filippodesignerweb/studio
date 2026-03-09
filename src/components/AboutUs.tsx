@@ -3,7 +3,7 @@
 import React from 'react';
 
 export function AboutUs() {
-  const whatsappUrl = "https://wa.me/55999999999";
+  const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
 
   return (
     <section id="sobre-nos" className="bg-white py-24 md:py-32 relative overflow-hidden" data-theme="light">

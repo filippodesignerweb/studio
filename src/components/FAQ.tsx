@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -26,6 +25,7 @@ const faqItems = [
 
 export function FAQ() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
 
   return (
     <section id="faq" className="bg-white py-20 md:py-24 border-t border-gray-100" data-theme="light">
@@ -65,7 +65,7 @@ export function FAQ() {
         <div className="mt-16 md:mt-20 flex flex-col items-center gap-6">
           <p className="text-dark font-bold text-base md:text-lg">Ainda tem dúvidas?</p>
           <a 
-            href="https://wa.me/55999999999" 
+            href={whatsappUrl} 
             target="_blank"
             rel="noopener noreferrer"
             className="btn-glow-green !bg-[#25D366] !border-[#25D366] !text-white flex gap-3 items-center hover:!bg-[#1ebc59] hover:!border-[#1ebc59] hover:shadow-[0_0_20px_rgba(37,211,102,0.6)]"

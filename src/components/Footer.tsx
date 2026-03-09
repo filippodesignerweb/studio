@@ -1,9 +1,8 @@
-
 'use client';
 
 import React from 'react';
 import Link from 'next/link';
-import { Phone, Instagram, Mail } from 'lucide-react';
+import { Phone, Instagram, Mail, MapPin } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -25,8 +24,8 @@ export function Footer() {
           <h4 className="font-black text-lg mb-6 uppercase tracking-wider text-dark font-headline">Links Úteis</h4>
           <ul className="space-y-3 text-gray-600 font-medium text-sm font-body">
             <li><Link href="#" className="hover:text-accent transition-colors">Início</Link></li>
-            <li><Link href="#sobre-nos" className="hover:text-accent transition-colors">Quem Somos</Link></li>
-            <li><Link href="#section-4" className="hover:text-accent transition-colors">Projetos Realizados</Link></li>
+            <li><Link href="/quem-somos" className="hover:text-accent transition-colors">Quem Somos</Link></li>
+            <li><Link href="/case" className="hover:text-accent transition-colors">Projetos Realizados</Link></li>
             <li><Link href="#" className="hover:text-accent transition-colors">Políticas de Privacidade</Link></li>
             <li><Link href="#" className="hover:text-accent transition-colors">Termos de Uso</Link></li>
           </ul>
@@ -42,9 +41,9 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="#" className="flex items-center gap-3 hover:text-accent transition-colors">
+              <a href="https://www.instagram.com/led_4u/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-accent transition-colors">
                 <Instagram className="w-5 h-5 text-accent flex-shrink-0" />
-                @led4u
+                @led_4u
               </a>
             </li>
             <li>
@@ -57,12 +56,14 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="font-black text-lg mb-6 uppercase tracking-wider text-dark font-headline">Formas de Pagamento</h4>
-          <img 
-            src="https://rtl4013zxp.easybuilder.com.br/wp-content/uploads/2025/07/pgmto_att_1.webp" 
-            alt="Formas de Pagamento Aceitas" 
-            className="w-full max-w-[220px]" 
-          />
+          <h4 className="font-black text-lg mb-6 uppercase tracking-wider text-dark font-headline">Endereço</h4>
+          <div className="flex items-start gap-3 text-gray-600 font-medium text-sm font-body leading-relaxed">
+            <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+            <p className="uppercase">
+              AV. PAES DE BARROS, 1219.<br />
+              MOOCA - SÃO PAULO
+            </p>
+          </div>
         </div>
         
       </div>
