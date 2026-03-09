@@ -1,11 +1,17 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Script from 'next/script';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 
 export default function ProdutosPage() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <>
       <Script 
@@ -24,7 +30,6 @@ export default function ProdutosPage() {
         <Header />
 
         <section className="relative w-full min-h-screen flex flex-col items-center justify-start pt-32 pb-24 px-6 text-center">
-          {/* Títulos Gigantes */}
           <h1 className="font-black text-6xl md:text-8xl lg:text-[120px] uppercase tracking-tighter leading-[1.1] mb-4 md:mb-6 font-headline">
             Tipos de <br className="md:hidden" />
             <span className="text-gradient-animate">painéis</span>
@@ -33,14 +38,15 @@ export default function ProdutosPage() {
             Temos o painel perfeito para o seu negócio ou sua necessidade
           </p>
 
-          {/* Grid de Cards de Painéis */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 w-full max-w-[1360px] mx-auto text-left">
             
             {/* Painel P1 */}
             <div className="bg-white/5 border border-white/10 rounded-[24px] p-6 hover:border-accent/50 hover:bg-white/10 transition-all duration-300 group flex flex-col relative z-10">
               <div className="w-full h-[320px] mb-6 relative rounded-xl overflow-hidden cursor-grab active:cursor-grabbing">
-                {/* @ts-ignore */}
-                <spline-viewer url="https://prod.spline.design/8U4UcWyiaGJFd-mz/scene.splinecode" class="w-full h-full"></spline-viewer>
+                {isMounted && (
+                  /* @ts-ignore */
+                  <spline-viewer url="https://prod.spline.design/8U4UcWyiaGJFd-mz/scene.splinecode" className="w-full h-full"></spline-viewer>
+                )}
               </div>
               <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors font-headline uppercase tracking-tight">Painéis P1 INDOOR</h3>
               <p className="text-white/70 text-sm leading-relaxed font-body">
@@ -51,8 +57,10 @@ export default function ProdutosPage() {
             {/* Painel P2.9 */}
             <div className="bg-white/5 border border-white/10 rounded-[24px] p-6 hover:border-[#12CFDB]/50 hover:bg-white/10 transition-all duration-300 group flex flex-col relative z-10">
               <div className="w-full h-[320px] mb-6 relative rounded-xl overflow-hidden cursor-grab active:cursor-grabbing">
-                {/* @ts-ignore */}
-                <spline-viewer url="https://prod.spline.design/0ifEkHF-jFPVx3Wx/scene.splinecode" class="w-full h-full"></spline-viewer>
+                {isMounted && (
+                  /* @ts-ignore */
+                  <spline-viewer url="https://prod.spline.design/0ifEkHF-jFPVx3Wx/scene.splinecode" className="w-full h-full"></spline-viewer>
+                )}
               </div>
               <h3 className="text-2xl font-bold mb-3 group-hover:text-[#12CFDB] transition-colors font-headline uppercase tracking-tight">Painéis P2.9 INDOOR - OUTDOOR</h3>
               <p className="text-white/70 text-sm leading-relaxed font-body">
@@ -63,8 +71,10 @@ export default function ProdutosPage() {
             {/* Painel P3.9 */}
             <div className="bg-white/5 border border-white/10 rounded-[24px] p-6 hover:border-accent/50 hover:bg-white/10 transition-all duration-300 group flex flex-col relative z-10">
               <div className="w-full h-[320px] mb-6 relative rounded-xl overflow-hidden cursor-grab active:cursor-grabbing">
-                {/* @ts-ignore */}
-                <spline-viewer url="https://prod.spline.design/aP31iDGIfRiXjJqF/scene.splinecode" class="w-full h-full"></spline-viewer>
+                {isMounted && (
+                  /* @ts-ignore */
+                  <spline-viewer url="https://prod.spline.design/aP31iDGIfRiXjJqF/scene.splinecode" className="w-full h-full"></spline-viewer>
+                )}
               </div>
               <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors font-headline uppercase tracking-tight">Painéis P3.9 INDOOR - OUTDOOR</h3>
               <p className="text-white/70 text-sm leading-relaxed font-body">
@@ -75,8 +85,10 @@ export default function ProdutosPage() {
             {/* Painel P5 */}
             <div className="bg-white/5 border border-white/10 rounded-[24px] p-6 hover:border-[#12CFDB]/50 hover:bg-white/10 transition-all duration-300 group flex flex-col relative z-10">
               <div className="w-full h-[320px] mb-6 relative rounded-xl overflow-hidden cursor-grab active:cursor-grabbing">
-                {/* @ts-ignore */}
-                <spline-viewer url="https://prod.spline.design/DOwUXZ0t9vy3yP25/scene.splinecode" class="w-full h-full"></spline-viewer>
+                {isMounted && (
+                  /* @ts-ignore */
+                  <spline-viewer url="https://prod.spline.design/DOwUXZ0t9vy3yP25/scene.splinecode" className="w-full h-full"></spline-viewer>
+                )}
               </div>
               <h3 className="text-2xl font-bold mb-3 group-hover:text-[#12CFDB] transition-colors font-headline uppercase tracking-tight">Painéis P5 OUTDOOR</h3>
               <p className="text-white/70 text-sm leading-relaxed font-body">
@@ -86,7 +98,6 @@ export default function ProdutosPage() {
 
           </div>
 
-          {/* Botão Final da Seção */}
           <div className="mt-16 md:mt-24 w-full flex justify-center relative z-20">
             <a 
               href="https://wa.me/55999999999" 

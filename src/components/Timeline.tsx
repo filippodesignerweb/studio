@@ -1,18 +1,23 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '@/lib/utils';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export function Timeline() {
   const containerRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    if (!containerRef.current || !progressRef.current) return;
+    setIsMounted(true);
+    // Registra o plugin apenas no lado do cliente
+    gsap.registerPlugin(ScrollTrigger);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted || !containerRef.current || !progressRef.current) return;
 
     const ctx = gsap.context(() => {
       // Barra de progresso da timeline
@@ -40,7 +45,7 @@ export function Timeline() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isMounted]);
 
   const steps = [
     { number: '01', title: 'Consultoria e Visita Técnica', desc: 'Análise técnica detalhada presencialmente.' },
@@ -48,6 +53,8 @@ export function Timeline() {
     { number: '03', title: 'Instalação Profissional', desc: 'Equipe especializada e agendamento organizado.' },
     { number: '04', title: 'Suporte e Acompanhamento', desc: 'Garantia real e suporte técnico contínuo.' },
   ];
+
+  if (!isMounted) return <section className="bg-white py-20 min-h-[500px]" />;
 
   return (
     <section 
@@ -62,10 +69,8 @@ export function Timeline() {
         </h2>
         
         <div className="timeline-container relative max-w-[1200px] mx-auto pb-12 md:pb-24">
-          {/* Linha de fundo sutil */}
           <div className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[4px] bg-black/5 rounded-full"></div>
           
-          {/* Linha de progresso que preenche no scroll */}
           <div 
             ref={progressRef}
             className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 top-0 w-[4px] bg-gradient-to-b from-accent to-[#12CFDB] rounded-full z-10 h-0"
