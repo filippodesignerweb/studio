@@ -1,15 +1,15 @@
+
 'use client';
 
-import React, { useState, useEffect, Suspense, lazy } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect, Suspense, lazy, useRef } from 'react';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 import { 
   ArrowRight, 
   ChevronDown, 
-  Menu, 
-  X, 
   Church, 
   Mic2, 
-  Home, 
+  Home as HomeIcon, 
   Maximize, 
   Building2
 } from 'lucide-react';
@@ -37,32 +37,36 @@ const Dithering = lazy(() =>
 
 export default function QuemSomosPage() {
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const requestRef = useRef<number>(null);
   const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
 
   const categories = [
     { title: "Igrejas", icon: Church },
     { title: "Eventos e palestras", icon: Mic2 },
-    { title: "Residências", icon: Home },
+    { title: "Residências", icon: HomeIcon },
     { title: "Outdoors", icon: Maximize },
     { title: "Empresas e negócios locais", icon: Building2 }
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const vh = window.innerHeight;
-      const scrollY = window.scrollY;
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
       
-      const endZoom = vh * 1.2;
-      const progress = Math.min(Math.max(scrollY / endZoom, 0), 1);
-      
-      setScrollProgress(progress);
+      requestRef.current = requestAnimationFrame(() => {
+        const vh = window.innerHeight;
+        const scrollY = window.scrollY;
+        const endZoom = vh * 1.5;
+        const progress = Math.min(Math.max(scrollY / endZoom, 0), 1);
+        setScrollProgress(progress);
+      });
     };
     
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    };
   }, []);
 
   return (
@@ -84,7 +88,7 @@ export default function QuemSomosPage() {
           .animate-marquee-custom {
             display: flex;
             width: max-content;
-            animation: marquee-custom 30s linear infinite;
+            animation: marquee-custom 40s linear infinite;
           }
           .animate-marquee-custom:hover {
             animation-play-state: paused;
@@ -93,76 +97,28 @@ export default function QuemSomosPage() {
           .scrollbar-hide::-webkit-scrollbar { display: none; }
           .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-          .smooth-gpu { transform: translate3d(0,0,0); backface-visibility: hidden; }
+          .smooth-gpu { 
+            transform: translate3d(0,0,0); 
+            backface-visibility: hidden; 
+            will-change: transform, opacity;
+          }
         `}
       </style>
 
-      <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-[#9800FF]/30 font-body">
+      <div className="min-h-screen bg-dark text-white selection:bg-[#9800FF]/30 font-body">
         
-        {/* ================= NAVBAR ================= */}
-        <nav className="fixed top-0 left-0 right-0 z-[100] px-6 lg:px-12 py-5 flex items-center justify-between mix-blend-difference">
-          <div className="flex items-center">
-            <Link href="/">
-              <img
-                src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logo%20led4u.svg"
-                alt="Led4U Logo"
-                className="h-10 w-auto"
-              />
-            </Link>
-          </div>
-
-          <div className="hidden md:flex items-center space-x-10 text-sm font-semibold tracking-wide text-white font-headline">
-            <Link href="/" className="hover:opacity-70 transition-opacity">INICIO</Link>
-            <Link href="/quem-somos" className="hover:opacity-70 transition-opacity">QUEM SOMOS</Link>
-            <Link href="/produtos" className="hover:opacity-70 transition-opacity">PRODUTOS</Link>
-            <Link href="/case" className="hover:opacity-70 transition-opacity">CASE</Link>
-            <Link href="#" className="hover:opacity-70 transition-opacity">BLOG</Link>
-          </div>
-
-          <div className="hidden md:block">
-            <a 
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2.5 border border-white rounded-xl text-sm font-bold tracking-wide hover:bg-white hover:text-black transition-all duration-300 font-headline"
-            >
-              FAZER ORÇAMENTO
-            </a>
-          </div>
-
-          <div className="md:hidden">
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-white p-2">
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </nav>
-
-        {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 z-[2000] bg-[#0a0a0a] flex flex-col items-center justify-center p-8 text-center font-headline">
-            <button onClick={() => setIsMobileMenuOpen(false)} className="absolute top-10 right-10">
-              <X className="w-8 h-8" />
-            </button>
-            <nav className="flex flex-col space-y-8 text-2xl font-bold">
-              <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>INICIO</Link>
-              <Link href="/quem-somos" onClick={() => setIsMobileMenuOpen(false)}>QUEM SOMOS</Link>
-              <Link href="/produtos" onClick={() => setIsMobileMenuOpen(false)}>PRODUTOS</Link>
-              <Link href="/case" onClick={() => setIsMobileMenuOpen(false)}>CASE</Link>
-              <a href={whatsappUrl} className="mt-8 px-8 py-4 border border-white rounded-xl">ORÇAMENTO</a>
-            </nav>
-          </div>
-        )}
+        <Header />
 
         {/* ================= AREA DE ZOOM (STICKY) ================= */}
-        <div className="relative w-full" style={{ height: '150vh' }}>
-          <div className="sticky top-0 w-full h-screen overflow-hidden bg-[#0a0a0a]">
+        <div className="relative w-full" style={{ height: '200vh' }} data-theme="dark">
+          <div className="sticky top-0 w-full h-screen overflow-hidden bg-dark">
             
             <div
               className="absolute inset-0 w-full h-full flex flex-col items-center justify-end z-10 smooth-gpu"
               style={{
-                transform: `scale(${1 + Math.pow(scrollProgress, 3) * 60})`,
+                transform: `scale(${1 + Math.pow(scrollProgress, 2.5) * 45})`,
                 transformOrigin: '50% 65%',
-                opacity: scrollProgress > 0.8 ? Math.max(0, 1 - (scrollProgress - 0.8) * 5) : 1,
+                opacity: scrollProgress > 0.85 ? Math.max(0, 1 - (scrollProgress - 0.85) * 6) : 1,
               }}
             >
               {/* Card Dithering */}
@@ -172,7 +128,7 @@ export default function QuemSomosPage() {
                 onMouseLeave={() => setIsHovered(false)}
               >
                 <Suspense fallback={<div className="absolute inset-0 bg-[#9800FF]/10 animate-pulse" />}>
-                  <div className="absolute inset-0 z-0 opacity-50 mix-blend-screen">
+                  <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen">
                     <Dithering 
                       colorBack="#00000000" 
                       colorFront="#9800FF" 
@@ -191,28 +147,28 @@ export default function QuemSomosPage() {
                 <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
                   <span>Tudo que você precisa <br className="hidden md:block" /> saber sobre a</span>
                   <br />
-                  <span className="bg-gradient-to-r from-[#9800FF] to-[#12CFDB] bg-clip-text text-transparent font-extrabold italic">Led4U!</span>
+                  <span className="text-gradient-animate italic">Led4U!</span>
                 </h1>
               </div>
 
-              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style={{ opacity: 1 - scrollProgress * 2 }}>
+              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style={{ opacity: Math.max(0, 1 - scrollProgress * 3) }}>
                 <span className="text-xs text-white/40 tracking-widest uppercase font-semibold font-headline">Scroll</span>
                 <ChevronDown className="h-6 w-6 text-white/60 animate-bounce" />
               </div>
             </div>
 
             <div
-              className="absolute inset-0 z-[5] pointer-events-none transition-opacity duration-500"
+              className="absolute inset-0 z-[5] pointer-events-none transition-opacity duration-300"
               style={{
                 background: 'linear-gradient(135deg, #9800FF 0%, #12CFDB 100%)',
-                opacity: scrollProgress > 0.5 ? Math.min(1, (scrollProgress - 0.5) * 2) : 0,
+                opacity: scrollProgress > 0.6 ? Math.min(1, (scrollProgress - 0.6) * 2.5) : 0,
               }}
             />
           </div>
         </div>
 
         {/* ================= CONTEÚDO PÓS-ZOOM ================= */}
-        <div className="relative z-50 w-full" style={{ background: 'linear-gradient(135deg, #9800FF 0%, #12CFDB 100%)' }}>
+        <div className="relative z-50 w-full" style={{ background: 'linear-gradient(135deg, #9800FF 0%, #12CFDB 100%)' }} data-theme="dark">
           
           <div className="w-full flex flex-col items-center py-20">
             
@@ -222,7 +178,7 @@ export default function QuemSomosPage() {
                 você não conhecia?
               </h2>
               
-              <p className="max-w-2xl text-center text-base md:text-lg font-medium mb-12 text-white/95 drop-shadow-md">
+              <p className="max-w-2xl text-center text-base md:text-lg font-medium mb-12 text-white/95 drop-shadow-md font-body">
                 Criamos projetos personalizados para venda e locação, com a solução completa para o seu negócio, residência ou evento.
               </p>
 
@@ -269,58 +225,25 @@ export default function QuemSomosPage() {
               </div>
             </div>
 
-            {/* ================= SESSÃO 4: CTA PRODUTOS ================= */}
-            <section className="w-full bg-white relative py-24 md:py-32 lg:py-40 mt-32 overflow-hidden">
+            {/* ================= SESSÃO: CTA PRODUTOS ================= */}
+            <section className="w-full bg-white relative py-24 md:py-32 lg:py-40 mt-32 overflow-hidden" data-theme="light">
               
-              <div className="absolute top-[10%] left-[5%] w-24 md:w-44 h-auto transform rotate-[17deg] hidden lg:block hover:scale-110 transition-transform duration-500">
-                <img 
-                  src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/11_1x.webp" 
-                  alt="Led4U Produto 1" 
-                  className="rounded-2xl shadow-2xl border border-gray-100 hover:grayscale-0 grayscale transition-all duration-700 aspect-video object-cover"
-                />
-              </div>
-              <div className="absolute top-[10%] right-[5%] w-24 md:w-44 h-auto transform -rotate-[17deg] hidden lg:block hover:scale-110 transition-transform duration-500">
-                <img 
-                  src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/2_1x.webp" 
-                  alt="Led4U Produto 2" 
-                  className="rounded-2xl shadow-2xl border border-gray-100 hover:grayscale-0 grayscale transition-all duration-700 aspect-video object-cover"
-                />
-              </div>
-              <div className="absolute bottom-[10%] left-[8%] w-24 md:w-44 h-auto transform -rotate-[44deg] hidden lg:block hover:scale-110 transition-transform duration-500">
-                <img 
-                  src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/4_1x.webp" 
-                  alt="Led4U Produto 3" 
-                  className="rounded-2xl shadow-2xl border border-gray-100 hover:grayscale-0 grayscale transition-all duration-700 aspect-video object-cover"
-                />
-              </div>
-              <div className="absolute bottom-[10%] right-[8%] w-24 md:w-44 h-auto transform rotate-[17deg] hidden lg:block hover:scale-110 transition-transform duration-500">
-                <img 
-                  src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/6_1x.webp" 
-                  alt="Led4U Produto 4" 
-                  className="rounded-2xl shadow-2xl border border-gray-100 hover:grayscale-0 grayscale transition-all duration-700 aspect-video object-cover"
-                />
-              </div>
-
               <div className="max-w-4xl mx-auto px-6 text-center flex flex-col items-center relative z-10">
                 <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#3A3A3A] tracking-tighter leading-[1.1] mb-8 font-headline uppercase">
                   Venha conhecer alguns produtos que a Led4U oferece para você!
                 </h2>
                 
-                <p className="text-[#3A3A3A]/70 text-lg md:text-xl font-medium max-w-2xl mb-12 leading-relaxed">
-                  Transforme seu espaço com o brilho e a tecnologia que só a Led4U proporciona. Painéis de alta resolução adaptados para cada necessidade do seu negócio or residência.
+                <p className="text-[#3A3A3A]/70 text-lg md:text-xl font-medium max-w-2xl mb-12 leading-relaxed font-body">
+                  Transforme seu espaço com o brilho e a tecnologia que só a Led4U proporciona. Painéis de alta resolução adaptados para cada necessidade do seu negócio ou residência.
                 </p>
                 
                 <a 
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-flex items-center justify-center px-10 py-5 font-black text-black tracking-tighter overflow-hidden border-2 border-[#9800FF] rounded-2xl transition-all duration-300 hover:text-white font-headline"
+                  className="btn-glow-green"
                 >
-                  <span className="absolute inset-0 w-0 bg-[#9800FF] transition-all duration-300 ease-out group-hover:w-full"></span>
-                  <span className="relative flex items-center gap-3">
-                    FAZER ORÇAMENTO
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
+                  Fazer Orçamento
                 </a>
               </div>
 
@@ -329,6 +252,7 @@ export default function QuemSomosPage() {
           </div>
         </div>
 
+        <Footer />
       </div>
     </>
   );
