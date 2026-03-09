@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useRef } from 'react';
@@ -12,7 +11,6 @@ export function LogoMarquee() {
 
     const track = trackRef.current;
     
-    // Duplicar conteúdo para loop infinito perfeito
     if (!track.dataset.duplicated) {
       const items = Array.from(track.children);
       items.forEach((item) => {

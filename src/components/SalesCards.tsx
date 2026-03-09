@@ -52,7 +52,7 @@ export function SalesCards() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section id="venda-locacao" className="bg-dark pt-24 md:pt-32 pb-16 md:pb-32 relative overflow-hidden">
+    <section id="venda-locacao" className="bg-dark pt-24 md:pt-32 pb-16 md:pb-32 relative overflow-hidden" data-theme="dark">
       <div className="container max-w-[1360px] mx-auto px-6 mb-16 text-center text-white uppercase tracking-tight">
         <h2 className="font-bold text-3xl md:text-5xl lg:text-[54px] font-headline">
           TRABALHAMOS COM <br className="md:hidden" />
@@ -67,7 +67,6 @@ export function SalesCards() {
               {services.map((service, idx) => (
                 <div key={idx} className="flex-[0_0_100%] min-w-0">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-[#1A1822]/40 border border-white/5 rounded-[40px] p-8 md:p-12 lg:p-16 mx-4">
-                    {/* Conteúdo Esquerda */}
                     <div className="flex flex-col items-start text-left">
                       <span 
                         className="font-bold text-xs tracking-[0.2em] uppercase mb-6 flex items-center gap-3 font-headline"
@@ -95,7 +94,6 @@ export function SalesCards() {
                       </a>
                     </div>
 
-                    {/* Imagem Direita */}
                     <div className="relative h-[300px] md:h-[500px] rounded-[32px] overflow-hidden group">
                       <img 
                         src={service.img} 
@@ -110,7 +108,6 @@ export function SalesCards() {
             </div>
           </div>
 
-          {/* Botões de Navegação */}
           <button 
             onClick={scrollPrev}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 lg:-translate-x-full w-14 h-14 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white hover:text-dark transition-all duration-300 z-20 backdrop-blur-md"

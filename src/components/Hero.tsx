@@ -6,7 +6,7 @@ export function Hero() {
   const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
 
   return (
-    <section id="hero" className="relative w-full h-screen bg-dark overflow-hidden flex items-center">
+    <section id="hero" className="relative w-full h-screen bg-dark overflow-hidden flex items-center" data-theme="dark">
       <div className="absolute inset-0 z-0">
         <img 
           src="https://rtlxptnormal.easybuilder.com.br/wp-content/uploads/2025/12/Image_fx-3.webp" 

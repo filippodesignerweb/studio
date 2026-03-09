@@ -12,7 +12,6 @@ export function Timeline() {
 
   useEffect(() => {
     setIsMounted(true);
-    // Registra o plugin apenas no cliente
     if (typeof window !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
     }
@@ -22,7 +21,6 @@ export function Timeline() {
     if (!isMounted || !containerRef.current || !progressRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Barra de progresso da timeline
       gsap.to(progressRef.current, {
         height: '100%',
         ease: 'none',
@@ -34,7 +32,6 @@ export function Timeline() {
         }
       });
 
-      // Ativação dos itens ao passar por eles
       const items = gsap.utils.toArray('.timeline-item');
       items.forEach((item: any) => {
         ScrollTrigger.create({
@@ -71,10 +68,8 @@ export function Timeline() {
         </h2>
         
         <div className="timeline-container relative max-w-[1200px] mx-auto pb-12 md:pb-24">
-          {/* Linha de base */}
           <div className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[4px] bg-black/5 rounded-full"></div>
           
-          {/* Linha de progresso */}
           <div 
             ref={progressRef}
             className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 top-0 w-[4px] bg-gradient-to-b from-accent to-[#12CFDB] rounded-full z-10 h-0"
@@ -88,7 +83,6 @@ export function Timeline() {
                 "[&.active]:opacity-100 [&.active]:scale-100"
               )}
             >
-              {/* Desktop: Lado Esquerdo (Índices 0 e 2 - Passos 1 e 3) */}
               <div className={cn(
                 "hidden md:flex flex-col justify-center text-right pr-16 items-end",
                 idx % 2 !== 0 && "invisible"
@@ -102,7 +96,6 @@ export function Timeline() {
                 )}
               </div>
 
-              {/* Desktop: Lado Direito (Índices 1 e 3 - Passos 2 e 4) */}
               <div className={cn(
                 "hidden md:flex flex-col justify-center text-left pl-16 items-start",
                 idx % 2 === 0 && "invisible"
@@ -116,7 +109,6 @@ export function Timeline() {
                 )}
               </div>
 
-              {/* Mobile Content (Sempre visível no mobile, alinhado à direita da linha) */}
               <div className="md:hidden pl-12 flex flex-col justify-center">
                 <div className="text-accent text-3xl font-black mb-2 font-headline">{step.number}</div>
                 <h3 className="text-xl font-bold mb-2 font-headline uppercase tracking-tight">{step.title}</h3>

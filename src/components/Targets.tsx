@@ -15,6 +15,7 @@ export function Targets() {
     <section 
       id="section-targets" 
       className="relative w-full bg-dark flex flex-col items-center justify-center py-24 md:py-32 z-20 overflow-hidden text-white border-t border-white/5"
+      data-theme="dark"
     >
       <div className="relative z-30 w-full px-6 mb-16">
         <h2 className="text-center font-bold text-3xl md:text-5xl lg:text-[54px] drop-shadow-2xl uppercase font-headline tracking-tighter">

@@ -11,7 +11,7 @@ const features = [
     title: 'Brilho Extremo', 
     desc: 'Imagem nítida sob sol intenso, garantindo visibilidade perfeita em qualquer horário e clima.',
     icon: Zap,
-    pos: { top: '25%', left: '20%' }, // Superior Esquerda
+    pos: { top: '25%', left: '20%' },
     labelPos: 'bottom-full mb-4 left-0'
   },
   { 
@@ -19,7 +19,7 @@ const features = [
     title: 'Alta Fidelidade', 
     desc: 'Cores vivas e uniformes, reproduzindo os seus conteúdos com qualidade fotográfica e sem distorção.',
     icon: Monitor,
-    pos: { top: '35%', left: '80%' }, // Lateral Direita
+    pos: { top: '35%', left: '80%' },
     labelPos: 'bottom-full mb-4 right-0'
   },
   { 
@@ -27,7 +27,7 @@ const features = [
     title: 'Durabilidade', 
     desc: 'Painéis blindados e altamente resistentes contra chuva, variações de calor e poeira.',
     icon: Shield,
-    pos: { top: '75%', left: '70%' }, // Inferior Direita
+    pos: { top: '75%', left: '70%' },
     labelPos: 'top-full mt-4 right-0'
   },
   { 
@@ -35,7 +35,7 @@ const features = [
     title: 'Sistema Modular', 
     desc: 'Totalmente dimensionado sob medida para o seu projeto, permitindo infinitas possibilidades.',
     icon: Sparkles,
-    pos: { top: '65%', left: '15%' }, // Inferior Esquerda
+    pos: { top: '65%', left: '15%' },
     labelPos: 'top-full mt-4 left-0'
   }
 ];
@@ -65,6 +65,7 @@ export function Technology() {
       <section 
         id="tecnologia-profissional" 
         className="bg-black py-16 md:py-20 relative overflow-hidden flex items-center justify-center min-h-[700px]"
+        data-theme="dark"
       >
         <div className="container max-w-[1360px] mx-auto px-6 relative flex flex-col items-center z-10">
           <div className="text-center mb-6 md:mb-8">
@@ -78,7 +79,6 @@ export function Technology() {
           </div>
           
           <div className="w-full relative min-h-[450px] md:min-h-[550px] flex items-center justify-center">
-            {/* Spline Viewer Container */}
             <div className="absolute inset-0 z-10 cursor-grab active:cursor-grabbing">
               {isMounted && (
                 /* @ts-ignore */
@@ -89,7 +89,6 @@ export function Technology() {
               )}
             </div>
 
-            {/* Hotspots Overlay */}
             <div className="absolute inset-0 z-20 pointer-events-none">
               <div className="relative w-full h-full max-w-4xl mx-auto">
                 {features.map((feature) => (
@@ -113,7 +112,6 @@ export function Technology() {
                         <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
                       </div>
                       
-                      {/* Tooltip Label - Pointing Outwards */}
                       <div className={cn(
                         "absolute opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-md border border-white/10 text-[10px] font-headline uppercase tracking-widest text-white translate-y-2 group-hover:translate-y-0",
                         feature.labelPos
@@ -126,7 +124,6 @@ export function Technology() {
               </div>
             </div>
 
-            {/* Feature Content Overlay */}
             {activeFeature && (
               <div className="absolute z-50 bottom-0 md:bottom-12 left-1/2 -translate-x-1/2 w-full max-w-lg px-6 animate-in fade-in slide-in-from-bottom-4 duration-500 pointer-events-none">
                 <div className="bg-[#1A1822]/95 backdrop-blur-2xl border border-primary/30 rounded-3xl p-8 shadow-[0_0_60px_rgba(2,158,157,0.3)] pointer-events-auto">
