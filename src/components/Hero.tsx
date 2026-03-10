@@ -1,49 +1,93 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export function Hero() {
   const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const transitionLogoRef = useRef<HTMLImageElement>(null);
+  const blackOverlayRef = useRef<HTMLDivElement>(null);
+  const heroContentRef = useRef<HTMLDivElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    setIsMounted(true);
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!containerRef.current) return;
+
+    // Observer para o player de vídeo
+    const videoObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (iframeRef.current && iframeRef.current.contentWindow) {
             try {
-              // Usando a API do Vimeo para controlar o player via postMessage
               if (entry.isIntersecting) {
                 iframeRef.current.contentWindow.postMessage('{"method":"play"}', '*');
               } else {
                 iframeRef.current.contentWindow.postMessage('{"method":"pause"}', '*');
               }
-            } catch (e) {
-              // Silencioso se o frame ainda não estiver pronto
-            }
+            } catch (e) {}
           }
         });
       },
-      { threshold: 0.05 } // Inicia a ação assim que 5% da hero estiver visível
+      { threshold: 0.05 }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
+    videoObserver.observe(containerRef.current);
 
-    return () => observer.disconnect();
+    // Animação de Transição "Boom"
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: '+=100%', // Duração da animação baseada no scroll
+          pin: true,     // Fixa a hero na tela durante a animação
+          scrub: 0.5,    // Suavidade do scroll
+        }
+      });
+
+      tl.to(heroContentRef.current, {
+        opacity: 0,
+        y: -50,
+        duration: 0.5
+      })
+      .to(transitionLogoRef.current, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.5
+      }, "-=0.3")
+      .to(transitionLogoRef.current, {
+        scale: 35,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.in"
+      })
+      .to(blackOverlayRef.current, {
+        opacity: 1,
+        duration: 0.8
+      }, "-=0.8");
+
+    }, containerRef);
+
+    return () => {
+      videoObserver.disconnect();
+      ctx.revert();
+    };
   }, []);
 
   return (
     <section 
-      id="hero" 
       ref={containerRef}
       className="relative w-full h-screen bg-dark overflow-hidden flex items-center" 
       data-theme="dark"
     >
+      {/* Background Video */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Background Vimeo Video - Adicionado param api=1 para controle via JS */}
         <iframe
           ref={iframeRef}
           src="https://player.vimeo.com/video/1171839535?background=1&autoplay=1&loop=1&muted=1&api=1"
@@ -55,8 +99,27 @@ export function Hero() {
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
-      <div className="relative z-10 container max-w-[1360px] mx-auto px-6 text-center lg:text-left items-center lg:items-start text-white">
-        {/* Heading adaptável com escalas de tamanho mais suaves para responsividade */}
+      {/* Black Overlay for Transition */}
+      <div 
+        ref={blackOverlayRef}
+        className="absolute inset-0 z-[40] bg-black opacity-0 pointer-events-none"
+      />
+
+      {/* Transition Logo (Centered) */}
+      <div className="absolute inset-0 z-[50] flex items-center justify-center pointer-events-none">
+        <img 
+          ref={transitionLogoRef}
+          src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logo%20led4u.svg" 
+          alt="LED 4U Transition" 
+          className="w-[200px] md:w-[350px] h-auto opacity-0 scale-[0.8] brightness-0 invert"
+        />
+      </div>
+
+      {/* Hero Content */}
+      <div 
+        ref={heroContentRef}
+        className="relative z-10 container max-w-[1360px] mx-auto px-6 text-center lg:text-left items-center lg:items-start text-white"
+      >
         <h1 className="font-bold leading-[1.1] mb-6 text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px] xl:text-[64px] max-w-4xl font-headline uppercase tracking-tight">
           Especialistas em <span className="text-gradient-animate">painéis de LED</span> para Residências, Fachadas e Empresas
         </h1>
