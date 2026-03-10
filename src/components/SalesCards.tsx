@@ -41,7 +41,6 @@ export function SalesCards() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
   const [progress, setProgress] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -80,8 +79,6 @@ export function SalesCards() {
   }, [currentIndex, goToSlide]);
 
   useEffect(() => {
-    if (isPaused) return;
-
     progressRef.current = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) return 100;
@@ -97,7 +94,7 @@ export function SalesCards() {
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (progressRef.current) clearInterval(progressRef.current);
     };
-  }, [currentIndex, isPaused, goNext]);
+  }, [currentIndex, goNext]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.targetTouches[0].clientX;
@@ -122,8 +119,6 @@ export function SalesCards() {
       id="venda-locacao" 
       className="carousel-wrapper"
       data-theme="dark"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
