@@ -40,7 +40,6 @@ export function LogoMarquee() {
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/Chevrolet-Logo%201_1x.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/GbM8NiN5Hn7kBYIpqj4ux38JiYCIGrJXNnaGnErU-563-568%202_1x.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/Ipiranga_Logo%201_1x.webp',
-    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/Logo-Sanol-Pro%201_1x.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/SANOL_1x.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/bio-extratus-logo-png_seeklogo-236890%201_1x.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/michelin_1x.webp'
