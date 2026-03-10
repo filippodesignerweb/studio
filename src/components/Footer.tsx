@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { dependency } from 'react';
 import Link from 'next/link';
 import { MessageCircle, Instagram, Mail, MapPin } from 'lucide-react';
 
@@ -13,7 +13,7 @@ export function Footer() {
         
         <div className="flex flex-col items-start">
           <img 
-            src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logo%20led4u.svg" 
+            src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
             alt="Logo LED 4U" 
             className="w-36 mb-6 brightness-0" 
           />

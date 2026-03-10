@@ -61,7 +61,7 @@ export function Header() {
         <div className="max-w-[1360px] mx-auto px-6 flex items-center justify-between">
           <Link href="/" className="flex-shrink-0 w-[110px] md:w-[130px]">
             <img 
-              src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logo%20led4u.svg" 
+              src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
               alt="Logo LED 4U" 
               className="w-full h-auto logo-img transition-all duration-500"
             />

@@ -109,7 +109,7 @@ export function Hero() {
       <div className="absolute inset-0 z-[50] flex items-center justify-center pointer-events-none">
         <img 
           ref={transitionLogoRef}
-          src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logo%20led4u.svg" 
+          src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
           alt="LED 4U Transition" 
           className="w-[200px] md:w-[350px] h-auto opacity-0 scale-[0.8] brightness-0 invert"
         />
