@@ -1,124 +1,275 @@
 'use client';
 
-import React, { useState, useCallback, useEffect } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+interface SlideData {
+  title: string;
+  subtitle: string;
+  description: string;
+  accent: string;
+  imageUrl: string;
+}
+
+const slides: SlideData[] = [
+  {
+    title: 'Venda',
+    subtitle: 'Residências e Empresas',
+    description: 'Solução completa com estrutura, instalação e suporte contínuo. Ideal para bares, restaurantes, escritórios e projetos permanentes que buscam excelência e durabilidade.',
+    accent: '#9800FF',
+    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m9_1x.webp',
+  },
+  {
+    title: 'Locação Fixa',
+    subtitle: 'Longo Prazo',
+    description: 'Indicada para fachadas comerciais e academias que desejam instalar o painel de forma contínua, diluindo o investimento ao longo do tempo com suporte total.',
+    accent: '#12CFDB',
+    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m8_1x.webp',
+  },
+  {
+    title: 'Locação Eventos',
+    subtitle: 'Projetos Temporários',
+    description: 'Inclui montagem, desmontagem e suporte técnico durante o período contratado. Ideal para corporativos, casamentos e ativações de marca de alto impacto.',
+    accent: '#D4A955',
+    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m7_1x.webp',
+  },
+];
+
 export function SalesCards() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [direction, setDirection] = useState<'next' | 'prev'>('next');
+  const [progress, setProgress] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const SLIDE_DURATION = 6000;
+  const TRANSITION_DURATION = 800;
   const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
 
-  const services = [
-    {
-      title: 'Venda',
-      tag: 'Ideal para:',
-      bullets: ['Residências', 'Bares e restaurantes', 'Escritórios', 'Projetos permanentes'],
-      desc: 'Solução completa com estrutura, instalação e suporte contínuo.',
-      img: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m9_1x.webp',
-      accentColor: '#9800FF',
+  const goToSlide = useCallback(
+    (index: number, dir?: 'next' | 'prev') => {
+      if (isTransitioning || index === currentIndex) return;
+      setDirection(dir || (index > currentIndex ? 'next' : 'prev'));
+      setIsTransitioning(true);
+      setProgress(0);
+
+      setTimeout(() => {
+        setCurrentIndex(index);
+        setTimeout(() => {
+          setIsTransitioning(false);
+        }, 50);
+      }, TRANSITION_DURATION / 2);
     },
-    {
-      title: 'Locação Fixa (Longo Prazo)',
-      tag: 'Ideal para:',
-      bullets: ['Fachadas comerciais', 'Publicidade', 'Academias', 'Comércios'],
-      desc: 'Indicada para clientes que desejam instalar o painel de forma contínua, mas preferem diluir o investimento ao longo do tempo.',
-      img: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m8_1x.webp',
-      accentColor: '#12CFDB',
-    },
-    {
-      title: 'Locação para Eventos',
-      tag: 'Indicada para:',
-      bullets: ['Eventos corporativos', 'Ações promocionais', 'Festas e Casamentos', 'Projetos temporários'],
-      desc: 'Inclui montagem, desmontagem e suporte técnico durante o período contratado.',
-      img: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m7_1x.webp',
-      accentColor: '#D4A955',
+    [isTransitioning, currentIndex]
+  );
+
+  const goNext = useCallback(() => {
+    const nextIndex = (currentIndex + 1) % slides.length;
+    goToSlide(nextIndex, 'next');
+  }, [currentIndex, goToSlide]);
+
+  const goPrev = useCallback(() => {
+    const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+    goToSlide(prevIndex, 'prev');
+  }, [currentIndex, goToSlide]);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    progressRef.current = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) return 100;
+        return prev + 100 / (SLIDE_DURATION / 50);
+      });
+    }, 50);
+
+    intervalRef.current = setInterval(() => {
+      goNext();
+    }, SLIDE_DURATION);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (progressRef.current) clearInterval(progressRef.current);
+    };
+  }, [currentIndex, isPaused, goNext]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 60) {
+      if (diff > 0) goNext();
+      else goPrev();
     }
-  ];
+  };
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 30 });
-
-  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  const currentSlide = slides[currentIndex];
 
   return (
-    <section id="venda-locacao" className="bg-dark pt-24 md:pt-32 pb-16 md:pb-32 relative overflow-hidden" data-theme="dark">
-      <div className="container max-w-[1360px] mx-auto px-6 mb-16 text-center text-white uppercase tracking-tight">
-        <h2 className="font-bold text-3xl md:text-5xl lg:text-[54px] font-headline">
-          TRABALHAMOS COM <br className="md:hidden" />
-          <span className="text-gradient-animate font-bold">VENDA OU LOCAÇÃO</span>
-        </h2>
-      </div>
-      
-      <div className="container max-w-[1360px] mx-auto px-6 relative z-10">
-        <div className="relative group/carousel">
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex">
-              {services.map((service, idx) => (
-                <div key={idx} className="flex-[0_0_100%] min-w-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-[#1A1822]/40 border border-white/5 rounded-[40px] p-8 md:p-12 lg:p-16 mx-4">
-                    <div className="flex flex-col items-start text-left order-2 lg:order-1">
-                      <h3 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tighter font-headline leading-tight">
-                        {service.title}
-                      </h3>
+    <section 
+      id="venda-locacao" 
+      className="carousel-wrapper"
+      data-theme="dark"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Background accent wash */}
+      <div
+        className="carousel-bg-wash"
+        style={{
+          background: `radial-gradient(ellipse at 70% 50%, ${currentSlide.accent}12 0%, transparent 70%)`,
+        }}
+      />
 
-                      <div className="mb-6">
-                        <span className="font-bold text-xs tracking-[0.2em] uppercase mb-4 block font-headline text-white/40">
-                          {service.tag}
-                        </span>
-                        <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-white/80 font-body text-sm md:text-base">
-                          {service.bullets.map((bullet, bIdx) => (
-                            <li key={bIdx} className="flex items-center gap-2">
-                              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: service.accentColor }}></span>
-                              {bullet}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <p className="text-white/60 text-lg mb-10 leading-relaxed font-body max-w-lg">
-                        {service.desc}
-                      </p>
-                      
-                      <a 
-                        href={whatsappUrl} 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-glow-green"
-                      >
-                        Saiba Mais
-                      </a>
-                    </div>
+      <div className="carousel-inner">
+        {/* Left: Text Content */}
+        <div className="carousel-content">
+          <div className="w-full">
+            {/* Slide number */}
+            <div
+              className={cn(
+                "carousel-collection-num",
+                isTransitioning ? "transitioning" : "visible"
+              )}
+            >
+              <span className="carousel-num-line" />
+              <span className="carousel-num-text">
+                {String(currentIndex + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
+              </span>
+            </div>
 
-                    <div className="relative h-[300px] md:h-[500px] rounded-[32px] overflow-hidden group order-1 lg:order-2">
-                      <img 
-                        src={service.img} 
-                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-                        alt={service.title} 
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent"></div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+            {/* Title */}
+            <h2
+              className={cn(
+                "carousel-title",
+                isTransitioning ? "transitioning" : "visible"
+              )}
+            >
+              {currentSlide.title}
+            </h2>
+
+            {/* Subtitle */}
+            <p
+              className={cn(
+                "carousel-subtitle",
+                isTransitioning ? "transitioning" : "visible"
+              )}
+              style={{ color: currentSlide.accent }}
+            >
+              {currentSlide.subtitle}
+            </p>
+
+            {/* Description */}
+            <p
+              className={cn(
+                "carousel-description",
+                isTransitioning ? "transitioning" : "visible"
+              )}
+            >
+              {currentSlide.description}
+            </p>
+
+            {/* Call to Action */}
+            <div className={cn(
+              "transition-all duration-700 delay-200 mt-4",
+              isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
+            )}>
+              <a 
+                href={whatsappUrl} 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-glow-green"
+              >
+                Saiba Mais
+              </a>
+            </div>
+
+            {/* Navigation Arrows */}
+            <div className="carousel-nav-arrows mt-12">
+              <button
+                onClick={goPrev}
+                className="carousel-arrow-btn"
+                aria-label="Anterior"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={goNext}
+                className="carousel-arrow-btn"
+                aria-label="Próximo"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
           </div>
-
-          <button 
-            onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 lg:-translate-x-full w-14 h-14 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white hover:text-dark transition-all duration-300 z-20 backdrop-blur-md"
-            aria-label="Anterior"
-          >
-            <ChevronLeft className="w-8 h-8" />
-          </button>
-          
-          <button 
-            onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 lg:translate-x-full w-14 h-14 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white hover:text-dark transition-all duration-300 z-20 backdrop-blur-md"
-            aria-label="Próximo"
-          >
-            <ChevronRight className="w-8 h-8" />
-          </button>
         </div>
+
+        {/* Right: Image */}
+        <div className="carousel-image-container">
+          <div
+            className={cn(
+              "carousel-image-frame",
+              isTransitioning ? "transitioning" : "visible"
+            )}
+          >
+            <img
+              src={currentSlide.imageUrl}
+              alt={currentSlide.title}
+              className="carousel-image"
+            />
+            <div
+              className="carousel-image-overlay"
+              style={{
+                background: `linear-gradient(135deg, ${currentSlide.accent}15 0%, transparent 50%)`,
+              }}
+            />
+          </div>
+
+          {/* Decorative frame corner */}
+          <div className="carousel-frame-corner carousel-frame-corner--tl" style={{ borderColor: currentSlide.accent }} />
+          <div className="carousel-frame-corner carousel-frame-corner--br" style={{ borderColor: currentSlide.accent }} />
+        </div>
+      </div>
+
+      {/* Progress Indicators */}
+      <div className="carousel-progress-bar">
+        {slides.map((slide, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={cn(
+              "carousel-progress-item group",
+              index === currentIndex ? "active" : ""
+            )}
+            aria-label={`Ir para slide ${index + 1}`}
+          >
+            <div className="carousel-progress-track">
+              <div
+                className="carousel-progress-fill"
+                style={{
+                  width: index === currentIndex ? `${progress}%` : index < currentIndex ? '100%' : '0%',
+                  backgroundColor: index === currentIndex ? currentSlide.accent : undefined,
+                }}
+              />
+            </div>
+            <span className="carousel-progress-label">{slide.title}</span>
+          </button>
+        ))}
       </div>
     </section>
   );

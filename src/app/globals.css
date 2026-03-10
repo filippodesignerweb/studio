@@ -46,7 +46,8 @@
   }
 
   .btn-glow-green {
-    @apply font-headline inline-flex items-center justify-center px-10 py-5 text-[15px] md:text-[20px] font-bold uppercase tracking-tight rounded-full transition-all duration-500 cursor-pointer border border-white/20 relative overflow-hidden;
+    @apply font-headline inline-flex items-center justify-center px-10 py-5 font-bold uppercase tracking-tight rounded-full transition-all duration-500 cursor-pointer border border-white/20 relative overflow-hidden;
+    font-size: 20px;
     background: linear-gradient(-45deg, #3AFF5F, #FFFF00, #3AFF5F, #FFFF00, #3AFF5F, #FFFF00);
     background-size: 800% 400%;
     color: #000000 !important;
@@ -58,8 +59,18 @@
       0px 25px 30px -10px rgba(58, 255, 95, 0.5);
   }
 
+  @media (max-width: 768px) {
+    .btn-glow-green {
+      font-size: 15px;
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
+    }
+  }
+
   .btn-glow-green:hover {
-    @apply scale-[1.03];
+    @apply scale-105;
     box-shadow: 
       0px 3px 0px 0px #2E7D32,
       0px -5px 6px 0px #B7FF5A inset,
@@ -82,6 +93,148 @@
 
   .nav-invert #menu-btn svg {
     @apply !text-dark;
+  }
+
+  /* Elegant Carousel Styles */
+  .carousel-wrapper {
+    @apply relative w-full h-full flex flex-col justify-center overflow-hidden;
+    min-height: 800px;
+  }
+
+  @media (max-width: 1024px) {
+    .carousel-wrapper {
+      min-height: 600px;
+    }
+  }
+
+  .carousel-bg-wash {
+    @apply absolute inset-0 z-0 transition-all duration-1000 ease-in-out pointer-events-none;
+  }
+
+  .carousel-inner {
+    @apply container max-w-[1360px] mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-20;
+  }
+
+  .carousel-content {
+    @apply w-full lg:w-1/2 flex flex-col items-start text-left;
+  }
+
+  .carousel-collection-num {
+    @apply flex items-center gap-4 mb-8 transition-all duration-700;
+  }
+
+  .carousel-collection-num.transitioning {
+    @apply opacity-0 translate-y-4;
+  }
+
+  .carousel-num-line {
+    @apply w-12 h-px bg-white/20;
+  }
+
+  .carousel-num-text {
+    @apply text-xs font-bold text-white/40 uppercase font-headline;
+    letter-spacing: 0.3em;
+  }
+
+  .carousel-title {
+    @apply text-4xl md:text-6xl lg:text-7xl font-black mb-4 uppercase tracking-tighter leading-none transition-all duration-700 font-headline;
+  }
+
+  .carousel-title.transitioning {
+    @apply opacity-0 -translate-y-8;
+  }
+
+  .carousel-subtitle {
+    @apply text-lg md:text-xl font-bold uppercase tracking-widest mb-8 transition-all duration-700 delay-75 font-headline;
+  }
+
+  .carousel-subtitle.transitioning {
+    @apply opacity-0 -translate-y-4;
+  }
+
+  .carousel-description {
+    @apply text-white/60 text-base md:text-lg max-w-lg mb-12 leading-relaxed transition-all duration-700 delay-150 font-body;
+  }
+
+  .carousel-description.transitioning {
+    @apply opacity-0 -translate-y-2;
+  }
+
+  .carousel-nav-arrows {
+    @apply flex gap-4 mt-4 transition-all duration-700 delay-200;
+  }
+
+  .carousel-arrow-btn {
+    @apply w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-dark transition-all duration-300;
+  }
+
+  .carousel-image-container {
+    @apply w-full lg:w-1/2 relative;
+  }
+
+  .carousel-image-frame {
+    @apply relative rounded-3xl overflow-hidden transition-all duration-700 ease-out;
+    aspect-ratio: 3/4;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-image-frame {
+      aspect-ratio: 4/5;
+    }
+  }
+
+  .carousel-image-frame.transitioning {
+    @apply scale-95 opacity-0 rotate-2;
+  }
+
+  .carousel-image {
+    @apply w-full h-full object-cover ease-out;
+    transition-property: transform;
+    transition-duration: 2000ms;
+  }
+
+  .carousel-image-overlay {
+    @apply absolute inset-0 pointer-events-none;
+  }
+
+  .carousel-frame-corner {
+    @apply absolute w-20 h-20 border-[2px] transition-all duration-700 pointer-events-none;
+  }
+
+  .carousel-frame-corner--tl {
+    @apply -top-4 -left-4 border-b-0 border-r-0 rounded-tl-3xl;
+  }
+
+  .carousel-frame-corner--br {
+    @apply -bottom-4 -right-4 border-t-0 border-l-0 rounded-br-3xl;
+  }
+
+  .carousel-progress-bar {
+    @apply absolute bottom-12 left-1/2 -translate-x-1/2 w-full max-w-[1360px] px-6 grid grid-cols-3 gap-4 lg:gap-8 z-20;
+  }
+
+  .carousel-progress-item {
+    @apply flex flex-col gap-3 text-left transition-all;
+  }
+
+  .carousel-progress-track {
+    @apply w-full h-[2px] bg-white/10 relative overflow-hidden;
+  }
+
+  .carousel-progress-fill {
+    @apply absolute left-0 top-0 h-full bg-white transition-all duration-100 ease-linear;
+  }
+
+  .carousel-progress-label {
+    @apply text-[10px] md:text-xs font-black uppercase tracking-widest text-white/30 transition-colors font-headline;
+  }
+  
+  .carousel-progress-item:hover .carousel-progress-label {
+    @apply text-white;
+  }
+
+  .carousel-progress-item.active .carousel-progress-label {
+    @apply text-white;
   }
 }
 
