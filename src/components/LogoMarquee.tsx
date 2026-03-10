@@ -24,7 +24,7 @@ export function LogoMarquee() {
       gsap.to(track, {
         xPercent: -50,
         repeat: -1,
-        duration: 25,
+        duration: 35, // Aumentado ligeiramente o tempo para compensar o tamanho maior das logos
         ease: 'none',
       });
     });
@@ -33,25 +33,32 @@ export function LogoMarquee() {
   }, []);
 
   const logos = [
-    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/LOGOS%20LED4U/2_1_1x.webp',
-    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/LOGOS%20LED4U/4_1x.webp',
-    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/LOGOS%20LED4U/arnec_1x.webp',
-    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/LOGOS%20LED4U/michelin_1x.webp'
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/2%201_1x.webp',
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/4_1x.webp',
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/7_1x.webp',
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/Castelo_1x.webp',
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/Chevrolet-Logo%201_1x.webp',
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/GbM8NiN5Hn7kBYIpqj4ux38JiYCIGrJXNnaGnErU-563-568%202_1x.webp',
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/Ipiranga_Logo%201_1x.webp',
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/Logo-Sanol-Pro%201_1x.webp',
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/SANOL_1x.webp',
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/bio-extratus-logo-png_seeklogo-236890%201_1x.webp',
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/michelin_1x.webp'
   ];
 
   return (
     <section 
       id="section-logos" 
-      className="bg-white py-16 md:py-24 relative z-50 overflow-hidden" 
+      className="bg-white py-20 md:py-32 relative z-50 overflow-hidden" 
       data-theme="light"
     >
       <div className="w-full overflow-hidden">
-        <div ref={trackRef} className="flex gap-[100px] md:gap-[150px] items-center w-max">
+        <div ref={trackRef} className="flex gap-[120px] md:gap-[180px] items-center w-max">
           {logos.map((src, i) => (
             <img 
               key={i} 
               src={src} 
-              className="h-24 md:h-32 w-auto object-contain transition-transform duration-300 hover:scale-110" 
+              className="h-36 md:h-52 w-auto object-contain transition-transform duration-300 hover:scale-105" 
               alt={`Parceiro ${i}`}
             />
           ))}
