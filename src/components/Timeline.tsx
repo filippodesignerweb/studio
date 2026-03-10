@@ -49,10 +49,26 @@ export function Timeline() {
   }, [isMounted]);
 
   const steps = [
-    { number: '01', title: 'Consultoria e Visita Técnica', desc: 'Análise técnica detalhada presencialmente.' },
-    { number: '02', title: 'Projeto e Estrutura', desc: 'Desenvolvimento da solução completa técnica.' },
-    { number: '03', title: 'Instalação Profissional', desc: 'Equipe especializada e agendamento organizado.' },
-    { number: '04', title: 'Suporte e Acompanhamento', desc: 'Garantia real e suporte técnico contínuo.' },
+    { 
+      number: '01', 
+      title: 'Consultoria e Visita Técnica no Local', 
+      desc: 'Analisamos estrutura, elétrica e objetivo do projeto presencialmente.' 
+    },
+    { 
+      number: '02', 
+      title: 'Projeto e Estrutura Sob Medida', 
+      desc: 'Desenvolvimento da solução completa, incluindo estrutura metálica e dimensionamento técnico.' 
+    },
+    { 
+      number: '03', 
+      title: 'Instalação Profissional e Agendamento Rápido', 
+      desc: 'Equipe especializada, instalação segura e organização total no processo.' 
+    },
+    { 
+      number: '04', 
+      title: 'Suporte e Acompanhamento', 
+      desc: 'Alta durabilidade, garantia, acompanhamento técnico e suporte sempre que necessário.' 
+    },
   ];
 
   if (!isMounted) return <section className="bg-white py-20 min-h-[500px]" />;
