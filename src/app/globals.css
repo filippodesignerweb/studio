@@ -169,17 +169,25 @@
   }
 
   .carousel-image-container {
-    @apply w-full lg:w-1/2 relative;
+    @apply w-full lg:w-[45%] relative flex items-center justify-center;
   }
 
   .carousel-image-frame {
-    @apply relative rounded-3xl overflow-hidden transition-all duration-700 ease-out;
+    @apply relative rounded-3xl overflow-hidden transition-all duration-700 ease-out w-full;
     aspect-ratio: 3/4;
+    max-height: 550px;
+  }
+
+  @media (max-width: 1024px) {
+    .carousel-image-frame {
+      max-height: 450px;
+    }
   }
 
   @media (max-width: 768px) {
     .carousel-image-frame {
       aspect-ratio: 4/5;
+      max-height: 400px;
     }
   }
 
