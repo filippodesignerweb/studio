@@ -16,7 +16,7 @@ export function WhatsAppFloating() {
       <img
         src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/wahstapp.webp"
         alt="WhatsApp"
-        className="w-14 h-14 md:w-16 md:h-16 object-contain drop-shadow-2xl"
+        className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-2xl"
       />
     </a>
   );
