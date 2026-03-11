@@ -19,7 +19,6 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    // Observer mais rigoroso para garantir que o tema mude exatamente quando a navbar toca a seção
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -29,7 +28,7 @@ export function Header() {
       });
     }, { 
       threshold: 0,
-      rootMargin: '0px 0px -95% 0%' // Foca apenas na pequena faixa no topo da viewport
+      rootMargin: '0px 0px -95% 0%'
     });
 
     document.querySelectorAll('[data-theme]').forEach(section => observer.observe(section));

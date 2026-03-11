@@ -1,6 +1,6 @@
 'use client';
 
-import React, { dependency } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { MessageCircle, Instagram, Mail, MapPin } from 'lucide-react';
 
