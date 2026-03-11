@@ -106,7 +106,7 @@ export default function CasePage() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full py-4 bg-[#6f2cdb] hover:bg-[#9800FF] text-white text-center rounded-lg font-bold text-sm transition-all duration-300 hover:shadow-[0_0_15px_rgba(152,0,255,0.6)] font-headline"
+                className="btn-glow-green w-full"
               >
                 Solicite um orçamento
               </a>
@@ -127,7 +127,7 @@ export default function CasePage() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full py-4 bg-[#6f2cdb] hover:bg-[#9800FF] text-white text-center rounded-lg font-bold text-sm transition-all duration-300 hover:shadow-[0_0_15px_rgba(152,0,255,0.6)] font-headline"
+                className="btn-glow-green w-full"
               >
                 Solicite um orçamento
               </a>
@@ -148,7 +148,7 @@ export default function CasePage() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full py-4 bg-[#6f2cdb] hover:bg-[#9800FF] text-white text-center rounded-lg font-bold text-sm transition-all duration-300 hover:shadow-[0_0_15px_rgba(152,0,255,0.6)] font-headline"
+                className="btn-glow-green w-full"
               >
                 Solicite um orçamento
               </a>

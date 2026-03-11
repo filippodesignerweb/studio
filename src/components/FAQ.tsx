@@ -68,7 +68,7 @@ export function FAQ() {
             href={whatsappUrl} 
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-glow-green !bg-[#25D366] !border-[#25D366] !text-black flex gap-3 items-center hover:!bg-[#1ebc59] hover:!border-[#1ebc59] hover:shadow-[0_0_20px_rgba(37,211,102,0.6)]"
+            className="btn-glow-green flex gap-3 items-center"
           >
             <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />
             Chamar no WhatsApp
