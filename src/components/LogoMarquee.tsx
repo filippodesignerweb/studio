@@ -48,7 +48,7 @@ export function LogoMarquee() {
   return (
     <section 
       id="section-logos" 
-      className="bg-white py-16 md:py-32 relative z-50 overflow-hidden" 
+      className="bg-white pt-4 md:pt-8 pb-16 md:pb-32 relative z-50 overflow-hidden" 
       data-theme="light"
     >
       <div className="w-full overflow-hidden">

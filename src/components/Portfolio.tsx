@@ -6,7 +6,7 @@ export function Portfolio() {
   return (
     <section 
       id="section-portfolio" 
-      className="relative w-full bg-white py-24 md:py-32 flex items-center justify-center border-t border-gray-100" 
+      className="relative w-full bg-white pt-24 md:pt-32 pb-8 md:pb-12 flex items-center justify-center border-t border-gray-100" 
       data-theme="light"
     >
       <div className="container max-w-[1360px] mx-auto px-6 text-dark text-center">
