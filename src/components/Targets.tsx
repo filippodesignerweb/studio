@@ -2,24 +2,32 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function Targets() {
+  // Função auxiliar para buscar a URL da imagem pelo ID no placeholder-images.json
+  const getImg = (id: string) => PlaceHolderImages.find(img => img.id === id)?.imageUrl || '';
+
   const targets = [
     { 
       title: 'Residências de Alto Padrão', 
       desc: 'Transforme sua área gourmet ou cinema em uma experiência imersiva.',
+      image: getImg('hero-led')
     },
     { 
       title: 'Fachadas Comerciais', 
       desc: 'Aumente sua visibilidade e destaque sua marca com painéis de LED outdoor de alto impacto visual.',
+      image: getImg('portfolio-2')
     },
     { 
       title: 'Bares e Restaurantes', 
       desc: 'Transmissões profissionais de jogos e eventos com qualidade superior de imagem.',
+      image: getImg('portfolio-3')
     },
     { 
       title: 'Eventos', 
       desc: 'Soluções completas em painéis de LED para eventos empresariais, ativações de marca e projetos estruturados.',
+      image: getImg('portfolio-1')
     }
   ];
 
@@ -40,14 +48,24 @@ export function Targets() {
           {targets.map((target, idx) => (
             <div 
               key={idx} 
-              className="target-card p-8 md:p-10 rounded-2xl bg-[#1A1822]/80 backdrop-blur-md border border-white/10 shadow-2xl flex flex-col items-start text-left transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 group"
+              className="target-card rounded-2xl bg-[#1A1822]/80 backdrop-blur-md border border-white/10 shadow-2xl flex flex-col items-start text-left transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 group overflow-hidden h-full"
             >
-              <h3 className="text-xl md:text-2xl font-bold mb-4 font-headline uppercase tracking-tight min-h-[60px]">
-                {target.title}
-              </h3>
-              <p className="text-white/70 text-sm font-body leading-relaxed flex-grow">
-                {target.desc}
-              </p>
+              <div className="w-full h-48 overflow-hidden">
+                <img 
+                  src={target.image} 
+                  alt={target.title} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  data-ai-hint="led panel"
+                />
+              </div>
+              <div className="p-8 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold mb-4 font-headline uppercase tracking-tight min-h-[60px]">
+                  {target.title}
+                </h3>
+                <p className="text-white/70 text-sm font-body leading-relaxed">
+                  {target.desc}
+                </p>
+              </div>
             </div>
           ))}
         </div>
