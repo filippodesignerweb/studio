@@ -31,7 +31,7 @@ const cases: CaseItem[] = [
   {
     title: 'Residenciais de alto padrão',
     videoId: 'Qrh0mU5F5TQ',
-    image: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/export_2026-03-06T14_43_46-504Z/lazer_1x.webp',
+    image: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/Lazer_1x.webp',
   },
   {
     title: 'Outdoors',
@@ -41,7 +41,7 @@ const cases: CaseItem[] = [
   {
     title: 'Restaurantes',
     videoId: 'zKpLYOmzUXI',
-    image: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/export_2026-03-06T14_43_46-504Z/residencias_1x.webp',
+    image: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/Residencias_1x.webp',
   },
 ];
 
