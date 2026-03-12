@@ -39,38 +39,39 @@ export function Hero() {
 
     videoObserver.observe(containerRef.current);
 
-    // Animação de Transição "Boom"
+    // Animação de Transição Ajustada
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=100%', // Duração da animação baseada no scroll
-          pin: true,     // Fixa a hero na tela durante a animação
-          scrub: 0.5,    // Suavidade do scroll
+          end: '+=100%', 
+          pin: true,     
+          scrub: 1,    
         }
       });
 
       tl.to(heroContentRef.current, {
         opacity: 0,
-        y: -50,
+        y: -30,
         duration: 0.5
       })
       .to(transitionLogoRef.current, {
         opacity: 1,
-        scale: 1,
-        duration: 0.5
-      }, "-=0.3")
+        scale: 1.2, // Escala suave, não exagerada
+        duration: 0.8,
+        ease: "power2.out"
+      }, "-=0.2")
       .to(transitionLogoRef.current, {
-        scale: 35,
         opacity: 0,
-        duration: 1,
+        scale: 1.4,
+        duration: 0.5,
         ease: "power2.in"
       })
       .to(blackOverlayRef.current, {
         opacity: 1,
         duration: 0.8
-      }, "-=0.8");
+      }, "-=0.5");
 
     }, containerRef);
 
@@ -111,7 +112,7 @@ export function Hero() {
           ref={transitionLogoRef}
           src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
           alt="LED 4U Transition" 
-          className="w-[200px] md:w-[350px] h-auto opacity-0 scale-[0.8] brightness-0 invert"
+          className="w-[200px] md:w-[300px] h-auto opacity-0 scale-[0.9] brightness-0 invert"
         />
       </div>
 

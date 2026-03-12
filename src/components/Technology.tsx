@@ -12,7 +12,7 @@ const features = [
     desc: 'Imagem nítida mesmo sob sol intenso. Ideal para fachadas, piscinas e ambientes externos.',
     icon: Zap,
     pos: { top: '30%', left: '35%' },
-    labelPos: 'bottom-full mb-4 right-full mr-4' // Apontado para fora (cima-esquerda)
+    labelPos: 'bottom-full mb-4 right-full mr-4' 
   },
   { 
     id: 2,
@@ -20,7 +20,7 @@ const features = [
     desc: 'Experiência imersiva com cores vivas e imagem uniforme. Perfeito para jogos, filmes e momentos especiais.',
     icon: Monitor,
     pos: { top: '30%', left: '65%' },
-    labelPos: 'bottom-full mb-4 left-full ml-4' // Apontado para fora (cima-direita)
+    labelPos: 'bottom-full mb-4 left-full ml-4' 
   },
   { 
     id: 3,
@@ -28,7 +28,7 @@ const features = [
     desc: 'Resistência contra chuva, calor e variações climáticas. Projetado para uso contínuo e seguro.',
     icon: Shield,
     pos: { top: '65%', left: '65%' },
-    labelPos: 'top-full mt-4 left-full ml-4' // Apontado para fora (baixo-direita)
+    labelPos: 'top-full mt-4 left-full ml-4' 
   },
   { 
     id: 4,
@@ -36,7 +36,7 @@ const features = [
     desc: 'Painéis dimensionados sob medida para cada ambiente. Sem adaptações improvisadas.',
     icon: Sparkles,
     pos: { top: '65%', left: '35%' },
-    labelPos: 'top-full mt-4 right-full mr-4' // Apontado para fora (baixo-esquerda)
+    labelPos: 'top-full mt-4 right-full mr-4' 
   }
 ];
 
@@ -83,7 +83,7 @@ export function Technology() {
               {isMounted && (
                 /* @ts-ignore */
                 <spline-viewer 
-                  url="https://prod.spline.design/DOwUXZ0t9vy3yP25/scene.splinecode" 
+                  url="https://prod.spline.design/Nto6rsfK7aqoTE1y/scene.splinecode" 
                   className="w-full h-full"
                 ></spline-viewer>
               )}

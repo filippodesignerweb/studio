@@ -17,9 +17,13 @@ export function Footer() {
             alt="Logo LED 4U" 
             className="w-36 mb-6 brightness-0" 
           />
-          <p className="text-gray-600 text-sm leading-relaxed font-medium font-body max-w-xs">
+          <p className="text-gray-600 text-sm leading-relaxed font-medium font-body max-w-xs mb-4">
             A solução definitiva em painéis de LED para ambientes comerciais e residenciais de alto padrão.
           </p>
+          <div className="text-[10px] uppercase font-bold text-gray-400 leading-relaxed">
+            Led4u Paineis de led ltda <br />
+            CNPJ: 61.511.646/0001-28
+          </div>
         </div>
 
         <div>

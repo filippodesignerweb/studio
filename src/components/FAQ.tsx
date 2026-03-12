@@ -6,20 +6,20 @@ import { cn } from '@/lib/utils';
 
 const faqItems = [
   {
+    question: "Vocês trabalham com venda e locação?",
+    answer: "Sim, fazemos vendas e também locações fixas, de 12, 24 e 36 meses. Além disso, atendemos eventos sociais ou corporativos, de 1 dia ou mais."
+  },
+  {
     question: "Qual é o prazo médio para a entrega e instalação de um painel?",
-    answer: "O prazo varia de acordo com a complexidade da estrutura e o local. Em média, projetos residenciais levam de 10 a 15 dias úteis, enquanto projetos comerciais de grande escala podem levar até 30 dias úteis."
+    answer: "O prazo varia de acordo com a complexidade da estrutura e o local. Os projetos padrões levam de 10 a 15 dias, enquanto projetos de grande escala podem levar até 30 dias."
   },
   {
     question: "Os painéis da LED 4U podem ficar expostos ao tempo (chuva e sol)?",
-    answer: "Sim! Utilizamos tecnologia Outdoor de alta durabilidade com proteção IP65, resistente à chuva e maresia. Nossas telas mantêm o brilho perfeito mesmo sob sol direto."
+    answer: "Sim! Utilizamos tecnologia Outdoor de alta durabilidade com proteção, resistente à chuva e maresia. Nossas telas mantêm o brilho perfeito mesmo sob sol direto."
   },
   {
     question: "Como funciona o suporte técnico e a garantia?",
     answer: "Oferecemos garantia real e suporte técnico contínuo. Possuímos equipe própria de manutenção que atende rapidamente qualquer chamado, garantindo a disponibilidade do seu painel."
-  },
-  {
-    question: "É possível locar um painel apenas para um evento de 1 dia?",
-    answer: "Sim, trabalhamos com locação para eventos corporativos, sociais e ativações pontuais. O serviço inclui montagem completa, operação técnica e desmontagem ágil."
   }
 ];
 

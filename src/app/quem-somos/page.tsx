@@ -108,7 +108,6 @@ export default function QuemSomosPage() {
         
         <Header />
 
-        {/* ================= AREA DE ZOOM (STICKY) ================= */}
         <div className="relative w-full" style={{ height: '200vh' }} data-theme="dark">
           <div className="sticky top-0 w-full h-screen overflow-hidden bg-dark">
             
@@ -120,7 +119,6 @@ export default function QuemSomosPage() {
                 opacity: scrollProgress > 0.85 ? Math.max(0, 1 - (scrollProgress - 0.85) * 6) : 1,
               }}
             >
-              {/* Card Dithering */}
               <div 
                 className="absolute bottom-0 w-full max-w-7xl h-[75vh] rounded-t-[48px] border border-b-0 border-white/10 bg-[#0f0f0f] flex flex-col items-center justify-center overflow-hidden"
                 onMouseEnter={() => setIsHovered(true)}
@@ -141,7 +139,6 @@ export default function QuemSomosPage() {
                 </Suspense>
               </div>
 
-              {/* Texto Hero */}
               <div className="absolute bottom-0 w-full h-[75vh] z-20 flex flex-col items-center justify-center px-4 font-headline">
                 <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
                   <span>Tudo que você precisa <br className="hidden md:block" /> saber sobre a</span>
@@ -166,22 +163,26 @@ export default function QuemSomosPage() {
           </div>
         </div>
 
-        {/* ================= CONTEÚDO PÓS-ZOOM ================= */}
         <div className="relative z-50 w-full" style={{ background: 'linear-gradient(135deg, #9800FF 0%, #12CFDB 100%)' }} data-theme="dark">
           
           <div className="w-full flex flex-col items-center py-20">
             
-            <div className="px-4 md:px-6 w-full max-w-7xl mx-auto flex flex-col items-center">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tighter text-center max-w-4xl text-white drop-shadow-xl mb-4 leading-tight font-headline uppercase">
+            <div className="px-4 md:px-6 w-full max-w-5xl mx-auto flex flex-col items-center">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tighter text-center max-w-4xl text-white drop-shadow-xl mb-12 leading-tight font-headline uppercase">
                 O que nós fazemos e que talvez <br className="hidden md:block" />
                 você não conhecia?
               </h2>
               
-              <p className="max-w-2xl text-center text-base md:text-lg font-medium mb-12 text-white/95 drop-shadow-md font-body">
-                Criamos projetos personalizados para venda e locação, com a solução completa para o seu negócio, residência ou evento.
-              </p>
+              <div className="space-y-8 text-white/95 text-lg md:text-xl font-medium leading-relaxed font-body">
+                <p>Com sede própria em São Paulo, no tradicional bairro da Mooca, e uma estrutura de mais de 2.000m², a Led4U é movida pelo desejo constante de inovação.</p>
+                <p>Integrando um grupo empresarial com mais de 27 anos de trajetória, a Led4U carrega um legado de experiência e visão estratégica acumulado ao longo de décadas de atuação no mercado.</p>
+                <p>Somos especialistas em transformar espaços por meio da tecnologia em LED. Para nós, um painel não é apenas uma tela é uma ferramenta de impacto visual, valorização de marca e criação de experiências imersivas.</p>
+                <p>Atendemos projetos residenciais, corporativos, eventos e soluções personalizadas indoor e outdoor, sempre com materiais de primeira linha, equipamentos atualizados e rigoroso padrão de qualidade.</p>
+                <p>Mais do que instalar painéis, desenvolvemos soluções completas, com planejamento técnico, acompanhamento especializado e compromisso com a excelência em cada detalhe.</p>
+                <p className="font-bold text-2xl pt-4">Led4U. Tecnologia que transforma ambientes e eleva experiências.</p>
+              </div>
 
-              <div className="flex flex-row md:justify-center items-center w-full overflow-x-auto pt-10 pb-20 gap-4 md:gap-8 snap-x snap-mandatory scrollbar-hide">
+              <div className="flex flex-row md:justify-center items-center w-full overflow-x-auto pt-20 pb-20 gap-4 md:gap-8 snap-x snap-mandatory scrollbar-hide">
                 <div className="snap-center shrink-0 transform -rotate-6 translate-y-10 transition-all duration-500 hover:rotate-0 hover:translate-y-2">
                   <div className="animate-float-1 w-[220px] h-[380px] md:w-[280px] md:h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
                     <iframe src="https://player.vimeo.com/video/1170334926?background=1&autoplay=1&loop=1&muted=1" className="absolute top-0 left-0 w-full h-full scale-[1.1] pointer-events-none" frameBorder="0"></iframe>
@@ -224,28 +225,18 @@ export default function QuemSomosPage() {
               </div>
             </div>
 
-            {/* ================= SESSÃO: CTA PRODUTOS ================= */}
             <section className="w-full bg-white relative py-24 md:py-32 lg:py-40 mt-32 overflow-hidden" data-theme="light">
-              
               <div className="max-w-4xl mx-auto px-6 text-center flex flex-col items-center relative z-10">
                 <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#3A3A3A] tracking-tighter leading-[1.1] mb-8 font-headline uppercase">
                   Venha conhecer alguns produtos que a Led4U oferece para você!
                 </h2>
-                
                 <p className="text-[#3A3A3A]/70 text-lg md:text-xl font-medium max-w-2xl mb-12 leading-relaxed font-body">
                   Transforme seu espaço com o brilho e a tecnologia que só a Led4U proporciona. Painéis de alta resolução adaptados para cada necessidade do seu negócio ou residência.
                 </p>
-                
-                <a 
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-glow-green"
-                >
-                  Fazer Orçamento
-                </a>
+                <Link href="/produtos" className="btn-glow-green">
+                  Ver Produtos
+                </Link>
               </div>
-
             </section>
 
           </div>

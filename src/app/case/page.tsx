@@ -29,7 +29,7 @@ const cases: CaseItem[] = [
     image: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/export_2026-03-06T14_43_46-504Z/igrejas_1x.webp',
   },
   {
-    title: 'Lazer',
+    title: 'Residenciais de alto padrão',
     videoId: 'Qrh0mU5F5TQ',
     image: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/export_2026-03-06T14_43_46-504Z/lazer_1x.webp',
   },
@@ -39,7 +39,7 @@ const cases: CaseItem[] = [
     image: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/export_2026-03-06T14_43_46-504Z/outdoors_1x.webp',
   },
   {
-    title: 'Residências',
+    title: 'Restaurantes',
     videoId: 'zKpLYOmzUXI',
     image: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/export_2026-03-06T14_43_46-504Z/residencias_1x.webp',
   },
@@ -62,7 +62,6 @@ export default function CasePage() {
           Veja alguns tipos de painéis que já fizemos!
         </p>
 
-        {/* GRID DE IMAGENS */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {cases.map((item, idx) => (
             <div
@@ -84,14 +83,12 @@ export default function CasePage() {
           ))}
         </div>
 
-        {/* SEÇÃO: SERVIÇOS */}
         <div className="mt-32 text-left">
           <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center tracking-tight leading-tight font-headline">
             Tipos de serviços que atendemos na <span className="text-gradient-animate">LED4U</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {/* Card 1 */}
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8 flex flex-col h-full group transition-all duration-400 hover:-translate-y-2 hover:border-accent hover:shadow-[0_10px_40px_-10px_rgba(152,0,255,0.3)]">
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-12 h-12 rounded-lg bg-[#9800FF]/10 text-[#9800FF] flex items-center justify-center shrink-0 border border-[#9800FF]/20 group-hover:bg-[#9800FF] group-hover:text-white transition-colors duration-300">
@@ -112,7 +109,6 @@ export default function CasePage() {
               </a>
             </div>
 
-            {/* Card 2 */}
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8 flex flex-col h-full group transition-all duration-400 hover:-translate-y-2 hover:border-accent hover:shadow-[0_10px_40px_-10px_rgba(152,0,255,0.3)]">
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-12 h-12 rounded-lg bg-[#9800FF]/10 text-[#9800FF] flex items-center justify-center shrink-0 border border-[#9800FF]/20 group-hover:bg-[#9800FF] group-hover:text-white transition-colors duration-300">
@@ -133,7 +129,6 @@ export default function CasePage() {
               </a>
             </div>
 
-            {/* Card 3 */}
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8 flex flex-col h-full group transition-all duration-400 hover:-translate-y-2 hover:border-accent hover:shadow-[0_10px_40px_-10px_rgba(152,0,255,0.3)]">
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-12 h-12 rounded-lg bg-[#9800FF]/10 text-[#9800FF] flex items-center justify-center shrink-0 border border-[#9800FF]/20 group-hover:bg-[#9800FF] group-hover:text-white transition-colors duration-300">

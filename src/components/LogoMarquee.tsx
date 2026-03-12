@@ -24,7 +24,7 @@ export function LogoMarquee() {
       gsap.to(track, {
         xPercent: -50,
         repeat: -1,
-        duration: 40, // Aumentado para um scroll mais suave com logos maiores
+        duration: 35, 
         ease: 'none',
       });
     });
@@ -48,16 +48,16 @@ export function LogoMarquee() {
   return (
     <section 
       id="section-logos" 
-      className="bg-white pt-4 md:pt-8 pb-16 md:pb-32 relative z-50 overflow-hidden" 
+      className="bg-white pt-2 md:pt-4 pb-16 md:pb-24 relative z-50 overflow-hidden" 
       data-theme="light"
     >
       <div className="w-full overflow-hidden">
-        <div ref={trackRef} className="flex gap-24 md:gap-40 items-center w-max">
+        <div ref={trackRef} className="flex gap-12 md:gap-16 items-center w-max">
           {logos.map((src, i) => (
-            <div key={i} className="flex items-center justify-center w-48 h-24 md:w-80 md:h-40">
+            <div key={i} className="flex items-center justify-center w-40 h-20 md:w-60 md:h-30">
               <img 
                 src={src} 
-                className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-105" 
+                className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-110" 
                 alt={`Parceiro ${i}`}
               />
             </div>

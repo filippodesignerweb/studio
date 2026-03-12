@@ -39,7 +39,7 @@ export function Header() {
     { name: 'Início', href: '/' },
     { name: 'Quem Somos', href: '/quem-somos' },
     { name: 'Produtos', href: '/produtos' },
-    { name: 'Case', href: '/case' },
+    { name: 'Cases', href: '/case' },
     { name: 'Blog', href: '#' },
   ];
 
@@ -58,13 +58,21 @@ export function Header() {
         )}
       >
         <div className="max-w-[1360px] mx-auto px-6 flex items-center justify-between">
-          <Link href="/" className="flex-shrink-0 w-[110px] md:w-[130px]">
-            <img 
-              src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
-              alt="Logo LED 4U" 
-              className="w-full h-auto logo-img transition-all duration-500"
-            />
-          </Link>
+          <div className="flex flex-col">
+            <Link href="/" className="flex-shrink-0 w-[110px] md:w-[130px]">
+              <img 
+                src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
+                alt="Logo LED 4U" 
+                className="w-full h-auto logo-img transition-all duration-500"
+              />
+            </Link>
+            <div className={cn(
+              "text-[8px] uppercase font-bold tracking-widest mt-1 transition-colors duration-500",
+              isNavInvert ? "text-dark/40" : "text-white/40"
+            )}>
+              CNPJ: 61.511.646/0001-28 <br /> Led4u Paineis de led ltda
+            </div>
+          </div>
 
           <nav className="hidden lg:flex items-center space-x-10">
             {navLinks.map((link) => (
@@ -91,7 +99,7 @@ export function Header() {
               href={whatsappUrl} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="btn-glow-green !text-xs !px-8 !py-4"
+              className="btn-glow-green !text-[12px] !px-8 !py-4"
             >
               Fazer Orçamento
             </a>

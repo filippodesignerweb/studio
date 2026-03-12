@@ -21,7 +21,7 @@
     --border: 255 15% 15%;
     --input: 255 15% 15%;
     --ring: 142 71% 36%;
-    --radius: 0px;
+    --radius: 20px;
   }
 }
 
@@ -47,41 +47,27 @@
 
   .btn-glow-green {
     @apply font-headline inline-flex items-center justify-center px-10 py-5 font-bold uppercase tracking-tight transition-all duration-300 cursor-pointer relative overflow-hidden;
-    font-size: 20px;
-    background-color: transparent;
+    font-size: 16px;
+    background-color: hsl(var(--primary));
     color: white !important;
-    border: 1px solid white;
-    border-radius: 0px !important;
+    border: none;
+    border-radius: 20px !important;
   }
 
   @media (max-width: 768px) {
     .btn-glow-green {
-      font-size: 15px;
-      padding-left: 2rem;
-      padding-right: 2rem;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      font-size: 14px;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
     }
   }
 
   .btn-glow-green:hover {
-    @apply opacity-100;
-    background-color: hsl(var(--primary));
-    border-color: hsl(var(--primary));
+    @apply opacity-90;
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px -10px rgba(22, 163, 74, 0.5);
-  }
-
-  /* Ajuste para seções claras para o traçado não sumir */
-  [data-theme="light"] .btn-glow-green {
-    border-color: #3A3A3A;
-    color: #3A3A3A !important;
-  }
-  
-  [data-theme="light"] .btn-glow-green:hover {
-    border-color: hsl(var(--primary));
-    background-color: hsl(var(--primary));
-    color: white !important;
+    box-shadow: 0 10px 20px -10px rgba(22, 163, 74, 0.4);
   }
 
   .btn-glow-green:active {
@@ -89,7 +75,6 @@
     transform: translateY(0);
   }
 
-  /* Estilos de Inversão do Header */
   .nav-invert .logo-img {
     filter: brightness(0);
   }
@@ -102,7 +87,7 @@
     @apply !text-dark;
   }
 
-  /* Elegant Carousel Styles */
+  /* Carousel Styles */
   .carousel-wrapper {
     @apply relative w-full h-full flex flex-col justify-center overflow-hidden;
     min-height: 800px;
@@ -241,24 +226,10 @@
   .carousel-progress-label {
     @apply text-[10px] md:text-xs font-black uppercase tracking-widest text-white/30 transition-colors font-headline;
   }
-  
-  .carousel-progress-item:hover .carousel-progress-label {
-    @apply text-white;
-  }
-
-  .carousel-progress-item.active .carousel-progress-label {
-    @apply text-white;
-  }
 }
 
 @keyframes gradient-move {
   to { background-position: 200% center; }
-}
-
-@keyframes gradient-button {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 body::before {

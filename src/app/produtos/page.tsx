@@ -31,13 +31,15 @@ export default function ProdutosPage() {
         <Header />
 
         <section className="relative w-full min-h-screen flex flex-col items-center justify-start pt-32 pb-24 px-6 text-center">
-          <h1 className="font-black text-6xl md:text-8xl lg:text-[120px] uppercase tracking-tighter leading-[1.1] mb-4 md:mb-6 font-headline">
-            Tipos de <br className="md:hidden" />
-            <span className="text-gradient-animate">painéis</span>
-          </h1>
-          <p className="text-lg md:text-xl text-white/80 font-medium max-w-3xl mb-16 md:mb-24 font-body">
-            Temos o painel perfeito para o seu negócio ou sua necessidade
-          </p>
+          <div className="mb-12">
+            <h1 className="font-black text-6xl md:text-8xl lg:text-[100px] uppercase tracking-tighter leading-[1.1] mb-4 md:mb-6 font-headline">
+              Tipos de <br className="md:hidden" />
+              <span className="text-gradient-animate">painéis</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/80 font-medium max-w-3xl mx-auto font-body">
+              Temos o painel perfeito para o seu negócio ou sua necessidade
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 w-full max-w-[1360px] mx-auto text-left">
             

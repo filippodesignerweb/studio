@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 export function AboutUs() {
   const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
@@ -32,14 +33,12 @@ export function AboutUs() {
             <p>Atendemos clientes que buscam qualidade, segurança e impacto real — não soluções improvisadas.</p>
           </div>
 
-          <a 
-            href={whatsappUrl} 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-glow-green !text-dark border-dark/20 hover:!text-white hover:border-transparent"
+          <Link 
+            href="/quem-somos" 
+            className="btn-glow-green"
           >
             Saiba mais
-          </a>
+          </Link>
         </div>
       </div>
     </section>
