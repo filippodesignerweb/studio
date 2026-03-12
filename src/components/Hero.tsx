@@ -15,7 +15,9 @@ export function Hero() {
 
   useEffect(() => {
     setIsMounted(true);
-    gsap.registerPlugin(ScrollTrigger);
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
 
     if (!containerRef.current) return;
 
@@ -58,13 +60,13 @@ export function Hero() {
       })
       .to(transitionLogoRef.current, {
         opacity: 1,
-        scale: 1.2, // Escala suave, não exagerada
+        scale: 1.1, // Escala suave
         duration: 0.8,
         ease: "power2.out"
       }, "-=0.2")
       .to(transitionLogoRef.current, {
         opacity: 0,
-        scale: 1.4,
+        scale: 1.2,
         duration: 0.5,
         ease: "power2.in"
       })
@@ -112,19 +114,19 @@ export function Hero() {
           ref={transitionLogoRef}
           src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
           alt="LED 4U Transition" 
-          className="w-[200px] md:w-[300px] h-auto opacity-0 scale-[0.9] brightness-0 invert"
+          className="w-[180px] md:w-[250px] h-auto opacity-0 scale-[0.9] brightness-0 invert"
         />
       </div>
 
       {/* Hero Content */}
       <div 
         ref={heroContentRef}
-        className="relative z-10 container max-w-[1360px] mx-auto px-6 text-center lg:text-left items-center lg:items-start text-white"
+        className="relative z-10 container max-w-[1360px] mx-auto px-6 text-center lg:text-left flex flex-col items-center lg:items-start text-white pt-24 md:pt-32 lg:pt-0"
       >
-        <h1 className="font-bold leading-[1.1] mb-6 text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px] xl:text-[64px] max-w-4xl font-headline uppercase tracking-tight">
+        <h1 className="font-bold leading-[1.1] mb-6 text-[26px] sm:text-[34px] md:text-[42px] lg:text-[50px] xl:text-[64px] max-w-4xl font-headline uppercase tracking-tight">
           Especialistas em <span className="text-gradient-animate">painéis de LED</span> para Residências, Fachadas e Empresas
         </h1>
-        <p className="text-white/90 font-body leading-relaxed mb-10 text-[16px] md:text-[18px] lg:text-[20px] max-w-2xl">
+        <p className="text-white/90 font-body leading-relaxed mb-10 text-[15px] md:text-[17px] lg:text-[19px] max-w-2xl">
           Projetos sob medida, instalação completa e suporte técnico especializado.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
