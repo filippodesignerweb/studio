@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, Suspense, lazy, useRef } from 'react';
+import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { 
