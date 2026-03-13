@@ -21,7 +21,7 @@
     --border: 255 15% 15%;
     --input: 255 15% 15%;
     --ring: 142 71% 36%;
-    --radius: 20px;
+    --radius: 10px;
   }
 }
 
@@ -51,7 +51,7 @@
     background-color: hsl(var(--primary));
     color: white !important;
     border: none !important;
-    border-radius: 20px !important;
+    border-radius: 10px !important;
   }
 
   @media (max-width: 768px) {
