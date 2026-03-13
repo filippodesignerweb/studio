@@ -24,7 +24,7 @@ export function LogoMarquee() {
       gsap.to(track, {
         xPercent: -50,
         repeat: -1,
-        duration: 35, // Um pouco mais rápido para melhor dinamismo
+        duration: 35,
         ease: 'none',
       });
     });
@@ -41,7 +41,6 @@ export function LogoMarquee() {
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/GbM8NiN5Hn7kBYIpqj4ux38JiYCIGrJXNnaGnErU-563-568%202_1x.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/Ipiranga_Logo%201_1x.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/SANOL_1x.webp',
-    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos/679d01a39c16e%201_1x.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos/bio-extratus-logo-png_seeklogo-236890%201_1x.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/michelin_1x.webp'
   ];
@@ -53,10 +52,8 @@ export function LogoMarquee() {
       data-theme="light"
     >
       <div className="w-full overflow-hidden">
-        {/* GAP aumentado para distanciamento entre as logos */}
         <div ref={trackRef} className="flex gap-20 md:gap-32 items-center w-max">
           {logos.map((src, i) => (
-            /* Tamanho dos contêineres aumentado para logos maiores */
             <div key={i} className="flex items-center justify-center w-40 h-20 md:w-64 md:h-32">
               <img 
                 src={src} 
