@@ -79,7 +79,16 @@ export function Technology() {
           </div>
           
           <div className="w-full relative min-h-[400px] md:min-h-[500px] flex items-center justify-center">
-            {/* Remover qualquer tag img que estivesse aqui sobrepondo o Spline */}
+            {/* Imagem de fundo técnica conforme solicitado */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40 md:opacity-100">
+               <img 
+                 loading="lazy" 
+                 src="https://cdn.prod.website-files.com/680fbe8bef9d3f9107de7fa8/68112a2a9c36255e84c9f348_Untitled%401-1904x1001%203.png" 
+                 alt="Technical Background" 
+                 className="w-full max-w-5xl h-auto object-contain"
+               />
+            </div>
+
             <div className="absolute inset-0 z-10 cursor-grab active:cursor-grabbing">
               {isMounted && (
                 /* @ts-ignore */

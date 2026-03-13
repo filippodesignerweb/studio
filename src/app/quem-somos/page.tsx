@@ -39,7 +39,6 @@ export default function QuemSomosPage() {
   const [isHovered, setIsHovered] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const requestRef = useRef<number>(null);
-  const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
 
   const categories = [
     { title: "Igrejas", icon: Church },
