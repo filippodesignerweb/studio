@@ -53,9 +53,9 @@ export function LogoMarquee() {
       data-theme="light"
     >
       <div className="w-full overflow-hidden">
-        <div ref={trackRef} className="flex gap-20 md:gap-32 items-center w-max">
+        <div ref={trackRef} className="flex gap-16 md:gap-24 items-center w-max">
           {logos.map((src, i) => (
-            <div key={i} className="flex items-center justify-center w-48 h-24 md:w-80 md:h-40">
+            <div key={i} className="flex items-center justify-center w-36 h-18 md:w-56 md:h-28">
               <img 
                 src={src} 
                 className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-110" 
