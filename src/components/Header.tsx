@@ -70,7 +70,7 @@ export function Header() {
               "text-[8px] uppercase font-bold tracking-widest mt-1 transition-colors duration-500",
               isNavInvert ? "text-dark/40" : "text-white/40"
             )}>
-              CNPJ: 61.511.646/0001-28 <br /> Led4u Paineis de led ltda
+              CNPJ: 61.511.646/0001-28
             </div>
           </div>
 
