@@ -66,12 +66,6 @@ export function Header() {
                 className="w-full h-auto logo-img transition-all duration-500"
               />
             </Link>
-            <div className={cn(
-              "text-[8px] uppercase font-bold tracking-widest mt-1 transition-colors duration-500",
-              isNavInvert ? "text-dark/40" : "text-white/40"
-            )}>
-              CNPJ: 61.511.646/0001-28
-            </div>
           </div>
 
           <nav className="hidden lg:flex items-center space-x-10">
