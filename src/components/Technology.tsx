@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Script from 'next/script';
-import { Sparkles, Shield, Monitor, Zap, X } from 'lucide-react';
+import { Sparkles, Shield, Monitor, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const features = [
@@ -79,6 +79,7 @@ export function Technology() {
           </div>
           
           <div className="w-full relative min-h-[400px] md:min-h-[500px] flex items-center justify-center">
+            {/* Remover qualquer tag img que estivesse aqui sobrepondo o Spline */}
             <div className="absolute inset-0 z-10 cursor-grab active:cursor-grabbing">
               {isMounted && (
                 /* @ts-ignore */

@@ -24,7 +24,7 @@ export function LogoMarquee() {
       gsap.to(track, {
         xPercent: -50,
         repeat: -1,
-        duration: 40, 
+        duration: 35, // Um pouco mais rápido para melhor dinamismo
         ease: 'none',
       });
     });
@@ -53,9 +53,11 @@ export function LogoMarquee() {
       data-theme="light"
     >
       <div className="w-full overflow-hidden">
-        <div ref={trackRef} className="flex gap-16 md:gap-24 items-center w-max">
+        {/* GAP aumentado para distanciamento entre as logos */}
+        <div ref={trackRef} className="flex gap-20 md:gap-32 items-center w-max">
           {logos.map((src, i) => (
-            <div key={i} className="flex items-center justify-center w-36 h-18 md:w-56 md:h-28">
+            /* Tamanho dos contêineres aumentado para logos maiores */
+            <div key={i} className="flex items-center justify-center w-40 h-20 md:w-64 md:h-32">
               <img 
                 src={src} 
                 className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-110" 
