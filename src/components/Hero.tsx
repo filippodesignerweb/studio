@@ -60,7 +60,7 @@ export function Hero() {
       })
       .to(transitionLogoRef.current, {
         opacity: 1,
-        scale: 1.1, // Escala suave
+        scale: 1.1, 
         duration: 0.8,
         ease: "power2.out"
       }, "-=0.2")
