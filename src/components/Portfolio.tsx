@@ -10,7 +10,7 @@ export function Portfolio() {
       data-theme="light"
     >
       <div className="container max-w-[1360px] mx-auto px-6 text-dark text-center">
-        <h2 className="font-black text-4xl md:text-7xl lg:text-[80px] uppercase tracking-tighter leading-[1.1] font-headline">
+        <h2 className="font-black text-4xl md:text-7xl lg:text-[80px] uppercase tracking-tighter leading-[1.1] font-headline mb-5">
           EMPRESAS QUE <br /> <span className="text-gradient-animate italic">JÁ ATENDEMOS</span>
         </h2>
       </div>
