@@ -10,8 +10,11 @@ export function Portfolio() {
       data-theme="light"
     >
       <div className="container max-w-[1360px] mx-auto px-6 text-dark text-center">
-        <h2 className="font-black text-4xl md:text-7xl lg:text-[80px] uppercase tracking-tighter leading-[1.2] font-headline mb-5">
-          EMPRESAS QUE <br /> <span className="text-gradient-animate italic pb-2">JÁ ATENDEMOS</span>
+        <h2 className="font-black text-4xl md:text-7xl lg:text-[80px] uppercase tracking-tighter leading-[1.4] font-headline mb-5">
+          EMPRESAS QUE <br /> 
+          <span className="text-gradient-animate italic inline-block py-6 px-4">
+            JÁ ATENDEMOS
+          </span>
         </h2>
       </div>
     </section>
