@@ -107,7 +107,7 @@ export default function QuemSomosPage() {
                 <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
                   <span>Tudo que você precisa <br className="hidden md:block" /> saber sobre a</span>
                   <br />
-                  <span className="text-gradient-animate italic">Led4U!</span>
+                  <span className="text-gradient-animate italic inline-block py-4 px-2">Led4U!</span>
                 </h1>
               </div>
 
