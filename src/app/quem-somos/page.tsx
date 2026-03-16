@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { 
-  ArrowRight, 
   ChevronDown, 
   Church, 
   Mic2, 
@@ -13,10 +12,15 @@ import {
   Maximize, 
   Building2
 } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default function QuemSomosPage() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const requestRef = useRef<number>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const heroContentRef = useRef<HTMLDivElement>(null);
+  const transitionLogoRef = useRef<HTMLImageElement>(null);
+  const blackOverlayRef = useRef<HTMLDivElement>(null);
+  const contentWrapperRef = useRef<HTMLDivElement>(null);
 
   const categories = [
     { title: "Igrejas", icon: Church },
@@ -27,23 +31,49 @@ export default function QuemSomosPage() {
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
-      
-      requestRef.current = requestAnimationFrame(() => {
-        const vh = window.innerHeight;
-        const scrollY = window.scrollY;
-        const endZoom = vh * 1.5;
-        const progress = Math.min(Math.max(scrollY / endZoom, 0), 1);
-        setScrollProgress(progress);
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+
+    if (!containerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: '+=100%', 
+          pin: true,     
+          scrub: 1,    
+        }
       });
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
-    };
+
+      tl.to(heroContentRef.current, {
+        scale: 40,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.inOut"
+      })
+      .to(transitionLogoRef.current, {
+        opacity: 1,
+        scale: 1.1, 
+        duration: 0.8,
+        ease: "power2.out"
+      }, "-=0.2")
+      .to(transitionLogoRef.current, {
+        opacity: 0,
+        scale: 1.2,
+        duration: 0.5,
+        ease: "power2.in"
+      })
+      .to(blackOverlayRef.current, {
+        opacity: 1,
+        duration: 0.8
+      }, "-=0.5");
+
+    }, containerRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -86,47 +116,54 @@ export default function QuemSomosPage() {
         
         <Header />
 
-        <div className="relative w-full" style={{ height: '200vh' }} data-theme="dark">
-          <div className="sticky top-0 w-full h-screen overflow-hidden bg-dark">
-            
-            <div
-              className="absolute inset-0 w-full h-full flex flex-col items-center justify-end z-10 smooth-gpu"
-              style={{
-                transform: `scale(${1 + Math.pow(scrollProgress, 2.5) * 45})`,
-                transformOrigin: '50% 65%',
-                opacity: scrollProgress > 0.85 ? Math.max(0, 1 - (scrollProgress - 0.85) * 6) : 1,
-              }}
-            >
-              <div 
-                className="absolute bottom-0 w-full max-w-7xl h-[75vh] rounded-t-[48px] border border-b-0 border-white/10 bg-[#0f0f0f] flex flex-col items-center justify-center overflow-hidden"
-              >
-                {/* No Texture Effect */}
-              </div>
-
-              <div className="absolute bottom-0 w-full h-[75vh] z-20 flex flex-col items-center justify-center px-4 font-headline">
-                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
-                  <span>Tudo que você precisa <br className="hidden md:block" /> saber sobre a</span>
-                  <br />
-                  <span className="text-gradient-animate italic inline-block py-6 px-12">Led4U!</span>
-                </h1>
-              </div>
-
-              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style={{ opacity: Math.max(0, 1 - scrollProgress * 3) }}>
-                <span className="text-xs text-white/40 tracking-widest uppercase font-semibold font-headline">Scroll</span>
-                <ChevronDown className="h-6 w-6 text-white/60 animate-bounce" />
-              </div>
-            </div>
-
-            <div
-              className="absolute inset-0 z-[5] pointer-events-none transition-opacity duration-300"
-              style={{
-                background: 'linear-gradient(135deg, #9800FF 0%, #12CFDB 100%)',
-                opacity: scrollProgress > 0.6 ? Math.min(1, (scrollProgress - 0.6) * 2.5) : 0,
-              }}
+        {/* HERO SECTION WITH PINNED TRANSITION */}
+        <section 
+          ref={containerRef}
+          className="relative w-full h-screen bg-dark overflow-hidden flex items-center justify-center" 
+          data-theme="dark"
+        >
+          {/* Transition Logo (Centered) */}
+          <div className="absolute inset-0 z-[50] flex items-center justify-center pointer-events-none">
+            <img 
+              ref={transitionLogoRef}
+              src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
+              alt="LED 4U Transition" 
+              className="w-[180px] md:w-[250px] h-auto opacity-0 scale-[0.9] brightness-0 invert"
             />
           </div>
-        </div>
 
+          {/* Black Overlay for Transition */}
+          <div 
+            ref={blackOverlayRef}
+            className="absolute inset-0 z-[40] bg-black opacity-0 pointer-events-none"
+          />
+
+          <div
+            ref={heroContentRef}
+            className="absolute inset-0 w-full h-full flex flex-col items-center justify-end z-10 smooth-gpu"
+            style={{ transformOrigin: '50% 65%' }}
+          >
+            <div 
+              className="absolute bottom-0 w-full max-w-7xl h-[75vh] rounded-t-[48px] border border-b-0 border-white/10 bg-[#0f0f0f] flex flex-col items-center justify-center overflow-hidden"
+            >
+            </div>
+
+            <div className="absolute bottom-0 w-full h-[75vh] z-20 flex flex-col items-center justify-center px-4 font-headline">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
+                <span>Tudo que você precisa <br className="hidden md:block" /> saber sobre a</span>
+                <br />
+                <span className="text-gradient-animate italic inline-block py-6 px-12">Led4U!</span>
+              </h1>
+            </div>
+
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+              <span className="text-xs text-white/40 tracking-widest uppercase font-semibold font-headline">Scroll</span>
+              <ChevronDown className="h-6 w-6 text-white/60 animate-bounce" />
+            </div>
+          </div>
+        </section>
+
+        {/* CONTENT SECTION */}
         <div className="relative z-50 w-full" style={{ background: 'linear-gradient(135deg, #9800FF 0%, #12CFDB 100%)' }} data-theme="dark">
           
           <div className="w-full flex flex-col items-center py-20">
