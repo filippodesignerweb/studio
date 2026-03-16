@@ -18,9 +18,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export default function QuemSomosPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
-  const transitionLogoRef = useRef<HTMLImageElement>(null);
   const blackOverlayRef = useRef<HTMLDivElement>(null);
-  const contentWrapperRef = useRef<HTMLDivElement>(null);
 
   const categories = [
     { title: "Igrejas", icon: Church },
@@ -38,6 +36,7 @@ export default function QuemSomosPage() {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
+      // Transição idêntica à Hero da Home
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -49,27 +48,16 @@ export default function QuemSomosPage() {
       });
 
       tl.to(heroContentRef.current, {
-        scale: 40,
         opacity: 0,
-        duration: 1,
+        y: -50,
+        duration: 0.6,
         ease: "power2.inOut"
-      })
-      .to(transitionLogoRef.current, {
-        opacity: 1,
-        scale: 1.1, 
-        duration: 0.8,
-        ease: "power2.out"
-      }, "-=0.2")
-      .to(transitionLogoRef.current, {
-        opacity: 0,
-        scale: 1.2,
-        duration: 0.5,
-        ease: "power2.in"
       })
       .to(blackOverlayRef.current, {
         opacity: 1,
-        duration: 0.8
-      }, "-=0.5");
+        duration: 0.8,
+        ease: "power2.inOut"
+      }, "-=0.3");
 
     }, containerRef);
 
@@ -122,16 +110,6 @@ export default function QuemSomosPage() {
           className="relative w-full h-screen bg-dark overflow-hidden flex items-center justify-center" 
           data-theme="dark"
         >
-          {/* Transition Logo (Centered) */}
-          <div className="absolute inset-0 z-[50] flex items-center justify-center pointer-events-none">
-            <img 
-              ref={transitionLogoRef}
-              src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
-              alt="LED 4U Transition" 
-              className="w-[180px] md:w-[250px] h-auto opacity-0 scale-[0.9] brightness-0 invert"
-            />
-          </div>
-
           {/* Black Overlay for Transition */}
           <div 
             ref={blackOverlayRef}
@@ -141,7 +119,6 @@ export default function QuemSomosPage() {
           <div
             ref={heroContentRef}
             className="absolute inset-0 w-full h-full flex flex-col items-center justify-end z-10 smooth-gpu"
-            style={{ transformOrigin: '50% 65%' }}
           >
             <div 
               className="absolute bottom-0 w-full max-w-7xl h-[75vh] rounded-t-[48px] border border-b-0 border-white/10 bg-[#0f0f0f] flex flex-col items-center justify-center overflow-hidden"
@@ -152,7 +129,7 @@ export default function QuemSomosPage() {
               <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
                 <span>Tudo que você precisa <br className="hidden md:block" /> saber sobre a</span>
                 <br />
-                <span className="text-gradient-animate italic inline-block py-6 px-12">Led4U!</span>
+                <span className="text-gradient-animate italic inline-block py-8 px-16">Led4U!</span>
               </h1>
             </div>
 
