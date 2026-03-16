@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, Suspense, lazy, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -14,29 +14,7 @@ import {
   Building2
 } from 'lucide-react';
 
-const Dithering = lazy(() =>
-  import('@paper-design/shaders-react')
-    .then((mod) => {
-      if (mod && (mod as any).Dithering) {
-        return { default: (mod as any).Dithering };
-      }
-      throw new Error('Dithering component not found');
-    })
-    .catch(() => ({
-      default: ({ colorFront }: { colorFront: string }) => (
-        <div
-          className="absolute inset-0 opacity-40 mix-blend-screen"
-          style={{
-            backgroundImage: `radial-gradient(circle at 50% 50%, ${colorFront}60 0%, transparent 60%), url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E")`,
-            backgroundSize: '100% 100%, 150px 150px',
-          }}
-        />
-      ),
-    }))
-);
-
 export default function QuemSomosPage() {
-  const [isHovered, setIsHovered] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const requestRef = useRef<number>(null);
 
@@ -121,22 +99,8 @@ export default function QuemSomosPage() {
             >
               <div 
                 className="absolute bottom-0 w-full max-w-7xl h-[75vh] rounded-t-[48px] border border-b-0 border-white/10 bg-[#0f0f0f] flex flex-col items-center justify-center overflow-hidden"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
               >
-                <Suspense fallback={<div className="absolute inset-0 bg-[#9800FF]/10 animate-pulse" />}>
-                  <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen">
-                    <Dithering 
-                      colorBack="#00000000" 
-                      colorFront="#9800FF" 
-                      shape="warp" 
-                      type="4x4" 
-                      speed={isHovered ? 0.6 : 0.2} 
-                      className="size-full" 
-                      minPixelRatio={1} 
-                    />
-                  </div>
-                </Suspense>
+                {/* No Texture Effect */}
               </div>
 
               <div className="absolute bottom-0 w-full h-[75vh] z-20 flex flex-col items-center justify-center px-4 font-headline">
