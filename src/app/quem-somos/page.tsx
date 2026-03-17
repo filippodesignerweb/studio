@@ -36,7 +36,7 @@ export default function QuemSomosPage() {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Transição idêntica à Hero da Home
+      // Transição imersiva com pinning
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -84,9 +84,6 @@ export default function QuemSomosPage() {
             display: flex;
             width: max-content;
             animation: marquee-custom 40s linear infinite;
-          }
-          .animate-marquee-custom:hover {
-            animation-play-state: paused;
           }
           
           .scrollbar-hide::-webkit-scrollbar { display: none; }
@@ -147,8 +144,7 @@ export default function QuemSomosPage() {
             
             <div className="px-4 md:px-6 w-full max-w-5xl mx-auto flex flex-col items-center">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tighter text-center max-w-4xl text-white drop-shadow-xl mb-12 leading-tight font-headline uppercase">
-                O que nós fazemos e que talvez <br className="hidden md:block" />
-                você não conhecia?
+                Um pouco sobre a LED4U
               </h2>
               
               <div className="space-y-8 text-white/95 text-lg md:text-xl font-medium leading-relaxed font-body">

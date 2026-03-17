@@ -57,10 +57,10 @@ export function LogoMarquee() {
       <div className="w-full overflow-hidden">
         <div ref={trackRef} className="flex gap-16 md:gap-24 items-center w-max">
           {logos.map((src, i) => (
-            <div key={i} className="flex items-center justify-center w-40 h-20 md:w-56 md:h-28 px-4">
+            <div key={i} className="flex items-center justify-center w-40 h-20 md:w-64 md:h-32 px-10">
               <img 
                 src={src} 
-                className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-110 p-1" 
+                className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-110 p-2" 
                 alt={`Parceiro ${i}`}
               />
             </div>
