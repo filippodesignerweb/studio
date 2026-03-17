@@ -129,10 +129,10 @@ export default function ProdutosPage() {
           <div className="container max-w-[1360px] mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
             <div className="w-full lg:w-1/2">
               <h2 className="text-4xl md:text-5xl font-black mb-8 font-headline uppercase tracking-tighter flex flex-wrap items-baseline gap-2">
-                Como funciona <span className="text-gradient-animate italic inline-block px-8 py-1">um Led</span>
+                Como funciona <span className="text-gradient-animate italic inline-block pr-8 py-1">um Led</span>
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed font-body">
-                A LED4U nasceu da paixão por iluminação eficiente e inovadora. Fundada com o objetivo de democratizar o acesso à tecnologia LED, a LED4U dedica-se a oferecer soluções de iluminação de alta qualidade, durabilidade e design para os mais diversos ambientes. Acreditamos que a iluminação LED é o futuro, proporcionando economia de energia significativa e contribuindo para um planeta mais sustentável.
+                A LED4U nasceu da passion por iluminação eficiente e inovadora. Fundada com o objetivo de democratizar o acesso à tecnologia LED, a LED4U dedica-se a oferecer soluções de iluminação de alta qualidade, durabilidade e design para os mais diversos ambientes. Acreditamos que a iluminação LED é o futuro, proporcionando economia de energia significativa e contribuindo para um planeta mais sustentável.
               </p>
             </div>
             <div className="w-full lg:w-1/2 h-[400px] md:h-[500px] relative">
