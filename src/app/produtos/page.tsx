@@ -61,14 +61,14 @@ export default function ProdutosPage() {
         {/* Tipos de Painéis */}
         <section className="pt-40 pb-24 px-6 max-w-[1360px] mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 font-headline">Tipos de painéis</h1>
+            <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 font-headline text-white">Tipos de painéis</h1>
             <p className="text-lg text-white/60 font-medium">Temos o painel perfeito para o seu negócio ou sua necessidade</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* P1 */}
             <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
-              <div className="w-full h-[400px] md:h-[500px] mb-8 rounded-2xl overflow-hidden bg-black/40">
+              <div className="w-full h-[500px] md:h-[650px] mb-8 rounded-2xl overflow-hidden bg-black/40">
                 {isMounted && (
                   /* @ts-ignore */
                   <spline-viewer url="https://prod.spline.design/8U4UcWyiaGJFd-mz/scene.splinecode" className="w-full h-full"></spline-viewer>
@@ -82,7 +82,7 @@ export default function ProdutosPage() {
 
             {/* P2.9 */}
             <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
-              <div className="w-full h-[400px] md:h-[500px] mb-8 rounded-2xl overflow-hidden bg-black/40">
+              <div className="w-full h-[500px] md:h-[650px] mb-8 rounded-2xl overflow-hidden bg-black/40">
                 {isMounted && (
                   /* @ts-ignore */
                   <spline-viewer url="https://prod.spline.design/0ifEkHF-jFPVx3Wx/scene.splinecode" className="w-full h-full"></spline-viewer>
@@ -96,7 +96,7 @@ export default function ProdutosPage() {
 
             {/* P3.9 */}
             <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
-              <div className="w-full h-[400px] md:h-[500px] mb-8 rounded-2xl overflow-hidden bg-black/40">
+              <div className="w-full h-[500px] md:h-[650px] mb-8 rounded-2xl overflow-hidden bg-black/40">
                 {isMounted && (
                   /* @ts-ignore */
                   <spline-viewer url="https://prod.spline.design/aP31iDGIfRiXjJqF/scene.splinecode" className="w-full h-full"></spline-viewer>
@@ -110,7 +110,7 @@ export default function ProdutosPage() {
 
             {/* P5 */}
             <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
-              <div className="w-full h-[400px] md:h-[500px] mb-8 rounded-2xl overflow-hidden bg-black/40">
+              <div className="w-full h-[500px] md:h-[650px] mb-8 rounded-2xl overflow-hidden bg-black/40">
                 {isMounted && (
                   /* @ts-ignore */
                   <spline-viewer url="https://prod.spline.design/DOwUXZ0t9vy3yP25/scene.splinecode" className="w-full h-full"></spline-viewer>
@@ -128,8 +128,8 @@ export default function ProdutosPage() {
         <section className="py-24 bg-white text-black" data-theme="light">
           <div className="container max-w-[1360px] mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
             <div className="w-full lg:w-1/2">
-              <h2 className="text-4xl md:text-5xl font-black mb-8 font-headline uppercase tracking-tighter">
-                Como funciona <span className="text-gradient-animate italic inline-block py-2 px-8">um Led</span>
+              <h2 className="text-4xl md:text-5xl font-black mb-8 font-headline uppercase tracking-tighter flex flex-wrap items-baseline gap-2">
+                Como funciona <span className="text-gradient-animate italic inline-block px-8 py-1">um Led</span>
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed font-body">
                 A LED4U nasceu da paixão por iluminação eficiente e inovadora. Fundada com o objetivo de democratizar o acesso à tecnologia LED, a LED4U dedica-se a oferecer soluções de iluminação de alta qualidade, durabilidade e design para os mais diversos ambientes. Acreditamos que a iluminação LED é o futuro, proporcionando economia de energia significativa e contribuindo para um planeta mais sustentável.
