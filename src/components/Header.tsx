@@ -51,7 +51,7 @@ export function Header() {
         className={cn(
           'fixed top-0 left-0 w-full z-[2000] transition-all duration-500',
           isScrolled 
-            ? (isNavInvert ? 'bg-white/95 shadow-sm py-3' : 'bg-dark/80 py-3') 
+            ? (isNavInvert ? 'bg-white/95 shadow-sm py-3' : 'bg-dark/90 py-3') 
             : 'bg-transparent py-5 lg:py-8',
           isScrolled && 'backdrop-blur-md',
           isNavInvert && 'nav-invert'
@@ -59,7 +59,7 @@ export function Header() {
       >
         <div className="max-w-[1360px] mx-auto px-6 flex items-center justify-between">
           <div className="flex flex-col">
-            <Link href="/" className="flex-shrink-0 w-[110px] md:w-[130px]">
+            <Link href="/" className="flex-shrink-0 w-[100px] md:w-[130px]">
               <img 
                 src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
                 alt="Logo LED 4U" 
@@ -96,7 +96,7 @@ export function Header() {
             className="lg:hidden p-2 transition-colors duration-500"
             onClick={() => setMobileMenuOpen(true)}
           >
-            <Menu className={cn("w-8 h-8", isNavInvert ? "text-dark" : "text-white")} />
+            <Menu className={cn("w-7 h-7", isNavInvert ? "text-dark" : "text-white")} />
           </button>
         </div>
       </header>
@@ -104,38 +104,57 @@ export function Header() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          'fixed inset-0 z-[2100] bg-dark/98 flex flex-col items-center justify-center p-8 transition-transform duration-500 lg:hidden',
+          'fixed inset-0 z-[2100] bg-dark flex flex-col transition-transform duration-500 lg:hidden',
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
-        <button
-          className="absolute top-10 right-10 text-white p-2"
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          <X className="w-10 h-10" />
-        </button>
-
-        <nav className="flex flex-col space-y-8 items-center text-center">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-2xl font-bold text-white hover:text-primary transition-colors font-headline uppercase"
-            >
-              {link.name}
-            </Link>
-          ))}
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+        {/* Mobile Menu Header */}
+        <div className="flex items-center justify-between px-6 py-5 border-b border-white/5">
+          <img 
+            src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
+            alt="Logo LED 4U" 
+            className="w-[90px] h-auto"
+          />
+          <button
+            className="text-white p-2 hover:bg-white/5 rounded-full transition-colors"
             onClick={() => setMobileMenuOpen(false)}
-            className="btn-glow-green mt-8 w-full"
           >
-            Fazer Orçamento
-          </a>
+            <X className="w-8 h-8" />
+          </button>
+        </div>
+
+        {/* Mobile Menu Navigation */}
+        <nav className="flex-1 flex flex-col justify-center items-center px-8 py-12 text-center">
+          <div className="flex flex-col space-y-6 md:space-y-8 w-full max-w-xs">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-xl md:text-2xl font-bold text-white hover:text-primary transition-all duration-300 font-headline uppercase tracking-tight"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+          
+          <div className="mt-12 w-full max-w-xs">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="btn-glow-green w-full !py-4"
+            >
+              Fazer Orçamento
+            </a>
+          </div>
         </nav>
+
+        {/* Mobile Menu Footer Decoration */}
+        <div className="p-8 text-center opacity-20">
+          <p className="text-[10px] uppercase tracking-[0.3em] font-headline">LED 4U • 2026</p>
+        </div>
       </div>
     </>
   );
