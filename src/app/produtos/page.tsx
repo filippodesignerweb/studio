@@ -65,59 +65,59 @@ export default function ProdutosPage() {
             <p className="text-lg text-white/60 font-medium">Temos o painel perfeito para o seu negócio ou sua necessidade</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* P1 */}
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col h-full">
-              <div className="aspect-square mb-6 rounded-2xl overflow-hidden bg-black/40">
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
+              <div className="w-full h-[400px] md:h-[500px] mb-8 rounded-2xl overflow-hidden bg-black/40">
                 {isMounted && (
                   /* @ts-ignore */
                   <spline-viewer url="https://prod.spline.design/8U4UcWyiaGJFd-mz/scene.splinecode" className="w-full h-full"></spline-viewer>
                 )}
               </div>
-              <h3 className="text-xl font-bold mb-4 font-headline uppercase">Painéis P1 INDOOR</h3>
-              <p className="text-white/70 text-sm leading-relaxed">
+              <h3 className="text-2xl font-bold mb-4 font-headline uppercase text-primary">Painéis P1 INDOOR</h3>
+              <p className="text-white/70 text-base leading-relaxed">
                 Experimente a máxima nitidez com nossos painéis de LED P1. Com apenas <strong>1 milímetro</strong> de distância entre os pixels, eles oferecem uma resolução de imagem impressionante, ideal para visualização a curta distância. Perfeito para salas de controle, estúdios e ambientes de luxo, onde cada detalhe importa.
               </p>
             </div>
 
             {/* P2.9 */}
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col h-full">
-              <div className="aspect-square mb-6 rounded-2xl overflow-hidden bg-black/40">
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
+              <div className="w-full h-[400px] md:h-[500px] mb-8 rounded-2xl overflow-hidden bg-black/40">
                 {isMounted && (
                   /* @ts-ignore */
                   <spline-viewer url="https://prod.spline.design/0ifEkHF-jFPVx3Wx/scene.splinecode" className="w-full h-full"></spline-viewer>
                 )}
               </div>
-              <h3 className="text-xl font-bold mb-4 font-headline uppercase">Painéis P2.9 INDOOR - OUTDOOR</h3>
-              <p className="text-white/70 text-sm leading-relaxed">
+              <h3 className="text-2xl font-bold mb-4 font-headline uppercase text-primary">Painéis P2.9 INDOOR - OUTDOOR</h3>
+              <p className="text-white/70 text-base leading-relaxed">
                 O painel P2 é a escolha inteligente para quem busca o equilíbrio perfeito entre qualidade de imagem e custo-benefício. Com 2mm de Pixel Pitch, ele entrega uma resolução fantástica para visualização a partir de 2 metros, ideal para lojas, auditórios e recepções.
               </p>
             </div>
 
             {/* P3.9 */}
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col h-full">
-              <div className="aspect-square mb-6 rounded-2xl overflow-hidden bg-black/40">
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
+              <div className="w-full h-[400px] md:h-[500px] mb-8 rounded-2xl overflow-hidden bg-black/40">
                 {isMounted && (
                   /* @ts-ignore */
                   <spline-viewer url="https://prod.spline.design/aP31iDGIfRiXjJqF/scene.splinecode" className="w-full h-full"></spline-viewer>
                 )}
               </div>
-              <h3 className="text-xl font-bold mb-4 font-headline uppercase">Painéis P3.9 INDOOR - OUTDOOR</h3>
-              <p className="text-white/70 text-sm leading-relaxed">
+              <h3 className="text-2xl font-bold mb-4 font-headline uppercase text-primary">Painéis P3.9 INDOOR - OUTDOOR</h3>
+              <p className="text-white/70 text-base leading-relaxed">
                 O painel P3.9 é a solução ideal para eventos, shows e locações. Com 3.9mm de Pixel Pitch, ele oferece uma qualidade de imagem ótima tanto para ambientes internos quanto externos, garantindo flexibilidade e impacto visual em qualquer situação.
               </p>
             </div>
 
             {/* P5 */}
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col h-full">
-              <div className="aspect-square mb-6 rounded-2xl overflow-hidden bg-black/40">
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
+              <div className="w-full h-[400px] md:h-[500px] mb-8 rounded-2xl overflow-hidden bg-black/40">
                 {isMounted && (
                   /* @ts-ignore */
                   <spline-viewer url="https://prod.spline.design/DOwUXZ0t9vy3yP25/scene.splinecode" className="w-full h-full"></spline-viewer>
                 )}
               </div>
-              <h3 className="text-xl font-bold mb-4 font-headline uppercase">Painéis P5 OUTDOOR</h3>
-              <p className="text-white/70 text-sm leading-relaxed">
+              <h3 className="text-2xl font-bold mb-4 font-headline uppercase text-primary">Painéis P5 OUTDOOR</h3>
+              <p className="text-white/70 text-base leading-relaxed">
                 Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch e altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista com clareza e cores vibrantes, mesmo sob a luz do sol.
               </p>
             </div>
