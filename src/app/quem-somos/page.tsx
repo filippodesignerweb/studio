@@ -36,7 +36,7 @@ export default function QuemSomosPage() {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Transição imersiva com pinning
+      // Transição imersiva com pinning (idêntica à Hero da Home)
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -49,8 +49,8 @@ export default function QuemSomosPage() {
 
       tl.to(heroContentRef.current, {
         opacity: 0,
-        y: -50,
-        duration: 0.6,
+        y: -30,
+        duration: 0.5,
         ease: "power2.inOut"
       })
       .to(blackOverlayRef.current, {
@@ -143,6 +143,15 @@ export default function QuemSomosPage() {
           <div className="w-full flex flex-col items-center py-20">
             
             <div className="px-4 md:px-6 w-full max-w-5xl mx-auto flex flex-col items-center">
+              
+              <div className="w-full max-w-4xl mb-12 rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20">
+                <img 
+                  src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/QUEM%20SOMOS%201.webp" 
+                  alt="Equipe LED 4U" 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tighter text-center max-w-4xl text-white drop-shadow-xl mb-12 leading-tight font-headline uppercase">
                 Um pouco sobre a LED4U
               </h2>
@@ -163,8 +172,15 @@ export default function QuemSomosPage() {
                   </div>
                 </div>
                 <div className="snap-center shrink-0 transform z-10 -translate-y-6 transition-all duration-500 hover:-translate-y-10 hover:scale-105">
-                  <div className="animate-float-2 w-[220px] h-[380px] md:w-[280px] md:h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/40 bg-[#0f0f0f] relative isolate">
-                    <iframe src="https://player.vimeo.com/video/1170334880?background=1&autoplay=1&loop=1&muted=1" className="absolute top-0 left-0 w-full h-full scale-[1.2] pointer-events-none" frameBorder="0"></iframe>
+                  <div className="animate-float-2 w-[220px] h-[380px] md:w-[280px] md:h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/40 bg-[#0f0f0f] relative isolate flex items-center justify-center">
+                    <video 
+                      src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/video%20.webm" 
+                      className="absolute top-0 left-0 w-full h-full object-cover scale-[1.2]" 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline
+                    />
                   </div>
                 </div>
                 <div className="snap-center shrink-0 transform rotate-6 translate-y-10 transition-all duration-500 hover:rotate-0 hover:translate-y-2">
