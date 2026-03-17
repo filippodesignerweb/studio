@@ -18,21 +18,21 @@ const slides: SlideData[] = [
     subtitle: 'Residências e Empresas',
     description: 'Solução completa com estrutura, instalação e suporte contínuo. Ideal para bares, restaurantes, escritórios e projetos permanentes que buscam excelência e durabilidade.',
     accent: '#9800FF',
-    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/VVD/VENDA%201_1x.webp',
+    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/VENDA%201_1x.webp',
   },
   {
     title: 'Locação Fixa',
     subtitle: 'Longo Prazo',
     description: 'Indicada para fachadas comerciais e academias que desejam instalar o painel de forma contínua, diluindo o investimento ao longo do tempo com suporte total.',
     accent: '#12CFDB',
-    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/VVD/LOCAC%CC%A7A%CC%83O%20FIXA%201_1x.webp',
+    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/LOCAC%CC%A7A%CC%83O%20FIXA%201_1x.webp',
   },
   {
     title: 'Locação Eventos',
     subtitle: 'Projetos Temporários',
     description: 'Inclui montagem, desmontagem e suporte técnico durante o período contratado. Ideal para corporativos, casamentos e ativações de marca de alto impacto.',
     accent: '#D4A955',
-    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/VVD/LOCAC%CC%A7A%CC%83O%20EVENTOS%201_1x.webp',
+    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/LOCAC%CC%A7A%CC%83O%20EVENTOS%201_1x.webp',
   },
 ];
 
