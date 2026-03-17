@@ -44,7 +44,8 @@ export function LogoMarquee() {
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos/bio-extratus-logo-png_seeklogo-236890%201_1x.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/michelin_1x.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/WhatsApp%20Image%202026-02-26%20at%2009.31.01%203_1x.webp',
-    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/WhatsApp%20Image%202026-02-26%20at%2009.31.18%203_1x.webp'
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/WhatsApp%20Image%202026-02-26%20at%2009.31.18%203_1x.webp',
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/channels4_profile%201.webp'
   ];
 
   return (
@@ -54,12 +55,12 @@ export function LogoMarquee() {
       data-theme="light"
     >
       <div className="w-full overflow-hidden">
-        <div ref={trackRef} className="flex gap-24 md:gap-36 items-center w-max">
+        <div ref={trackRef} className="flex gap-16 md:gap-24 items-center w-max">
           {logos.map((src, i) => (
-            <div key={i} className="flex items-center justify-center w-48 h-24 md:w-64 md:h-32">
+            <div key={i} className="flex items-center justify-center w-40 h-20 md:w-56 md:h-28 px-4">
               <img 
                 src={src} 
-                className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-110" 
+                className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-110 p-1" 
                 alt={`Parceiro ${i}`}
               />
             </div>
