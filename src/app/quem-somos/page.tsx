@@ -36,7 +36,6 @@ export default function QuemSomosPage() {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Transição imersiva com pinning (idêntica à Hero da Home)
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,

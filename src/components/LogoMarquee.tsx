@@ -44,7 +44,7 @@ export function LogoMarquee() {
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos/bio-extratus-logo-png_seeklogo-236890%201_1x.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/logos%20new%20led4u/michelin_1x.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/WhatsApp%20Image%202026-02-26%20at%2009.31.01%203_1x.webp',
-    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/WhatsApp%20Image%202026-02-26%20at%2009.31.18%203_1x.webp',
+    'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/caed.webp',
     'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/channels4_profile%201.webp'
   ];
 
