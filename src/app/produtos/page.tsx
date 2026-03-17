@@ -74,7 +74,7 @@ export default function ProdutosPage() {
                   <spline-viewer url="https://prod.spline.design/8U4UcWyiaGJFd-mz/scene.splinecode" className="w-full h-full"></spline-viewer>
                 )}
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-headline uppercase text-primary">Painéis P1 INDOOR</h3>
+              <h3 className="text-2xl font-bold mb-4 font-headline uppercase text-white">Painéis P1 INDOOR</h3>
               <p className="text-white/70 text-base leading-relaxed">
                 Experimente a máxima nitidez com nossos painéis de LED P1. Com apenas <strong>1 milímetro</strong> de distância entre os pixels, eles oferecem uma resolução de imagem impressionante, ideal para visualização a curta distância. Perfeito para salas de controle, estúdios e ambientes de luxo, onde cada detalhe importa.
               </p>
@@ -88,7 +88,7 @@ export default function ProdutosPage() {
                   <spline-viewer url="https://prod.spline.design/0ifEkHF-jFPVx3Wx/scene.splinecode" className="w-full h-full"></spline-viewer>
                 )}
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-headline uppercase text-primary">Painéis P2.9 INDOOR - OUTDOOR</h3>
+              <h3 className="text-2xl font-bold mb-4 font-headline uppercase text-white">Painéis P2.9 INDOOR - OUTDOOR</h3>
               <p className="text-white/70 text-base leading-relaxed">
                 O painel P2 é a escolha inteligente para quem busca o equilíbrio perfeito entre qualidade de imagem e custo-benefício. Com 2mm de Pixel Pitch, ele entrega uma resolução fantástica para visualização a partir de 2 metros, ideal para lojas, auditórios e recepções.
               </p>
@@ -102,7 +102,7 @@ export default function ProdutosPage() {
                   <spline-viewer url="https://prod.spline.design/aP31iDGIfRiXjJqF/scene.splinecode" className="w-full h-full"></spline-viewer>
                 )}
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-headline uppercase text-primary">Painéis P3.9 INDOOR - OUTDOOR</h3>
+              <h3 className="text-2xl font-bold mb-4 font-headline uppercase text-white">Painéis P3.9 INDOOR - OUTDOOR</h3>
               <p className="text-white/70 text-base leading-relaxed">
                 O painel P3.9 é a solução ideal para eventos, shows e locações. Com 3.9mm de Pixel Pitch, ele oferece uma qualidade de imagem ótima tanto para ambientes internos quanto externos, garantindo flexibilidade e impacto visual em qualquer situação.
               </p>
@@ -116,7 +116,7 @@ export default function ProdutosPage() {
                   <spline-viewer url="https://prod.spline.design/DOwUXZ0t9vy3yP25/scene.splinecode" className="w-full h-full"></spline-viewer>
                 )}
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-headline uppercase text-primary">Painéis P5 OUTDOOR</h3>
+              <h3 className="text-2xl font-bold mb-4 font-headline uppercase text-white">Painéis P5 OUTDOOR</h3>
               <p className="text-white/70 text-base leading-relaxed">
                 Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch e altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista com clareza e cores vibrantes, mesmo sob a luz do sol.
               </p>
@@ -128,7 +128,9 @@ export default function ProdutosPage() {
         <section className="py-24 bg-white text-black" data-theme="light">
           <div className="container max-w-[1360px] mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
             <div className="w-full lg:w-1/2">
-              <h2 className="text-4xl md:text-5xl font-black mb-8 font-headline uppercase tracking-tighter">Como funciona <span className="text-gradient-animate italic">um Led</span></h2>
+              <h2 className="text-4xl md:text-5xl font-black mb-8 font-headline uppercase tracking-tighter">
+                Como funciona <span className="text-gradient-animate italic inline-block py-2 px-8">um Led</span>
+              </h2>
               <p className="text-gray-600 text-lg leading-relaxed font-body">
                 A LED4U nasceu da paixão por iluminação eficiente e inovadora. Fundada com o objetivo de democratizar o acesso à tecnologia LED, a LED4U dedica-se a oferecer soluções de iluminação de alta qualidade, durabilidade e design para os mais diversos ambientes. Acreditamos que a iluminação LED é o futuro, proporcionando economia de energia significativa e contribuindo para um planeta mais sustentável.
               </p>
