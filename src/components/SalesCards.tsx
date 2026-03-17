@@ -117,7 +117,7 @@ export function SalesCards() {
   return (
     <section 
       id="venda-locacao" 
-      className="carousel-wrapper"
+      className="carousel-wrapper relative overflow-hidden"
       data-theme="dark"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
@@ -130,8 +130,8 @@ export function SalesCards() {
         }}
       />
 
-      <div className="carousel-inner">
-        <div className="carousel-content">
+      <div className="carousel-inner flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 py-12 md:py-20">
+        <div className="carousel-content w-full lg:w-1/2 order-2 lg:order-1 px-4 md:px-0">
           <div className="w-full">
             <div
               className={cn(
@@ -147,7 +147,7 @@ export function SalesCards() {
 
             <h2
               className={cn(
-                "carousel-title",
+                "carousel-title text-3xl md:text-5xl lg:text-6xl xl:text-7xl",
                 isTransitioning ? "transitioning" : "visible"
               )}
             >
@@ -156,7 +156,7 @@ export function SalesCards() {
 
             <p
               className={cn(
-                "carousel-subtitle",
+                "carousel-subtitle text-base md:text-lg lg:text-xl",
                 isTransitioning ? "transitioning" : "visible"
               )}
               style={{ color: currentSlide.accent }}
@@ -166,7 +166,7 @@ export function SalesCards() {
 
             <p
               className={cn(
-                "carousel-description",
+                "carousel-description text-sm md:text-base lg:text-lg",
                 isTransitioning ? "transitioning" : "visible"
               )}
             >
@@ -174,7 +174,7 @@ export function SalesCards() {
             </p>
 
             <div className={cn(
-              "transition-all duration-700 delay-200 mt-4",
+              "transition-all duration-700 delay-200 mt-6",
               isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
             )}>
               <a 
@@ -187,7 +187,7 @@ export function SalesCards() {
               </a>
             </div>
 
-            <div className="carousel-nav-arrows mt-12">
+            <div className="carousel-nav-arrows mt-10 md:mt-12">
               <button
                 onClick={goPrev}
                 className="carousel-arrow-btn"
@@ -206,7 +206,7 @@ export function SalesCards() {
           </div>
         </div>
 
-        <div className="carousel-image-container">
+        <div className="carousel-image-container w-full lg:w-[45%] order-1 lg:order-2 px-6 md:px-0">
           <div
             className={cn(
               "carousel-image-frame",
@@ -216,7 +216,7 @@ export function SalesCards() {
             <img
               src={currentSlide.imageUrl}
               alt={currentSlide.title}
-              className="carousel-image"
+              className="carousel-image w-full h-full object-cover"
             />
             <div
               className="carousel-image-overlay"
@@ -231,7 +231,7 @@ export function SalesCards() {
         </div>
       </div>
 
-      <div className="carousel-progress-bar">
+      <div className="carousel-progress-bar hidden md:grid">
         {slides.map((slide, index) => (
           <button
             key={index}
@@ -251,7 +251,7 @@ export function SalesCards() {
                 }}
               />
             </div>
-            <span className="carousel-progress-label">{slide.title}</span>
+            <span className="carousel-progress-label text-[10px]">{slide.title}</span>
           </button>
         ))}
       </div>

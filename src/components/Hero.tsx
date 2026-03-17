@@ -21,7 +21,6 @@ export function Hero() {
 
     if (!containerRef.current) return;
 
-    // Observer para o player de vídeo
     const videoObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -41,7 +40,6 @@ export function Hero() {
 
     videoObserver.observe(containerRef.current);
 
-    // Animação de Transição Ajustada
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -89,7 +87,6 @@ export function Hero() {
       className="relative w-full h-screen bg-dark overflow-hidden flex items-center" 
       data-theme="dark"
     >
-      {/* Background Video */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <iframe
           ref={iframeRef}
@@ -102,31 +99,28 @@ export function Hero() {
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
-      {/* Black Overlay for Transition */}
       <div 
         ref={blackOverlayRef}
         className="absolute inset-0 z-[40] bg-black opacity-0 pointer-events-none"
       />
 
-      {/* Transition Logo (Centered) */}
       <div className="absolute inset-0 z-[50] flex items-center justify-center pointer-events-none">
         <img 
           ref={transitionLogoRef}
           src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
           alt="LED 4U Transition" 
-          className="w-[180px] md:w-[250px] h-auto opacity-0 scale-[0.9] brightness-0 invert"
+          className="w-[140px] md:w-[200px] lg:w-[250px] h-auto opacity-0 scale-[0.9] brightness-0 invert"
         />
       </div>
 
-      {/* Hero Content */}
       <div 
         ref={heroContentRef}
-        className="relative z-10 container max-w-[1360px] mx-auto px-6 text-center lg:text-left flex flex-col items-center lg:items-start text-white pt-24 md:pt-32 lg:pt-0"
+        className="relative z-10 container max-w-[1360px] mx-auto px-6 text-center lg:text-left flex flex-col items-center lg:items-start text-white pt-20 md:pt-32 lg:pt-0"
       >
-        <h1 className="font-bold leading-[1.1] mb-6 text-[26px] sm:text-[34px] md:text-[42px] lg:text-[50px] xl:text-[64px] max-w-4xl font-headline uppercase tracking-tight">
+        <h1 className="font-bold leading-[1.1] mb-6 text-[24px] sm:text-[32px] md:text-[40px] lg:text-[44px] xl:text-[54px] max-w-4xl font-headline uppercase tracking-tight">
           Especialistas em <span className="text-gradient-animate">painéis de LED</span> para Residências, Fachadas e Empresas
         </h1>
-        <p className="text-white/90 font-body leading-relaxed mb-10 text-[15px] md:text-[17px] lg:text-[19px] max-w-2xl">
+        <p className="text-white/90 font-body leading-relaxed mb-8 text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl">
           Projetos sob medida, instalação completa e suporte técnico especializado.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
