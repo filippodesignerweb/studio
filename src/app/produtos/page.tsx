@@ -118,28 +118,8 @@ export default function ProdutosPage() {
               </div>
               <h3 className="text-2xl font-bold mb-4 font-headline uppercase text-white">Painéis P5 OUTDOOR</h3>
               <p className="text-white/70 text-base leading-relaxed">
-                Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch e altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista com clareza e cores vibrantes, mesmo sob a luz do sol.
+                Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch e altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista con clareza e cores vibrantes, mesmo sob a luz do sol.
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Como funciona um Led */}
-        <section className="py-24 bg-white text-black" data-theme="light">
-          <div className="container max-w-[1360px] mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
-            <div className="w-full lg:w-1/2">
-              <h2 className="text-4xl md:text-5xl font-black mb-8 font-headline uppercase tracking-tighter flex flex-wrap items-baseline gap-2">
-                Como funciona <span className="text-gradient-animate italic inline-block pr-8 py-1">um Led</span>
-              </h2>
-              <p className="text-gray-600 text-lg leading-relaxed font-body">
-                A LED4U nasceu da passion por iluminação eficiente e inovadora. Fundada com o objetivo de democratizar o acesso à tecnologia LED, a LED4U dedica-se a oferecer soluções de iluminação de alta qualidade, durabilidade e design para os mais diversos ambientes. Acreditamos que a iluminação LED é o futuro, proporcionando economia de energia significativa e contribuindo para um planeta mais sustentável.
-              </p>
-            </div>
-            <div className="w-full lg:w-1/2 h-[400px] md:h-[500px] relative">
-              {isMounted && (
-                /* @ts-ignore */
-                <spline-viewer url="https://prod.spline.design/3rlqmkkXW1n7mGSg/scene.splinecode" className="w-full h-full"></spline-viewer>
-              )}
             </div>
           </div>
         </section>
