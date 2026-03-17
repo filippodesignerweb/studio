@@ -2,32 +2,28 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function Targets() {
-  // Função auxiliar para buscar a URL da imagem pelo ID no placeholder-images.json
-  const getImg = (id: string) => PlaceHolderImages.find(img => img.id === id)?.imageUrl || '';
-
   const targets = [
     { 
       title: 'Residências de Alto Padrão', 
       desc: 'Transforme sua área gourmet ou cinema em uma experiência imersiva.',
-      image: getImg('hero-led')
+      image: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/para%20quem%20e%CC%81/pag%201%20residen%201_1x.webp'
     },
     { 
       title: 'Fachadas Comerciais', 
       desc: 'Aumente sua visibilidade e destaque sua marca com painéis de LED outdoor de alto impacto visual.',
-      image: getImg('portfolio-2')
+      image: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/para%20quem%20e%CC%81/pag%201%20fachad%201_1x.webp'
     },
     { 
       title: 'Bares e Restaurantes', 
       desc: 'Transmissões profissionais de jogos e eventos com qualidade superior de imagem.',
-      image: getImg('portfolio-3')
+      image: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/para%20quem%20e%CC%81/pag%201%20bares%20%201_1x.webp'
     },
     { 
       title: 'Eventos', 
       desc: 'Soluções completas em painéis de LED para eventos empresariais, ativações de marca e projetos estruturados.',
-      image: getImg('portfolio-1')
+      image: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/para%20quem%20e%CC%81/pag%201%20eventos%201_1x.webp'
     }
   ];
 
@@ -55,7 +51,6 @@ export function Targets() {
                   src={target.image} 
                   alt={target.title} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  data-ai-hint="led panel"
                 />
               </div>
               <div className="p-8 flex flex-col flex-grow">

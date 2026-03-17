@@ -18,21 +18,21 @@ const slides: SlideData[] = [
     subtitle: 'Residências e Empresas',
     description: 'Solução completa com estrutura, instalação e suporte contínuo. Ideal para bares, restaurantes, escritórios e projetos permanentes que buscam excelência e durabilidade.',
     accent: '#9800FF',
-    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m9_1x.webp',
+    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/VVD/VENDA%201_1x.webp',
   },
   {
     title: 'Locação Fixa',
     subtitle: 'Longo Prazo',
     description: 'Indicada para fachadas comerciais e academias que desejam instalar o painel de forma contínua, diluindo o investimento ao longo do tempo com suporte total.',
     accent: '#12CFDB',
-    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m8_1x.webp',
+    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/VVD/LOCAC%CC%A7A%CC%83O%20FIXA%201_1x.webp',
   },
   {
     title: 'Locação Eventos',
     subtitle: 'Projetos Temporários',
     description: 'Inclui montagem, desmontagem e suporte técnico durante o período contratado. Ideal para corporativos, casamentos e ativações de marca de alto impacto.',
     accent: '#D4A955',
-    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/FOTOS%20LED4U/m7_1x.webp',
+    imageUrl: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/VVD/LOCAC%CC%A7A%CC%83O%20EVENTOS%201_1x.webp',
   },
 ];
 
@@ -123,7 +123,6 @@ export function SalesCards() {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Background accent wash */}
       <div
         className="carousel-bg-wash"
         style={{
@@ -132,10 +131,8 @@ export function SalesCards() {
       />
 
       <div className="carousel-inner">
-        {/* Left: Text Content */}
         <div className="carousel-content">
           <div className="w-full">
-            {/* Slide number */}
             <div
               className={cn(
                 "carousel-collection-num",
@@ -148,7 +145,6 @@ export function SalesCards() {
               </span>
             </div>
 
-            {/* Title */}
             <h2
               className={cn(
                 "carousel-title",
@@ -158,7 +154,6 @@ export function SalesCards() {
               {currentSlide.title}
             </h2>
 
-            {/* Subtitle */}
             <p
               className={cn(
                 "carousel-subtitle",
@@ -169,7 +164,6 @@ export function SalesCards() {
               {currentSlide.subtitle}
             </p>
 
-            {/* Description */}
             <p
               className={cn(
                 "carousel-description",
@@ -179,7 +173,6 @@ export function SalesCards() {
               {currentSlide.description}
             </p>
 
-            {/* Call to Action */}
             <div className={cn(
               "transition-all duration-700 delay-200 mt-4",
               isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
@@ -194,7 +187,6 @@ export function SalesCards() {
               </a>
             </div>
 
-            {/* Navigation Arrows */}
             <div className="carousel-nav-arrows mt-12">
               <button
                 onClick={goPrev}
@@ -214,7 +206,6 @@ export function SalesCards() {
           </div>
         </div>
 
-        {/* Right: Image */}
         <div className="carousel-image-container">
           <div
             className={cn(
@@ -235,13 +226,11 @@ export function SalesCards() {
             />
           </div>
 
-          {/* Decorative frame corner */}
           <div className="carousel-frame-corner carousel-frame-corner--tl" style={{ borderColor: currentSlide.accent }} />
           <div className="carousel-frame-corner carousel-frame-corner--br" style={{ borderColor: currentSlide.accent }} />
         </div>
       </div>
 
-      {/* Progress Indicators */}
       <div className="carousel-progress-bar">
         {slides.map((slide, index) => (
           <button
