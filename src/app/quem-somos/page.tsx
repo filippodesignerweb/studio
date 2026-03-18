@@ -112,21 +112,21 @@ export default function QuemSomosPage() {
 
           <div
             ref={heroContentRef}
-            className="absolute inset-0 w-full h-full flex flex-col items-center justify-end z-10 smooth-gpu"
+            className="absolute inset-0 w-full h-full flex flex-col items-center justify-center z-10 smooth-gpu"
           >
             <div 
               className="absolute bottom-0 w-full max-w-7xl h-[65vh] md:h-[75vh] rounded-t-[32px] md:rounded-t-[48px] border border-b-0 border-white/10 bg-[#0f0f0f] flex flex-col items-center justify-center overflow-hidden"
             />
 
-            <div className="absolute bottom-0 w-full h-[65vh] md:h-[75vh] z-20 flex flex-col items-center justify-center px-6 font-headline">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:max-w-4xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
+            <div className="absolute bottom-12 md:bottom-0 w-full h-auto md:h-[75vh] z-20 flex flex-col items-center justify-center px-6 font-headline">
+              <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl lg:max-w-4xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
                 <span>Tudo que você precisa <br className="hidden md:block" /> saber sobre a</span>
                 <br />
-                <span className="text-gradient-animate italic inline-block py-4 md:py-6 px-10 md:px-16">Led4U!</span>
+                <span className="text-gradient-animate italic inline-block py-6 md:py-6 px-10 md:px-16">Led4U!</span>
               </h1>
             </div>
 
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
               <span className="text-[10px] text-white/40 tracking-widest uppercase font-semibold font-headline">Scroll</span>
               <ChevronDown className="h-5 w-5 text-white/60 animate-bounce" />
             </div>
@@ -136,7 +136,7 @@ export default function QuemSomosPage() {
         <div className="relative z-50 w-full" style={{ background: 'linear-gradient(135deg, #9800FF 0%, #12CFDB 100%)' }} data-theme="dark">
           <div className="w-full flex flex-col items-center py-16 md:py-24">
             <div className="px-6 w-full max-w-5xl mx-auto flex flex-col items-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tighter text-center max-w-4xl text-white drop-shadow-xl mb-10 leading-tight font-headline uppercase">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tighter text-center max-w-4xl text-white drop-shadow-xl mb-10 leading-tight font-headline uppercase">
                 Um pouco sobre a LED4U
               </h2>
               
@@ -149,14 +149,14 @@ export default function QuemSomosPage() {
                 <p className="font-bold text-xl md:text-2xl pt-4">Led4U. Tecnologia que transforma ambientes e eleva experiências.</p>
               </div>
 
-              <div className="flex flex-row md:justify-center items-center w-full overflow-x-auto pt-16 md:pt-20 pb-16 md:pb-20 gap-4 md:gap-8 snap-x snap-mandatory scrollbar-hide">
-                <div className="snap-center shrink-0 transform -rotate-6 translate-y-10 transition-all duration-500">
-                  <div className="animate-float-1 w-[200px] h-[340px] md:w-[280px] md:h-[460px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
+              <div className="flex flex-col md:flex-row md:justify-center items-center w-full pt-16 md:pt-20 pb-16 md:pb-20 gap-16 md:gap-8">
+                <div className="transform md:-rotate-6 md:translate-y-10 transition-all duration-500">
+                  <div className="animate-float-1 w-[280px] h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
                     <iframe src="https://player.vimeo.com/video/1170334926?background=1&autoplay=1&loop=1&muted=1" className="absolute top-0 left-0 w-full h-full scale-[1.1] pointer-events-none" frameBorder="0"></iframe>
                   </div>
                 </div>
-                <div className="snap-center shrink-0 transform z-10 -translate-y-6 transition-all duration-500">
-                  <div className="animate-float-2 w-[200px] h-[340px] md:w-[280px] md:h-[460px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl border border-white/40 bg-[#0f0f0f] relative isolate flex items-center justify-center">
+                <div className="transform z-10 md:-translate-y-6 transition-all duration-500">
+                  <div className="animate-float-2 w-[280px] h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/40 bg-[#0f0f0f] relative isolate flex items-center justify-center">
                     <video 
                       src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/video%20.webm" 
                       className="absolute top-0 left-0 w-full h-full object-cover scale-[1.2]" 
@@ -167,8 +167,8 @@ export default function QuemSomosPage() {
                     />
                   </div>
                 </div>
-                <div className="snap-center shrink-0 transform rotate-6 translate-y-10 transition-all duration-500">
-                  <div className="animate-float-3 w-[200px] h-[340px] md:w-[280px] md:h-[460px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
+                <div className="transform md:rotate-6 md:translate-y-10 transition-all duration-500">
+                  <div className="animate-float-3 w-[280px] h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
                     <iframe src="https://player.vimeo.com/video/1170334831?background=1&autoplay=1&loop=1&muted=1" className="absolute top-0 left-0 w-full h-full scale-[1.1] pointer-events-none" frameBorder="0"></iframe>
                   </div>
                 </div>
