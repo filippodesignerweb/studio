@@ -20,8 +20,8 @@ export default function Home() {
       <Targets />
       <Portfolio />
       <LogoMarquee />
-      <SalesCards />
       <Timeline />
+      <SalesCards />
       <Technology />
       <AboutUs />
       <FAQ />

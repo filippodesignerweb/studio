@@ -130,13 +130,7 @@ export function SalesCards() {
         }}
       />
 
-      <div className="container max-w-[1360px] mx-auto px-6 pt-24 md:pt-32 relative z-20">
-         <h2 className="text-center font-bold text-3xl md:text-5xl lg:text-[54px] uppercase font-headline tracking-tighter mb-4 leading-tight">
-            TRABALHAMOS COM <span className="text-gradient-animate font-bold">VENDA OU LOCAÇÃO</span>
-         </h2>
-      </div>
-
-      <div className="carousel-inner flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 py-12 md:pb-24">
+      <div className="carousel-inner flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 py-12 md:pb-24 pt-24 md:pt-32">
         <div className="carousel-content w-full lg:w-1/2 order-2 lg:order-1 px-4 md:px-0">
           <div className="w-full">
             <div
@@ -157,6 +151,7 @@ export function SalesCards() {
                 isTransitioning ? "transitioning" : "visible"
               )}
             >
+              <span className="block text-sm md:text-lg lg:text-xl font-medium opacity-60 mb-2 normal-case tracking-normal">trabalhamos com</span>
               {currentSlide.title}
             </h2>
 
