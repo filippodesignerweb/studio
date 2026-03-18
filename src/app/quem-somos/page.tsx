@@ -119,10 +119,10 @@ export default function QuemSomosPage() {
             />
 
             <div className="absolute bottom-0 w-full h-[65vh] md:h-[75vh] z-20 flex flex-col items-center justify-center px-6 font-headline">
-              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:max-w-4xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
                 <span>Tudo que você precisa <br className="hidden md:block" /> saber sobre a</span>
                 <br />
-                <span className="text-gradient-animate italic inline-block py-4 md:py-8 px-10 md:px-16">Led4U!</span>
+                <span className="text-gradient-animate italic inline-block py-4 md:py-6 px-10 md:px-16">Led4U!</span>
               </h1>
             </div>
 
@@ -148,7 +148,7 @@ export default function QuemSomosPage() {
                 Um pouco sobre a LED4U
               </h2>
               
-              <div className="space-y-6 md:space-y-8 text-white/95 text-base md:text-xl font-medium leading-relaxed font-body">
+              <div className="space-y-6 md:space-y-8 text-white/95 text-base md:text-lg lg:text-xl font-medium leading-relaxed font-body">
                 <p>Com sede própria em São Paulo, no tradicional bairro da Mooca, e uma estrutura de mais de 2.000m², a Led4U é movida pelo desejo constante de inovação.</p>
                 <p>Integrando um grupo empresarial com mais de 27 anos de trajetória, a Led4U carrega um legado de experiência e visão estratégica acumulado ao longo de décadas de atuação no mercado.</p>
                 <p>Somos especialistas em transformar espaços por meio da tecnologia em LED. Para nós, um painel não é apenas uma tela é uma ferramenta de impacto visual, valorização de marca e criação de experiências imersivas.</p>
@@ -158,12 +158,12 @@ export default function QuemSomosPage() {
               </div>
 
               <div className="flex flex-row md:justify-center items-center w-full overflow-x-auto pt-16 md:pt-20 pb-16 md:pb-20 gap-4 md:gap-8 snap-x snap-mandatory scrollbar-hide">
-                <div className="snap-center shrink-0 transform -rotate-6 translate-y-10 transition-all duration-500 hover:rotate-0 hover:translate-y-2">
+                <div className="snap-center shrink-0 transform -rotate-6 translate-y-10 transition-all duration-500">
                   <div className="animate-float-1 w-[200px] h-[340px] md:w-[280px] md:h-[460px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
                     <iframe src="https://player.vimeo.com/video/1170334926?background=1&autoplay=1&loop=1&muted=1" className="absolute top-0 left-0 w-full h-full scale-[1.1] pointer-events-none" frameBorder="0"></iframe>
                   </div>
                 </div>
-                <div className="snap-center shrink-0 transform z-10 -translate-y-6 transition-all duration-500 hover:-translate-y-10 hover:scale-105">
+                <div className="snap-center shrink-0 transform z-10 -translate-y-6 transition-all duration-500">
                   <div className="animate-float-2 w-[200px] h-[340px] md:w-[280px] md:h-[460px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl border border-white/40 bg-[#0f0f0f] relative isolate flex items-center justify-center">
                     <video 
                       src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/video%20.webm" 
@@ -175,7 +175,7 @@ export default function QuemSomosPage() {
                     />
                   </div>
                 </div>
-                <div className="snap-center shrink-0 transform rotate-6 translate-y-10 transition-all duration-500 hover:rotate-0 hover:translate-y-2">
+                <div className="snap-center shrink-0 transform rotate-6 translate-y-10 transition-all duration-500">
                   <div className="animate-float-3 w-[200px] h-[340px] md:w-[280px] md:h-[460px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
                     <iframe src="https://player.vimeo.com/video/1170334831?background=1&autoplay=1&loop=1&muted=1" className="absolute top-0 left-0 w-full h-full scale-[1.1] pointer-events-none" frameBorder="0"></iframe>
                   </div>
@@ -208,11 +208,11 @@ export default function QuemSomosPage() {
             </div>
 
             <section className="w-full bg-white relative py-20 md:py-32 lg:py-40 mt-24 md:mt-32 overflow-hidden" data-theme="light">
-              <div className="max-w-4xl mx-auto px-6 text-center flex flex-col items-center relative z-10">
-                <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-[#3A3A3A] tracking-tighter leading-[1.1] mb-6 md:mb-8 font-headline uppercase">
+              <div className="max-w-4xl mx-auto px-6 text-center flex flex-col items-center relative z-10 text-dark">
+                <h2 className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tighter leading-[1.1] mb-6 md:mb-8 font-headline uppercase">
                   Venha conhecer alguns produtos que a Led4U oferece para você!
                 </h2>
-                <p className="text-[#3A3A3A]/70 text-base md:text-xl font-medium max-w-2xl mb-10 leading-relaxed font-body">
+                <p className="text-dark/70 text-base md:text-xl font-medium max-w-2xl mb-10 leading-relaxed font-body">
                   Transforme seu espaço com o brilho e a tecnologia que só a Led4U proporciona. Painéis de alta resolução adaptados para cada necessidade do seu negócio ou residência.
                 </p>
                 <Link href="/produtos" className="btn-glow-green">
