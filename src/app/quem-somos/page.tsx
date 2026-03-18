@@ -136,14 +136,6 @@ export default function QuemSomosPage() {
         <div className="relative z-50 w-full" style={{ background: 'linear-gradient(135deg, #9800FF 0%, #12CFDB 100%)' }} data-theme="dark">
           <div className="w-full flex flex-col items-center py-16 md:py-24">
             <div className="px-6 w-full max-w-5xl mx-auto flex flex-col items-center">
-              <div className="w-full max-w-4xl mb-12 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20">
-                <img 
-                  src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/QUEM%20SOMOS%201.webp" 
-                  alt="Equipe LED 4U" 
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tighter text-center max-w-4xl text-white drop-shadow-xl mb-10 leading-tight font-headline uppercase">
                 Um pouco sobre a LED4U
               </h2>

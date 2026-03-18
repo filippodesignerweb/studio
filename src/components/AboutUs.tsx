@@ -10,10 +10,10 @@ export function AboutUs() {
     <section id="sobre-nos" className="bg-white py-24 md:py-32 relative overflow-hidden" data-theme="light">
       <div className="container max-w-[1360px] mx-auto px-6 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         <div className="relative w-full lg:w-1/2">
-          <div className="rounded-3xl overflow-hidden shadow-2xl">
+          <div className="rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
             <img 
-              src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/totem_1.webp" 
-              alt="Totem LED 4U" 
+              src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/QUEM%20SOMOS%201.webp" 
+              alt="Sobre a LED 4U" 
               className="w-full h-auto object-cover min-h-[350px] md:min-h-[400px]" 
             />
           </div>
