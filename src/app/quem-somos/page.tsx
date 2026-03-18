@@ -118,8 +118,8 @@ export default function QuemSomosPage() {
               className="absolute bottom-0 w-full max-w-7xl h-[65vh] md:h-[75vh] rounded-t-[32px] md:rounded-t-[48px] border border-b-0 border-white/10 bg-[#0f0f0f] flex flex-col items-center justify-center overflow-hidden"
             />
 
-            <div className="absolute bottom-12 md:bottom-0 w-full h-auto md:h-[75vh] z-20 flex flex-col items-center justify-center px-6 font-headline">
-              <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl lg:max-w-4xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
+            <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-center justify-center px-6 font-headline">
+              <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl lg:max-w-4xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
                 <span>Tudo que você precisa <br className="hidden md:block" /> saber sobre a</span>
                 <br />
                 <span className="text-gradient-animate italic inline-block py-6 md:py-6 px-10 md:px-16">Led4U!</span>
