@@ -119,8 +119,8 @@ export default function QuemSomosPage() {
               className="absolute bottom-0 w-full max-w-7xl h-[65vh] md:h-[75vh] rounded-t-[32px] md:rounded-t-[48px] border border-white/10 bg-[#0f0f0f] flex flex-col items-center justify-center overflow-hidden"
             />
 
-            <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-center justify-center px-6 font-headline transform -translate-y-12 md:translate-y-0">
-              <h1 className="text-5xl sm:text-6xl md:text-4xl lg:text-5xl lg:max-w-4xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
+            <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-center justify-center px-6 font-headline transform -translate-y-24 md:translate-y-0">
+              <h1 className="text-6xl sm:text-7xl md:text-4xl lg:text-5xl lg:max-w-4xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
                 <span>Tudo que você precisa <br className="hidden md:block" /> saber sobre a</span>
                 <br />
                 <span className="text-gradient-animate italic inline-block py-6 md:py-6 px-10 md:px-16">Led4U!</span>
@@ -143,21 +143,21 @@ export default function QuemSomosPage() {
               
               <div className="space-y-6 md:space-y-8 text-white/95 text-base md:text-lg lg:text-xl font-medium leading-relaxed font-body">
                 <p>Com sede própria em São Paulo, no tradicional bairro da Mooca, e uma estrutura de mais de 2.000m², a Led4U é movida pelo desejo constante de inovação.</p>
-                <p>Integrando um grupo empresarial com mais de 27 anos de trajetória, a Led4U carrega um legado de experiência e visão estratégica acumulado ao longo de décadas de atuação no mercado.</p>
+                <p>Integrando um grupo empresarial com mais de 27 anos de trajetória, a Led4U carrega um legado de experiência e visionária estratégia acumulado ao longo de décadas de atuação no mercado.</p>
                 <p>Somos especialistas em transformar espaços por meio da tecnologia em LED. Para nós, um painel não é apenas uma tela é uma ferramenta de impacto visual, valorização de marca e criação de experiências imersivas.</p>
                 <p>Atendemos projetos residenciais, corporativos, eventos e soluções personalizadas indoor e outdoor, sempre com materiais de primeira linha, equipamentos atualizados e rigoroso padrão de qualidade.</p>
                 <p>Mais do que instalar painéis, desenvolvemos soluções completas, com planejamento técnico, acompanhamento especializado e compromisso com a excelência em cada detalhe.</p>
                 <p className="font-bold text-xl md:text-2xl pt-4">Led4U. Tecnologia que transforma ambientes e eleva experiências.</p>
               </div>
 
-              <div className="flex flex-col md:flex-row md:justify-center items-center w-full pt-16 md:pt-20 pb-16 md:pb-20 gap-16 md:gap-8">
+              <div className="flex flex-col md:flex-row md:justify-center items-center w-full pt-16 md:pt-20 pb-16 md:pb-20 gap-8 md:gap-8">
                 <div className="transform md:-rotate-6 md:translate-y-10 transition-all duration-500 w-full max-w-[320px] md:max-w-none">
-                  <div className="animate-float-1 w-full md:w-[280px] aspect-[9/16] md:h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
+                  <div className="animate-float-1 w-full md:w-[280px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
                     <iframe src="https://player.vimeo.com/video/1170334926?background=1&autoplay=1&loop=1&muted=1" className="absolute top-0 left-0 w-full h-full scale-[1.1] pointer-events-none" frameBorder="0"></iframe>
                   </div>
                 </div>
                 <div className="transform z-10 md:-translate-y-6 transition-all duration-500 w-full max-w-[320px] md:max-w-none">
-                  <div className="animate-float-2 w-full md:w-[280px] aspect-[9/16] md:h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/40 bg-[#0f0f0f] relative isolate flex items-center justify-center">
+                  <div className="animate-float-2 w-full md:w-[280px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl border border-white/40 bg-[#0f0f0f] relative isolate flex items-center justify-center">
                     <video 
                       src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/video%20.webm" 
                       className="absolute top-0 left-0 w-full h-full object-cover scale-[1.2]" 
@@ -169,7 +169,7 @@ export default function QuemSomosPage() {
                   </div>
                 </div>
                 <div className="transform md:rotate-6 md:translate-y-10 transition-all duration-500 w-full max-w-[320px] md:max-w-none">
-                  <div className="animate-float-3 w-full md:w-[280px] aspect-[9/16] md:h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
+                  <div className="animate-float-3 w-full md:w-[280px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
                     <iframe src="https://player.vimeo.com/video/1170334831?background=1&autoplay=1&loop=1&muted=1" className="absolute top-0 left-0 w-full h-full scale-[1.1] pointer-events-none" frameBorder="0"></iframe>
                   </div>
                 </div>

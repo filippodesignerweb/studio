@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -91,7 +92,7 @@ export function Hero() {
         <iframe
           ref={iframeRef}
           src="https://player.vimeo.com/video/1171839535?background=1&autoplay=1&loop=1&muted=1&api=1"
-          className="absolute top-1/2 left-1/2 min-w-[100%] min-h-[100%] w-auto h-auto scale-[1.3] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          className="absolute top-1/2 left-1/2 min-w-[177.77vh] min-h-[100vh] md:min-w-[100vw] md:min-h-[56.25vw] w-auto h-auto scale-[1.1] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
           frameBorder="0"
           allow="autoplay; fullscreen"
           title="LED 4U Background Video"
