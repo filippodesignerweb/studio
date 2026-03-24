@@ -1,13 +1,33 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 export function AboutUs() {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="sobre-nos" className="bg-white py-24 md:py-32 relative overflow-hidden" data-theme="light">
+    <section ref={sectionRef} id="sobre-nos" className="bg-white py-24 md:py-32 relative overflow-hidden reveal" data-theme="light">
       <div className="container max-w-[1360px] mx-auto px-6 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         <div className="relative w-full lg:w-1/2">
           <div className="rounded-3xl overflow-hidden shadow-2xl border border-gray-100">

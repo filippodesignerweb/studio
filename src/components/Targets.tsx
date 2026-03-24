@@ -1,9 +1,30 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 export function Targets() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const targets = [
     { 
       title: 'Residências de Alto Padrão', 
@@ -30,7 +51,8 @@ export function Targets() {
   return (
     <section 
       id="section-targets" 
-      className="relative w-full bg-dark flex flex-col items-center justify-center py-24 md:py-32 z-20 overflow-hidden text-white border-t border-white/5"
+      ref={containerRef}
+      className="relative w-full bg-dark flex flex-col items-center justify-center py-24 md:py-32 z-20 overflow-hidden text-white border-t border-white/5 reveal"
       data-theme="dark"
     >
       <div className="relative z-30 w-full px-6 mb-16">
@@ -46,11 +68,12 @@ export function Targets() {
               key={idx} 
               className="target-card rounded-2xl bg-[#1A1822]/80 backdrop-blur-md border border-white/10 shadow-2xl flex flex-col items-start text-left transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 group overflow-hidden h-full"
             >
-              <div className="w-full h-48 overflow-hidden">
+              <div className="w-full h-48 overflow-hidden bg-white/5">
                 <img 
                   src={target.image} 
                   alt={target.title} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="eager"
                 />
               </div>
               <div className="p-8 flex flex-col flex-grow">

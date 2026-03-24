@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -25,10 +25,30 @@ const faqItems = [
 
 export function FAQ() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="faq" className="bg-white py-20 md:py-24 border-t border-gray-100" data-theme="light">
+    <section id="faq" ref={sectionRef} className="bg-white py-20 md:py-24 border-t border-gray-100 reveal" data-theme="light">
       <div className="container max-w-[900px] mx-auto px-6">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-dark uppercase mb-4 tracking-tighter font-headline">FAQ</h2>

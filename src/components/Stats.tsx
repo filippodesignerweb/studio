@@ -54,8 +54,29 @@ function Counter({ end, suffix = "", prefix = "" }: CounterProps) {
 }
 
 export function Stats() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="w-full bg-dark py-20 lg:py-24 relative z-20 flex flex-col items-center justify-center" data-theme="dark">
+    <section ref={sectionRef} className="w-full bg-dark py-20 lg:py-24 relative z-20 flex flex-col items-center justify-center reveal" data-theme="dark">
       <div className="container max-w-[1360px] mx-auto px-6 text-center text-white">
         <h2 className="font-bold text-2xl md:text-3xl mb-12 uppercase tracking-tight font-headline">O que já entregamos?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 font-bold">

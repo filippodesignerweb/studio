@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 import { Sparkles, Shield, Monitor, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -43,9 +43,26 @@ const features = [
 export function Technology() {
   const [activeFeature, setActiveFeature] = useState<typeof features[0] | null>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsMounted(true);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -64,7 +81,8 @@ export function Technology() {
 
       <section 
         id="tecnologia-profissional" 
-        className="bg-black py-12 md:py-16 relative overflow-hidden flex items-center justify-center min-h-[600px]"
+        ref={sectionRef}
+        className="bg-black py-12 md:py-16 relative overflow-hidden flex items-center justify-center min-h-[600px] reveal"
         data-theme="dark"
       >
         <div className="container max-w-[1360px] mx-auto px-6 relative flex flex-col items-center z-10">
@@ -79,8 +97,6 @@ export function Technology() {
           </div>
           
           <div className="w-full relative min-h-[400px] md:min-h-[500px] flex items-center justify-center">
-            {/* Background image removed per user request to leave only the 3D model */}
-            
             <div className="absolute inset-0 z-10 cursor-grab active:cursor-grabbing">
               {isMounted && (
                 /* @ts-ignore */

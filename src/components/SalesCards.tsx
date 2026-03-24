@@ -42,6 +42,7 @@ export function SalesCards() {
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
   const [progress, setProgress] = useState(0);
   
+  const sectionRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const touchStartX = useRef(0);
@@ -79,6 +80,21 @@ export function SalesCards() {
   }, [currentIndex, goToSlide]);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
     progressRef.current = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) return 100;
@@ -93,6 +109,7 @@ export function SalesCards() {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (progressRef.current) clearInterval(progressRef.current);
+      observer.disconnect();
     };
   }, [currentIndex, goNext]);
 
@@ -117,7 +134,8 @@ export function SalesCards() {
   return (
     <section 
       id="venda-locacao" 
-      className="carousel-wrapper relative overflow-hidden bg-dark pb-24"
+      ref={sectionRef}
+      className="carousel-wrapper relative overflow-hidden bg-dark pb-24 reveal"
       data-theme="dark"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}

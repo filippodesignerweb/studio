@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 
 export function Timeline() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -19,6 +20,21 @@ export function Timeline() {
 
     if (typeof window !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
     const ctx = gsap.context(() => {
@@ -44,7 +60,10 @@ export function Timeline() {
       });
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      observer.disconnect();
+    };
   }, [isMounted]);
 
   const steps = [
@@ -75,11 +94,11 @@ export function Timeline() {
   return (
     <section 
       id="timeline-section" 
-      ref={containerRef}
-      className="bg-white py-20 md:py-32 relative overflow-hidden" 
+      ref={sectionRef}
+      className="bg-white py-20 md:py-32 relative overflow-hidden reveal" 
       data-theme="light"
     >
-      <div className="container max-w-[1360px] mx-auto px-6 text-dark">
+      <div className="container max-w-[1360px] mx-auto px-6 text-dark" ref={containerRef}>
         <h2 className="text-center font-bold text-3xl md:text-5xl lg:text-[54px] mb-16 md:mb-24 uppercase tracking-tight font-headline">
           COMO <span className="text-gradient-animate font-bold uppercase">DESENVOLVEMOS</span> SEU PROJETO
         </h2>
