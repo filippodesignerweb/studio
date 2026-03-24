@@ -1,20 +1,44 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { ChevronDown, ChevronUp, Instagram, Facebook, Twitter } from 'lucide-react';
+import { ChevronDown, ChevronUp, Instagram, Facebook, Twitter, Settings, Shield, Monitor, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function ProdutosPage() {
   const [isMounted, setIsMounted] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const sectionsRef = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
     setIsMounted(true);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    sectionsRef.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
   }, []);
+
+  const addToRefs = (el: HTMLElement | null) => {
+    if (el && !sectionsRef.current.includes(el)) {
+      sectionsRef.current.push(el);
+    }
+  };
 
   const productFaqs = [
     {
@@ -56,7 +80,7 @@ export default function ProdutosPage() {
       <main className="min-h-screen bg-black text-white font-body">
         <Header />
 
-        <section className="pt-32 md:pt-44 pb-20 md:pb-32 px-6 max-w-[1360px] mx-auto">
+        <section ref={addToRefs} className="pt-32 md:pt-44 pb-20 md:pb-32 px-6 max-w-[1360px] mx-auto reveal">
           <div className="text-center mb-12 md:mb-20">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-4 font-headline text-white">Tipos de painéis</h1>
             <p className="text-base md:text-lg text-white/60 font-medium">Temos o painel perfeito para o seu negócio ou sua necessidade</p>
@@ -65,7 +89,7 @@ export default function ProdutosPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
             {/* P1 */}
             <div className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
-              <div className="w-full h-[400px] md:h-[600px] mb-8 rounded-xl md:rounded-2xl overflow-hidden bg-black/40">
+              <div className="w-full h-[400px] md:h-[600px] mb-8 rounded-xl md:rounded-2xl overflow-hidden bg-black/40 p-4 md:p-8 flex items-center justify-center">
                 {isMounted && (
                   /* @ts-ignore */
                   <spline-viewer url="https://prod.spline.design/8U4UcWyiaGJFd-mz/scene.splinecode" className="w-full h-full"></spline-viewer>
@@ -79,7 +103,7 @@ export default function ProdutosPage() {
 
             {/* P2.9 */}
             <div className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
-              <div className="w-full h-[400px] md:h-[600px] mb-8 rounded-xl md:rounded-2xl overflow-hidden bg-black/40">
+              <div className="w-full h-[400px] md:h-[600px] mb-8 rounded-xl md:rounded-2xl overflow-hidden bg-black/40 p-4 md:p-8 flex items-center justify-center">
                 {isMounted && (
                   /* @ts-ignore */
                   <spline-viewer url="https://prod.spline.design/0ifEkHF-jFPVx3Wx/scene.splinecode" className="w-full h-full"></spline-viewer>
@@ -93,7 +117,7 @@ export default function ProdutosPage() {
 
             {/* P3.9 */}
             <div className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
-              <div className="w-full h-[400px] md:h-[600px] mb-8 rounded-xl md:rounded-2xl overflow-hidden bg-black/40">
+              <div className="w-full h-[400px] md:h-[600px] mb-8 rounded-xl md:rounded-2xl overflow-hidden bg-black/40 p-4 md:p-8 flex items-center justify-center">
                 {isMounted && (
                   /* @ts-ignore */
                   <spline-viewer url="https://prod.spline.design/aP31iDGIfRiXjJqF/scene.splinecode" className="w-full h-full"></spline-viewer>
@@ -107,7 +131,7 @@ export default function ProdutosPage() {
 
             {/* P5 */}
             <div className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
-              <div className="w-full h-[400px] md:h-[600px] mb-8 rounded-xl md:rounded-2xl overflow-hidden bg-black/40">
+              <div className="w-full h-[400px] md:h-[600px] mb-8 rounded-xl md:rounded-2xl overflow-hidden bg-black/40 p-4 md:p-8 flex items-center justify-center">
                 {isMounted && (
                   /* @ts-ignore */
                   <spline-viewer url="https://prod.spline.design/DOwUXZ0t9vy3yP25/scene.splinecode" className="w-full h-full"></spline-viewer>
@@ -121,7 +145,7 @@ export default function ProdutosPage() {
           </div>
         </section>
 
-        <section className="py-20 md:py-32 bg-black border-t border-white/10">
+        <section ref={addToRefs} className="py-20 md:py-32 bg-black border-t border-white/10 reveal">
           <div className="container max-w-[1360px] mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-24">
               <div className="lg:col-span-2">
