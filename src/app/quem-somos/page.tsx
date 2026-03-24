@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useEffect, useRef } from 'react';
@@ -115,11 +116,11 @@ export default function QuemSomosPage() {
             className="absolute inset-0 w-full h-full flex flex-col items-center justify-center z-10 smooth-gpu"
           >
             <div 
-              className="absolute bottom-0 w-full max-w-7xl h-[65vh] md:h-[75vh] rounded-t-[32px] md:rounded-t-[48px] border border-b-0 border-white/10 bg-[#0f0f0f] flex flex-col items-center justify-center overflow-hidden"
+              className="absolute bottom-0 w-full max-w-7xl h-[65vh] md:h-[75vh] rounded-t-[32px] md:rounded-t-[48px] border border-white/10 bg-[#0f0f0f] flex flex-col items-center justify-center overflow-hidden"
             />
 
-            <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-center justify-center px-6 font-headline">
-              <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl lg:max-w-4xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
+            <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-center justify-center px-6 font-headline transform -translate-y-12 md:translate-y-0">
+              <h1 className="text-5xl sm:text-6xl md:text-4xl lg:text-5xl lg:max-w-4xl font-bold tracking-tighter text-white leading-[1.1] text-center uppercase">
                 <span>Tudo que você precisa <br className="hidden md:block" /> saber sobre a</span>
                 <br />
                 <span className="text-gradient-animate italic inline-block py-6 md:py-6 px-10 md:px-16">Led4U!</span>
@@ -150,13 +151,13 @@ export default function QuemSomosPage() {
               </div>
 
               <div className="flex flex-col md:flex-row md:justify-center items-center w-full pt-16 md:pt-20 pb-16 md:pb-20 gap-16 md:gap-8">
-                <div className="transform md:-rotate-6 md:translate-y-10 transition-all duration-500">
-                  <div className="animate-float-1 w-[280px] h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
+                <div className="transform md:-rotate-6 md:translate-y-10 transition-all duration-500 w-full max-w-[320px] md:max-w-none">
+                  <div className="animate-float-1 w-full md:w-[280px] aspect-[9/16] md:h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
                     <iframe src="https://player.vimeo.com/video/1170334926?background=1&autoplay=1&loop=1&muted=1" className="absolute top-0 left-0 w-full h-full scale-[1.1] pointer-events-none" frameBorder="0"></iframe>
                   </div>
                 </div>
-                <div className="transform z-10 md:-translate-y-6 transition-all duration-500">
-                  <div className="animate-float-2 w-[280px] h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/40 bg-[#0f0f0f] relative isolate flex items-center justify-center">
+                <div className="transform z-10 md:-translate-y-6 transition-all duration-500 w-full max-w-[320px] md:max-w-none">
+                  <div className="animate-float-2 w-full md:w-[280px] aspect-[9/16] md:h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/40 bg-[#0f0f0f] relative isolate flex items-center justify-center">
                     <video 
                       src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/video%20.webm" 
                       className="absolute top-0 left-0 w-full h-full object-cover scale-[1.2]" 
@@ -167,8 +168,8 @@ export default function QuemSomosPage() {
                     />
                   </div>
                 </div>
-                <div className="transform md:rotate-6 md:translate-y-10 transition-all duration-500">
-                  <div className="animate-float-3 w-[280px] h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
+                <div className="transform md:rotate-6 md:translate-y-10 transition-all duration-500 w-full max-w-[320px] md:max-w-none">
+                  <div className="animate-float-3 w-full md:w-[280px] aspect-[9/16] md:h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/30 bg-[#0f0f0f] relative isolate">
                     <iframe src="https://player.vimeo.com/video/1170334831?background=1&autoplay=1&loop=1&muted=1" className="absolute top-0 left-0 w-full h-full scale-[1.1] pointer-events-none" frameBorder="0"></iframe>
                   </div>
                 </div>
