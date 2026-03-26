@@ -95,7 +95,7 @@ export default function ProdutosPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {products.map((product, idx) => (
             <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
-              <div className="w-full h-[280px] md:h-[500px] mb-8 rounded-xl md:rounded-2xl overflow-hidden bg-black/40 p-12 md:p-8 flex items-center justify-center">
+              <div className="w-full h-[280px] md:h-[500px] mb-8 rounded-xl md:rounded-2xl overflow-hidden bg-black/40 p-6 md:p-8 flex items-center justify-center">
                 <img 
                   src={product.image} 
                   alt={product.title}
