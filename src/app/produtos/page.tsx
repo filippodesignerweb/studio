@@ -63,22 +63,26 @@ export default function ProdutosPage() {
     {
       title: "Painéis P1 INDOOR",
       image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led%201.webp",
-      description: "Experimente a máxima nitidez com nossos painéis de LED P1. Com apenas 1 milímetro de distância entre os pixels, eles oferecem uma resolução de imagem impressionante, ideal para visualização a curta distância. Perfeito para salas de controle, estúdios e ambientes de luxo, onde cada detalhe importa."
+      description: "Experimente a máxima nitidez com nossos painéis de LED P1. Com apenas 1 milímetro de distância entre os pixels, eles oferecem uma resolução de imagem impressionante, ideal para visualização a curta distância. Perfeito para salas de controle, estúdios e ambientes de luxo, onde cada detalhe importa.",
+      containerPadding: "p-24 md:p-36" // Menor de todos
     },
     {
       title: "Painéis P2.9 INDOOR - OUTDOOR",
       image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led%202.webp",
-      description: "O painel P2 é a escolha inteligente para quem busca o equilíbrio perfeito entre qualidade de imagem e custo-benefício. Com 2mm de Pixel Pitch, ele entrega uma resolução fantástica para visualização a partir de 2 metros, ideal para lojas, auditórios e recepções."
+      description: "O painel P2 é a escolha inteligente para quem busca o equilíbrio perfeito entre qualidade de imagem e custo-benefício. Com 2mm de Pixel Pitch, ele entrega uma resolução fantástica para visualização a partir de 2 metros, ideal para lojas, auditórios e recepções.",
+      containerPadding: "p-16 md:p-24" // Médio
     },
     {
       title: "Painéis P3.9 INDOOR - OUTDOOR",
       image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led%203.webp",
-      description: "O painel P3.9 é a solução ideal para eventos, shows e locações. Com 3.9mm de Pixel Pitch, ele oferece uma qualidade de imagem ótima tanto para ambientes internos quanto externos, garantindo flexibilidade e impacto visual em qualquer situação."
+      description: "O painel P3.9 é a solução ideal para eventos, shows e locações. Com 3.9mm de Pixel Pitch, ele oferece uma qualidade de imagem ótima tanto para ambientes internos quanto externos, garantindo flexibilidade e impacto visual em qualquer situação.",
+      containerPadding: "p-4 md:p-8" // Maior de todos (o dobro do tamanho visual)
     },
     {
       title: "Painéis P5 OUTDOOR",
       image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led%204.webp",
-      description: "Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch e altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista com clareza e cores vibrantes, mesmo sob a luz do sol."
+      description: "Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch e altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista com clareza e cores vibrantes, mesmo sob a luz do sol.",
+      containerPadding: "p-10 md:p-16" // Grande, maior que o P2
     }
   ];
 
@@ -95,7 +99,10 @@ export default function ProdutosPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {products.map((product, idx) => (
             <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
-              <div className="w-full h-[280px] md:h-[500px] mb-8 rounded-xl md:rounded-2xl overflow-hidden bg-black/40 p-6 md:p-8 flex items-center justify-center">
+              <div className={cn(
+                "w-full h-[320px] md:h-[500px] mb-8 rounded-xl md:rounded-2xl overflow-hidden bg-black/40 flex items-center justify-center transition-all duration-500",
+                product.containerPadding
+              )}>
                 <img 
                   src={product.image} 
                   alt={product.title}
