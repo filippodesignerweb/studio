@@ -69,7 +69,7 @@ export default function ProdutosPage() {
     },
     {
       title: "Painéis P2.9 INDOOR - OUTDOOR",
-      image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/eloy.webp",
+      image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/eloy%20v2.webp",
       description: "O painel P2 é a escolha inteligente para quem busca o equilíbrio perfeito entre qualidade de imagem e custo-benefício. Com 2mm de Pixel Pitch, ele entrega uma resolução fantástica para visualização a partir de 2 metros, ideal para lojas, auditórios e recepções.",
       containerPadding: "p-8 md:p-10",
       scale: "scale-110"
@@ -84,7 +84,7 @@ export default function ProdutosPage() {
     {
       title: "Painéis P5 OUTDOOR",
       image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led%204.webp",
-      description: "Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch and altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista com clareza e cores vibrantes, mesmo sob a luz do sol.",
+      description: "Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch and altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista con clareza e cores vibrantes, mesmo sob a luz do sol.",
       containerPadding: "p-4 md:p-6",
       scale: "scale-115"
     }
