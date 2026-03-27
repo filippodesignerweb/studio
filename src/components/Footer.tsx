@@ -15,7 +15,7 @@ export function Footer() {
           <img 
             src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
             alt="Logo LED 4U" 
-            className="w-36 mb-6 brightness-0" 
+            className="w-36 mb-6" 
           />
           <p className="text-gray-600 text-sm leading-relaxed font-medium font-body max-w-xs mb-4">
             A solução definitiva em painéis de LED para ambientes comerciais e residenciais de alto padrão.
