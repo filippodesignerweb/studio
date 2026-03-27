@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ChevronDown, ChevronUp, Instagram, Facebook, Twitter } from 'lucide-react';
@@ -38,29 +39,33 @@ export default function ProdutosPage() {
       title: "Painéis P1 INDOOR",
       image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/p1.webp",
       description: "Experimente a máxima nitidez com nossos painéis de LED P1. Com apenas 1 milímetro de distância entre os pixels, eles oferecem uma resolução de imagem impressionante, ideal para visualização a curta distância. Perfeito para salas de controle, estúdios e ambientes de luxo, onde cada detalhe importa.",
-      containerPadding: "p-10",
-      scale: "scale-90"
+      containerPadding: "p-4 md:p-8",
+      scale: "scale-100",
+      priority: true
     },
     {
       title: "Painéis P2.9 INDOOR - OUTDOOR",
       image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/p2.webp",
       description: "O painel P2 é a escolha inteligente para quem busca o equilíbrio perfeito entre qualidade de imagem e custo-benefício. Com 2mm de Pixel Pitch, ele entrega uma resolução fantástica para visualização a partir de 2 metros, ideal para lojas, auditórios e recepções.",
-      containerPadding: "p-6",
-      scale: "scale-100"
+      containerPadding: "p-2 md:p-4",
+      scale: "scale-110",
+      priority: true
     },
     {
       title: "Painéis P3.9 INDOOR - OUTDOOR",
       image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/p3.webp",
       description: "O painel P3.9 é a solução ideal para eventos, shows e locações. Com 3.9mm de Pixel Pitch, ele oferece uma qualidade de imagem ótima tanto para ambientes internos quanto externos, garantindo flexibilidade e impacto visual em qualquer situação.",
-      containerPadding: "p-4",
-      scale: "scale-115"
+      containerPadding: "p-0",
+      scale: "scale-100",
+      priority: false
     },
     {
       title: "Painéis P5 OUTDOOR",
       image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/p4.webp",
       description: "Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch and altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista con clareza e cores vibrantes, mesmo sob a luz do sol.",
-      containerPadding: "p-4",
-      scale: "scale-110"
+      containerPadding: "p-2 md:p-4",
+      scale: "scale-115",
+      priority: false
     }
   ];
 
@@ -78,16 +83,19 @@ export default function ProdutosPage() {
           {products.map((product, idx) => (
             <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
               <div className={cn(
-                "w-full h-[280px] md:h-[500px] mb-8 flex items-center justify-center transition-all duration-500",
+                "w-full h-[280px] md:h-[500px] mb-8 flex items-center justify-center transition-all duration-500 relative",
                 product.containerPadding
               )}>
-                <img 
+                <Image 
                   src={product.image} 
                   alt={product.title}
+                  fill
                   className={cn(
-                    "w-full h-full object-contain transition-transform duration-500",
+                    "object-contain transition-transform duration-500",
                     product.scale
                   )}
+                  priority={product.priority}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
               <h3 className="text-xl md:text-2xl font-bold mb-4 font-headline uppercase text-white">{product.title}</h3>

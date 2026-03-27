@@ -2,6 +2,20 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { WhatsAppFloating } from '@/components/WhatsAppFloating';
 import { RevealScript } from '@/components/RevealScript';
+import { Bricolage_Grotesque, Unbounded } from 'next/font/google';
+import { cn } from '@/lib/utils';
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ['latin'],
+  variable: '--font-bricolage',
+  display: 'swap',
+});
+
+const unbounded = Unbounded({
+  subsets: ['latin'],
+  variable: '--font-unbounded',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'LED 4U - Soluções em Painéis de LED',
@@ -14,11 +28,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" className="scroll-smooth">
+    <html lang="pt-br" className={cn("scroll-smooth", bricolage.variable, unbounded.variable)}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Unbounded:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://raw.githubusercontent.com" />
+        <link rel="preconnect" href="https://player.vimeo.com" />
+        <link rel="dns-prefetch" href="https://raw.githubusercontent.com" />
       </head>
       <body className="font-body antialiased">
         <RevealScript />

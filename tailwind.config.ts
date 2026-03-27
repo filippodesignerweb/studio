@@ -1,4 +1,3 @@
-
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -11,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Bricolage Grotesque', 'sans-serif'],
-        headline: ['Unbounded', 'sans-serif'],
+        body: ['var(--font-bricolage)', 'sans-serif'],
+        headline: ['var(--font-unbounded)', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
