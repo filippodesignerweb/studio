@@ -8,8 +8,6 @@ export function Hero() {
   const whatsappUrl = "https://tintim.link/whatsapp/0c01772c-61fd-4f99-ab17-e5ef59b8a87b/53fb4310-08e2-4f11-9fcf-64c042748914";
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const transitionLogoRef = useRef<HTMLImageElement>(null);
-  const blackOverlayRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -21,62 +19,28 @@ export function Hero() {
 
     if (!containerRef.current) return;
 
-    const videoObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (iframeRef.current && iframeRef.current.contentWindow) {
-            try {
-              if (entry.isIntersecting) {
-                iframeRef.current.contentWindow.postMessage('{"method":"play"}', '*');
-              } else {
-                iframeRef.current.contentWindow.postMessage('{"method":"pause"}', '*');
-              }
-            } catch (e) {}
-          }
-        });
-      },
-      { threshold: 0.05 }
-    );
-
-    videoObserver.observe(containerRef.current);
-
     const ctx = gsap.context(() => {
+      // Timeline mais curta (end: '+=40%') para transição rápida
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=100%', 
+          end: '+=40%', 
           pin: true,     
-          scrub: 1,    
+          scrub: 0.5, // Scrub menor para resposta mais direta ao scroll
         }
       });
 
+      // Apenas o conteúdo esmaece rapidamente para dar lugar à próxima seção
       tl.to(heroContentRef.current, {
         opacity: 0,
-        y: -30,
-        duration: 0.5
-      })
-      .to(transitionLogoRef.current, {
-        opacity: 1,
-        scale: 1.1, 
-        duration: 0.8,
-        ease: "power2.out"
-      }, "-=0.2")
-      .to(transitionLogoRef.current, {
-        opacity: 0,
-        scale: 1.2,
-        duration: 0.5,
-        ease: "power2.in"
-      })
-      .to(blackOverlayRef.current, {
-        opacity: 1,
-        duration: 0.8
-      }, "-=0.5");
+        y: -50,
+        duration: 0.4
+      });
 
     }, containerRef);
 
     return () => {
-      videoObserver.disconnect();
       ctx.revert();
     };
   }, []);
@@ -93,28 +57,13 @@ export function Hero() {
           src="https://player.vimeo.com/video/1171839535?background=1&autoplay=1&loop=1&muted=1&api=1"
           className="absolute top-1/2 left-1/2 min-w-[177.77vh] min-h-[100vh] md:min-w-[100vw] md:min-h-[56.25vw] w-auto h-auto scale-[1.1] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
           style={{
-            // No mobile portrait, forçamos o vídeo a preencher o 9:16
             aspectRatio: '16/9'
           }}
           frameBorder="0"
           allow="autoplay; fullscreen"
           title="LED 4U Background Video"
         ></iframe>
-        <div className="absolute inset-0 bg-black/50"></div>
-      </div>
-
-      <div 
-        ref={blackOverlayRef}
-        className="absolute inset-0 z-[40] bg-black opacity-0 pointer-events-none"
-      />
-
-      <div className="absolute inset-0 z-[50] flex items-center justify-center pointer-events-none">
-        <img 
-          ref={transitionLogoRef}
-          src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
-          alt="LED 4U Transition" 
-          className="w-[140px] md:w-[200px] lg:w-[250px] h-auto opacity-0 scale-[0.9] brightness-0 invert"
-        />
+        <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
       <div 
