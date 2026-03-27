@@ -87,16 +87,18 @@
     transform: translateY(0);
   }
 
-  .nav-invert .logo-img {
-    filter: brightness(0);
-  }
-  
+  /* Nav Invert classes for contrasting backgrounds */
   .nav-invert .nav-link {
     @apply !text-dark/80 hover:!text-accent;
   }
 
   .nav-invert #menu-btn svg {
     @apply !text-dark;
+  }
+
+  /* Logo color is maintained via original file (no filter) */
+  .logo-img {
+    filter: none !important;
   }
 
   /* Carousel Styles */

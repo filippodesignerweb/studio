@@ -21,14 +21,14 @@ export function Hero() {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Timeline rápida para transição (end: '+=35%')
+      // Timeline ultra-rápida para transição suave sem interrupções
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
           end: '+=35%', 
           pin: true,     
-          scrub: 1, 
+          scrub: 0.5, // Mais responsivo ao toque/scroll
         }
       });
 
@@ -36,19 +36,19 @@ export function Hero() {
       tl.to(heroContentRef.current, {
         opacity: 0,
         y: -40,
-        duration: 0.4
+        duration: 0.3
       })
-      // Revela a logo da LED 4U no centro sem fade preto no fundo
+      // Revela a logo da LED 4U no centro mantendo o vídeo visível (sem fade preto)
       .fromTo(logoRef.current, {
         opacity: 0,
         scale: 0.6,
       }, {
         opacity: 1,
         scale: 1,
-        duration: 0.5,
+        duration: 0.4,
         ease: "power2.out"
-      }, "-=0.2")
-      // A logo some para dar lugar à próxima seção
+      }, "-=0.1")
+      // A logo some para a próxima seção
       .to(logoRef.current, {
         opacity: 0,
         scale: 1.1,
@@ -107,7 +107,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Logo que aparece durante a transição de scroll */}
+      {/* Logo que aparece durante a transição de scroll - Mantendo a cor original */}
       <div 
         ref={logoRef}
         className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none opacity-0"

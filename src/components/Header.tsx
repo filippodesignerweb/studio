@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -59,11 +60,14 @@ export function Header() {
       >
         <div className="max-w-[1360px] mx-auto px-6 flex items-center justify-between">
           <div className="flex flex-col">
-            <Link href="/" className="flex-shrink-0 w-[100px] md:w-[130px]">
-              <img 
+            <Link href="/" className="flex-shrink-0 block w-[100px] md:w-[130px]">
+              <Image 
                 src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
                 alt="Logo LED 4U" 
+                width={130}
+                height={40}
                 className="w-full h-auto logo-img transition-all duration-500"
+                priority
               />
             </Link>
           </div>
@@ -110,11 +114,14 @@ export function Header() {
       >
         {/* Mobile Menu Header */}
         <div className="flex items-center justify-between px-8 py-6 border-b border-white/5 bg-dark">
-          <img 
-            src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
-            alt="Logo LED 4U" 
-            className="w-[100px] h-auto"
-          />
+          <div className="relative w-[100px] h-8">
+            <Image 
+              src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
+              alt="Logo LED 4U" 
+              fill
+              className="object-contain"
+            />
+          </div>
           <button
             className="text-white p-3 hover:bg-white/5 rounded-full transition-colors"
             onClick={() => setMobileMenuOpen(false)}
