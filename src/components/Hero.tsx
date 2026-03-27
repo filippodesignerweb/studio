@@ -9,6 +9,7 @@ export function Hero() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -20,22 +21,39 @@ export function Hero() {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Timeline mais curta (end: '+=40%') para transição rápida
+      // Timeline rápida para transição (end: '+=35%')
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=40%', 
+          end: '+=35%', 
           pin: true,     
-          scrub: 0.5, // Scrub menor para resposta mais direta ao scroll
+          scrub: 1, 
         }
       });
 
-      // Apenas o conteúdo esmaece rapidamente para dar lugar à próxima seção
+      // Esmaece o conteúdo textual rapidamente
       tl.to(heroContentRef.current, {
         opacity: 0,
-        y: -50,
+        y: -40,
         duration: 0.4
+      })
+      // Revela a logo da LED 4U no centro sem fade preto no fundo
+      .fromTo(logoRef.current, {
+        opacity: 0,
+        scale: 0.6,
+      }, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.5,
+        ease: "power2.out"
+      }, "-=0.2")
+      // A logo some para dar lugar à próxima seção
+      .to(logoRef.current, {
+        opacity: 0,
+        scale: 1.1,
+        duration: 0.3,
+        delay: 0.1
       });
 
     }, containerRef);
@@ -48,7 +66,7 @@ export function Hero() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full h-screen bg-dark overflow-hidden flex items-center" 
+      className="relative w-full h-screen bg-dark overflow-hidden flex items-center justify-center" 
       data-theme="dark"
     >
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -66,6 +84,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
+      {/* Conteúdo Textual da Hero */}
       <div 
         ref={heroContentRef}
         className="relative z-10 container max-w-[1360px] mx-auto px-6 text-center lg:text-left flex flex-col items-center lg:items-start text-white pt-20 md:pt-32 lg:pt-0"
@@ -86,6 +105,18 @@ export function Hero() {
             Solicitar Avaliação Técnica
           </a>
         </div>
+      </div>
+
+      {/* Logo que aparece durante a transição de scroll */}
+      <div 
+        ref={logoRef}
+        className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none opacity-0"
+      >
+        <img 
+          src="https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp" 
+          alt="LED 4U" 
+          className="w-48 md:w-64 lg:w-80 drop-shadow-[0_0_30px_rgba(152,0,255,0.3)]"
+        />
       </div>
     </section>
   );
