@@ -1,30 +1,9 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
 export function Targets() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   const targets = [
     { 
       title: 'Residências de Alto Padrão', 
@@ -51,7 +30,6 @@ export function Targets() {
   return (
     <section 
       id="section-targets" 
-      ref={containerRef}
       className="relative w-full bg-dark flex flex-col items-center justify-center py-24 md:py-32 z-20 overflow-hidden text-white border-t border-white/5 reveal"
       data-theme="dark"
     >

@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { WhatsAppFloating } from '@/components/WhatsAppFloating';
+import { RevealScript } from '@/components/RevealScript';
 
 export const metadata: Metadata = {
   title: 'LED 4U - Soluções em Painéis de LED',
@@ -20,6 +21,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Unbounded:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
+        <RevealScript />
         {children}
         <WhatsAppFloating />
       </body>

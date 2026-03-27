@@ -9,32 +9,6 @@ import { cn } from '@/lib/utils';
 
 export default function ProdutosPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const sectionsRef = useRef<(HTMLElement | null)[]>([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    sectionsRef.current.forEach((section) => {
-      if (section) observer.observe(section);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const addToRefs = (el: HTMLElement | null) => {
-    if (el && !sectionsRef.current.includes(el)) {
-      sectionsRef.current.push(el);
-    }
-  };
 
   const productFaqs = [
     {
@@ -64,15 +38,15 @@ export default function ProdutosPage() {
       title: "Painéis P1 INDOOR",
       image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led%201.webp",
       description: "Experimente a máxima nitidez com nossos painéis de LED P1. Com apenas 1 milímetro de distância entre os pixels, eles oferecem uma resolução de imagem impressionante, ideal para visualização a curta distância. Perfeito para salas de controle, estúdios e ambientes de luxo, onde cada detalhe importa.",
-      containerPadding: "p-12 md:p-16",
-      scale: "scale-100"
+      containerPadding: "p-6 md:p-10",
+      scale: "scale-110"
     },
     {
       title: "Painéis P2.9 INDOOR - OUTDOOR",
       image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/eloy%20v2.webp",
       description: "O painel P2 é a escolha inteligente para quem busca o equilíbrio perfeito entre qualidade de imagem e custo-benefício. Com 2mm de Pixel Pitch, ele entrega uma resolução fantástica para visualização a partir de 2 metros, ideal para lojas, auditórios e recepções.",
-      containerPadding: "p-8 md:p-10",
-      scale: "scale-110"
+      containerPadding: "p-4 md:p-6",
+      scale: "scale-115"
     },
     {
       title: "Painéis P3.9 INDOOR - OUTDOOR",
@@ -85,8 +59,8 @@ export default function ProdutosPage() {
       title: "Painéis P5 OUTDOOR",
       image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led%204.webp",
       description: "Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch and altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista con clareza e cores vibrantes, mesmo sob a luz do sol.",
-      containerPadding: "p-4 md:p-6",
-      scale: "scale-115"
+      containerPadding: "p-2 md:p-4",
+      scale: "scale-120"
     }
   ];
 
@@ -94,7 +68,7 @@ export default function ProdutosPage() {
     <main className="min-h-screen bg-black text-white font-body">
       <Header />
 
-      <section ref={addToRefs} className="pt-32 md:pt-44 pb-20 md:pb-32 px-6 max-w-[1360px] mx-auto reveal">
+      <section className="pt-32 md:pt-44 pb-20 md:pb-32 px-6 max-w-[1360px] mx-auto reveal">
         <div className="text-center mb-12 md:mb-20">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-4 font-headline text-white">Tipos de painéis</h1>
           <p className="text-base md:text-lg text-white/60 font-medium">Temos o painel perfeito para o seu negócio ou sua necessidade</p>
@@ -104,7 +78,7 @@ export default function ProdutosPage() {
           {products.map((product, idx) => (
             <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col h-full group hover:border-primary/50 transition-all duration-300">
               <div className={cn(
-                "w-full h-[320px] md:h-[500px] mb-8 rounded-xl md:rounded-2xl overflow-hidden flex items-center justify-center transition-all duration-500",
+                "w-full h-[280px] md:h-[500px] mb-8 rounded-xl md:rounded-2xl overflow-hidden flex items-center justify-center transition-all duration-500",
                 product.containerPadding
               )}>
                 <img 
@@ -125,7 +99,7 @@ export default function ProdutosPage() {
         </div>
       </section>
 
-      <section ref={addToRefs} className="py-20 md:py-32 bg-black border-t border-white/10 reveal">
+      <section className="py-20 md:py-32 bg-black border-t border-white/10 reveal">
         <div className="container max-w-[1360px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-24">
             <div className="lg:col-span-2">
