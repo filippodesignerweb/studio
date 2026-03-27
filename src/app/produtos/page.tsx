@@ -36,28 +36,28 @@ export default function ProdutosPage() {
   const products = [
     {
       title: "Painéis P1 INDOOR",
-      image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led%201.webp",
+      image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/p1.webp",
       description: "Experimente a máxima nitidez com nossos painéis de LED P1. Com apenas 1 milímetro de distância entre os pixels, eles oferecem uma resolução de imagem impressionante, ideal para visualização a curta distância. Perfeito para salas de controle, estúdios e ambientes de luxo, onde cada detalhe importa.",
       containerPadding: "p-6 md:p-10",
       scale: "scale-110"
     },
     {
       title: "Painéis P2.9 INDOOR - OUTDOOR",
-      image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/eloy%20v2.webp",
+      image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/p2.webp",
       description: "O painel P2 é a escolha inteligente para quem busca o equilíbrio perfeito entre qualidade de imagem e custo-benefício. Com 2mm de Pixel Pitch, ele entrega uma resolução fantástica para visualização a partir de 2 metros, ideal para lojas, auditórios e recepções.",
       containerPadding: "p-4 md:p-6",
       scale: "scale-115"
     },
     {
       title: "Painéis P3.9 INDOOR - OUTDOOR",
-      image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led%203.webp",
+      image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/p3.webp",
       description: "O painel P3.9 é a solução ideal para eventos, shows e locações. Com 3.9mm de Pixel Pitch, ele oferece uma qualidade de imagem ótima tanto para ambientes internos quanto externos, garantindo flexibilidade e impacto visual em qualquer situação.",
       containerPadding: "p-0",
       scale: "scale-[1.35]"
     },
     {
       title: "Painéis P5 OUTDOOR",
-      image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led%204.webp",
+      image: "https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/p4.webp",
       description: "Leve sua publicidade para o próximo nível com o painel P5. Com 5mm de Pixel Pitch and altíssimo brilho, é a escolha perfeita para fachadas de lojas e painéis publicitários urbanos, garantindo que sua mensagem seja vista con clareza e cores vibrantes, mesmo sob a luz do sol.",
       containerPadding: "p-2 md:p-4",
       scale: "scale-120"
