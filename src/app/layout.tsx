@@ -21,6 +21,10 @@ const unbounded = Unbounded({
 export const metadata: Metadata = {
   title: 'LED 4U - Soluções em Painéis de LED',
   description: 'Especialistas em painéis de LED para Residências, Fachadas e Empresas. Projetos sob medida e instalação profissional.',
+  icons: {
+    icon: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp',
+    apple: 'https://raw.githubusercontent.com/legendragon03453-dot/led4u/main/led4u.webp',
+  },
 };
 
 export default function RootLayout({

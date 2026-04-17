@@ -103,6 +103,7 @@ export function Technology() {
                 <spline-viewer 
                   url="https://prod.spline.design/Nto6rsfK7aqoTE1y/scene.splinecode" 
                   className="w-full h-full"
+                  loading="eager"
                 ></spline-viewer>
               )}
             </div>
